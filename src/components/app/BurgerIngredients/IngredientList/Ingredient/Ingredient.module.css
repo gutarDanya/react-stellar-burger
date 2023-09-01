@@ -1,5 +1,5 @@
 .ingredient {
-    width: 250px;
+    width: 272px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,8 +8,8 @@
 }
 
 .price {
-    margin: 4px auto 0;
-    font-size:25px;
+margin: 4px auto 0;
+font-size:25px;
 }
 
 .name {

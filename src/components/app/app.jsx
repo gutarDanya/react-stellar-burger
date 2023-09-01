@@ -28,12 +28,12 @@ function App() {
       <pre className={styles.container}>
         <>
           <AppHeader />
-          <div className={styles.main}>
+          <main className={styles.main}>
             <DndProvider backend={HTML5Backend}>
               <BurgerIngredients ingredients={ingredients}/>
               <BurgerConstructor />
             </DndProvider>
-          </div>
+          </main>
         </>
       </pre>
     </div>

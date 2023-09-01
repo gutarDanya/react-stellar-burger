@@ -23,7 +23,7 @@ export const getData = () => {
             type: LOAD_START_INGREDIENTS_DATA_REQUEST
         })
         fetch(`${baseUrl}/ingredients`)
-        .then(res => checkResponse(res))
+        .then(checkResponse)
         .then(res => {
                 dispatch({
                     type: LOAD_START_INGREDIENTS_DATA_SUCCES,

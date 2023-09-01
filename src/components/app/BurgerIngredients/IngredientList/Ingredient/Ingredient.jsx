@@ -1,11 +1,19 @@
-import React from 'react';
-import { Counter } from '@ya.praktikum/react-developer-burger-ui-components';
-import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import styles from './Bun.module.css'
-import { useDispatch } from 'react-redux';
-import { useDrag } from 'react-dnd';
+import React from "react";
+import { useDrag } from "react-dnd";
+import { Counter, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { OPEN_INFO_MODAL_WINDOW } from "../../../../services/actions/currentIngredientsToModalAction";
+import styles from './Ingredient.module.css'
+import { useDispatch } from "react-redux";
 
-export const Bun = ({ ingredient, openPopup }) => {
+
+
+export const Ingredient = ({ingredient}) => {
+
+    const dispatch = useDispatch();
+
+    const openPopup = (ingredient) => {
+        dispatch({type: OPEN_INFO_MODAL_WINDOW, payload: ingredient})
+    }
 
     const [, ref] = useDrag({
         type: 'ingredient',
@@ -15,14 +23,11 @@ export const Bun = ({ ingredient, openPopup }) => {
     })
 
 
-    return (
+    return(
         <div className={styles.ingredient}
             onClick={() => openPopup(ingredient)}
             ref={ref}
             key={ingredient._id}>
-            {/* {ingredient.name === 'Краторная булка N-200i'
-                ? <Counter count={1} size='default' extraClass='m-1' />
-                : null} */}
                 {ingredient.__v !== 0
                 ? <Counter count={ingredient.__v} size='default' extraClass='m-1'/>
                 : null}

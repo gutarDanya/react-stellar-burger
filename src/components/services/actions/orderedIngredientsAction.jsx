@@ -21,7 +21,7 @@ export const sendOrder = (ingredients) => {
                 'ingredients': ingredients.map(ingredients => ingredients._id)
             })
         })
-        .then(res => checkResponse(res))
+        .then(checkResponse)
         .then((data) => {
             dispatch({
                 type: SEND_ORDER,
