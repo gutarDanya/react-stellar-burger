@@ -6,7 +6,7 @@ import { OPEN_MODAL_WINDOW } from '../../services/actions/orderedIngredientsActi
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import ModalInfoOfOrder from './ModalInfoOfOrder/ModalInfoOfOrder';
-import { sendOrder } from '../../services/reducers/orderedIngredientsReducer';
+import { sendOrder } from '../../services/actions/orderedIngredientsAction';
 
 function InfoOfOrder() {
 

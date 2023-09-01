@@ -68,25 +68,3 @@ export const apiReducer = (state = initialState, action) => {
         default: return state
     }
 }
-
-export const getData = () => {
-    return function(dispatch) {
-        dispatch({
-            type: LOAD_START_INGREDIENTS_DATA_REQUEST
-        })
-        fetch('https://norma.nomoreparties.space/api/ingredients')
-        .then(res => res.json())
-        .then(res => {
-                dispatch({
-                    type: LOAD_START_INGREDIENTS_DATA_SUCCES,
-                    payload: res.data
-                })
-
-        })
-        .catch(err => {
-            dispatch({
-                type: LOAD_START_INGREDIENTS_DATA_FAILED
-            })
-        })
-    }
-}

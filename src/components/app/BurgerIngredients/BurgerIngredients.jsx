@@ -8,7 +8,7 @@ import Souses from './Souses/Souses';
 import Main from './Main/Main';
 import ModalInfoIngredients from './ModalInfoIngredients/ModalInfoIngredients';
 import { useDispatch, useSelector } from 'react-redux';
-import { GET_CURRENT_INGREDIENT_TO_MODAL, OPEN_INFO_MODAL_WINDOW, getCurrentIngredientGenerator } from '../../services/actions/currentIngredientsToModalAction';
+import { GET_CURRENT_INGREDIENT_TO_MODAL, OPEN_INFO_MODAL_WINDOW, getCurrentIngredientGenerator } from '../../services/actions/currentIngredientsToModalAction'; 
 import { useDrag } from 'react-dnd';
 import { openInfoModalWindow } from '../../services/actions/currentIngredientsToModalAction';
 
