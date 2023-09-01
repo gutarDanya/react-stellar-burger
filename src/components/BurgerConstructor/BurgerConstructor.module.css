@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 600px;
+    margin-left: 40px;
+    min-height: 912px;
+    margin: 0;
+}
+
+.ingredients {
+    max-height: 656px;
+    height: 656px;
+    min-width: 450px;
+    display: grid;
+    row-gap: 10px;
+    align-items: center;
+    justify-items: center;
+    text-wrap: wrap;
+}
+
+.ingredient {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
