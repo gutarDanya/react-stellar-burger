@@ -1,4 +1,5 @@
 import { baseUrl } from "../../../utils/constants";
+import { checkResponse } from "../../../utils/constants";
 
 export const LOAD_START_INGREDIENTS_DATA ='LOAD_START_INGREDIENTS_DATA';
 export const LOAD_START_INGREDIENTS_DATA_REQUEST = 'LOAD_START_INGREDIENTS_DATA_REQUEST';
@@ -22,18 +23,13 @@ export const getData = () => {
             type: LOAD_START_INGREDIENTS_DATA_REQUEST
         })
         fetch(`${baseUrl}/ingredients`)
-        .then(res => res.json())
+        .then(res => checkResponse(res))
         .then(res => {
                 dispatch({
                     type: LOAD_START_INGREDIENTS_DATA_SUCCES,
                     payload: res.data
                 })
 
-        })
-        .catch(err => {
-            dispatch({
-                type: LOAD_START_INGREDIENTS_DATA_FAILED
-            })
         })
     }
 }

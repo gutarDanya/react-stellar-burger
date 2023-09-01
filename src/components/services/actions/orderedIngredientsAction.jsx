@@ -1,4 +1,5 @@
 import { baseUrl } from "../../../utils/constants";
+import { checkResponse } from "../../../utils/constants";
 export const COLLECT_ORDER = 'COLLECT_ORDER';
 export const OPEN_MODAL_WINDOW = 'OPEN_MODAL_WINDOW';
 export const CLOSE_MODAL_WINDOW = 'CLOSE_MODAL_WINDOW';
@@ -20,15 +21,12 @@ export const sendOrder = (ingredients) => {
                 'ingredients': ingredients.map(ingredients => ingredients._id)
             })
         })
-        .then(res => res.json())
+        .then(res => checkResponse(res))
         .then((data) => {
             dispatch({
                 type: SEND_ORDER,
                 payload: data
             })
-        })
-        .catch((err) => {
-            console.log( err.status, err.text)
         })
     }
 }
