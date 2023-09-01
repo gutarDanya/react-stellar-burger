@@ -16,25 +16,21 @@ import { useEffect, useState } from "react";
 function App() {
 
   const dispatch = useDispatch();
-  const ingredients = useSelector(store => store.apiReducer.ingredientData)
 
   useEffect(() => {
     dispatch(getData())
-}, [])
-
+  }, [])
 
   return (
     <div className={styles.app}>
       <pre className={styles.container}>
-        <>
-          <AppHeader />
-          <main className={styles.main}>
-            <DndProvider backend={HTML5Backend}>
-              <BurgerIngredients ingredients={ingredients}/>
-              <BurgerConstructor />
-            </DndProvider>
-          </main>
-        </>
+        <AppHeader />
+        <main className={styles.main}>
+          <DndProvider backend={HTML5Backend}>
+            <BurgerIngredients />
+            <BurgerConstructor />
+          </DndProvider>
+        </main>
       </pre>
     </div>
   );

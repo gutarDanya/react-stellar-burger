@@ -33,3 +33,7 @@
     color: white;
     cursor:pointer;
 }
+
+.panel {
+    display: flex;
+}
