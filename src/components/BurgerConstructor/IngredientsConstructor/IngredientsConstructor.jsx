@@ -31,7 +31,9 @@ export const IngredientsConstructor = ({ main, bun }) => {
             : null}
         {main && main.length > 0 && main.map((ingredient, i) => {
             return (
-                <MainIngredient ingredient={ingredient} deleteIngredient={deleteIngredient} key={i} />
+                <div key={i}>
+                    <MainIngredient ingredient={ingredient} deleteIngredient={deleteIngredient} index={i} />
+                </div>
             )
         })}
         {bun && bun.length !== 0

@@ -10,8 +10,6 @@ function BurgerIngredients () {
 
     const some = useSelector(state => state.scrollReducer.currentTab)
 
-    console.log(some)
-
     const dispatch = useDispatch();
 
     const {ref: bunRef, inView: bunInView} = useInView({
@@ -26,10 +24,6 @@ function BurgerIngredients () {
         threshold: 0.5
     })
 
-    console.log(souceInView, 'соусы')
-    console.log(bunInView, 'булки')
-    console.log(mainInView, 'начинка')
-
     useEffect(() => {
         dispatch(getCurrentTab('one'))
     },[bunInView])
@@ -40,7 +34,6 @@ function BurgerIngredients () {
 
     useEffect(() => {
         dispatch(getCurrentTab('three'))
-        console.log(mainInView)
     }, [mainInView])
 
     return (

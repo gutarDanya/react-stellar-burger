@@ -5,14 +5,14 @@ import { useDrag, useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 import { sortingIngredientsGenerator } from '../../../services/actions/ingredientsConstructorAction';
 
-export const MainIngredient = ({ ingredient, deleteIngredient, key }) => {
+export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
     const dispatch = useDispatch();
 
     const [, consructorDrag] = useDrag({
         type: 'constructorIngredient',
         item: {
             ingredient,
-            key
+            index
         }
     })
 
@@ -29,7 +29,7 @@ export const MainIngredient = ({ ingredient, deleteIngredient, key }) => {
             ref={constructorDrop}
         >
             <div className={styles.ingredient}
-                key={key}
+                key={index}
                 ref={consructorDrag}
             >
                 <DragIcon />
