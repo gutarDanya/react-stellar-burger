@@ -1,9 +1,5 @@
-const initialState = [
+export const GET_CURRENT_TAB = 'GET_CURRENT_TAB';
 
-]
-
-export const scrollReducer = (state = initialState, action) => {
-    switch(action.type) {
-        default: return state
-    }
+export const getCurrentTab = (currentTab) => {
+    return ({type: GET_CURRENT_TAB, payload: currentTab})
 }

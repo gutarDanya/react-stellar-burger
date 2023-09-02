@@ -3,7 +3,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { currentIngredientReducer } from "./currentIngredientsToModalReducer";
 import { constructorReducer } from "./ingredientsConstructorReducer";
 import { orderedIngredientsReducer } from './orderedIngredientsReducer';
-import { scrollReducer } from "../actions/scrollIngredientsAction";
+import { scrollReducer } from "./scrollIngredientsReducer";
 
 
 export const rootReducer = combineReducers({
