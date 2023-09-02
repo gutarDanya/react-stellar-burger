@@ -11,6 +11,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import React from 'react'
 import { useEffect, useState } from "react";
+import { ModalOverlay } from "../ModalOverlay/ModalOverlay";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <BurgerConstructor />
           </DndProvider>
         </main>
+        <ModalOverlay />
       </pre>
     </div>
   );

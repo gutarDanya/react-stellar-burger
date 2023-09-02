@@ -17,3 +17,7 @@ export const removeCurrentIngredientGenerator = () => {
 export const openInfoModalWindow = (ingredient) => {
     return {type: OPEN_INFO_MODAL_WINDOW, payload: ingredient}
 }
+
+export const closeInfoModalWindow = () => {
+    return {type: CLOSE_INFO_MODAL_WINDOW}
+}

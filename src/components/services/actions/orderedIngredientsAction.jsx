@@ -9,6 +9,10 @@ export const collectOrderGenerator = (ingredients) => {
     return{type: COLLECT_ORDER, payload: ingredients}
 }
 
+export const closeOrderedModal = () => {
+    return {type: CLOSE_MODAL_WINDOW}
+}
+
 export const sendOrder = (ingredients) => {
     return function(dispatch) {
 

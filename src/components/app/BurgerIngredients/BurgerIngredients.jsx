@@ -3,7 +3,7 @@ import React, {useRef, useEffect} from 'react';
 import styles from './BurgerIngredients.module.css'
 
 import Navigation from './Navigation/Navigation';
-import ModalInfoIngredients from './ModalInfoIngredients/ModalInfoIngredients';
+
 import { IngredientList } from './IngredientList/IngredientList';
 
 function BurgerIngredients () {
@@ -16,7 +16,6 @@ function BurgerIngredients () {
             <IngredientList type='sauce' title='Соусы' />
             <IngredientList type='main' title='Начинка' />
             </div>
-            <ModalInfoIngredients/>
         </section>
     )
 }
