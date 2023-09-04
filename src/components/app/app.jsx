@@ -41,11 +41,11 @@ function App() {
           </DndProvider>
         </main>
 
-        <Modal handleClose={closeInfoModalWindow} modalType={ingredientModal}>
+        <Modal handleClose={closeInfoModalWindow} modalType={ingredientModal} title={'Детали ингредиента'}>
           <IngredientDetails />
         </Modal>
 
-        <Modal handleClose={closeOrderedModal} modalType={orderModal}>
+        <Modal handleClose={closeOrderedModal} modalType={orderModal} title={''}>
           <OrderDetails />
         </Modal>
 

@@ -6,6 +6,7 @@ import { removeIngredient } from '../../../services/actions/ingredientsConstruct
 import { useDrag, useDrop } from 'react-dnd';
 import { removeCount } from '../../../services/actions/apiAction';
 import { MainIngredient } from './MainIngredient/MainIngredinet';
+import {v4 as uuid4 } from 'uuid'
 
 
 
@@ -31,9 +32,7 @@ export const IngredientsConstructor = ({ main, bun }) => {
             : null}
         {main && main.length > 0 && main.map((ingredient, i) => {
             return (
-                <div key={i}>
-                    <MainIngredient ingredient={ingredient} deleteIngredient={deleteIngredient} index={i} />
-                </div>
+                    <MainIngredient key ={uuid4()} ingredient={ingredient} deleteIngredient={deleteIngredient} index={i} />
             )
         })}
         {bun && bun.length !== 0

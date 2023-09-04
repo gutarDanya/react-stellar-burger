@@ -5,18 +5,13 @@ import { closeInfoModalWindow } from '../../services/actions/currentIngredientsT
 import { useDispatch } from 'react-redux';
 
 
-export const ModalOverlay = ({children, title, closePopup}) => {
+export const ModalOverlay = ({children, closePopup}) => {
     const dispatch = useDispatch();
 
 
     return(
-        <div className={styles.popup}
-        onClick={(e) => {e.stopPropagation()}}>
-            <div className={styles.container}>
-                <h2 className={styles.text}>{title}</h2>
-                <CloseIcon
-                onClick={closePopup}/>
-            </div>
+        <div className={styles.overlay}
+        onClick={closePopup}>
             {children}
         </div>
     )
