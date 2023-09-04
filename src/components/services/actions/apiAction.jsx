@@ -31,5 +31,8 @@ export const getData = () => {
                 })
 
         })
+        .catch((err) => [
+            console.log(`ошибка: ${err.status}`)
+        ])
     }
 }

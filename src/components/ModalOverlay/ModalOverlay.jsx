@@ -35,7 +35,7 @@ export const ModalOverlay = ({ modalType }) => {
         document.addEventListener('keydown', closePopupByKey)
 
         return(
-            document.addEventListener('keydown', closePopupByKey)
+            document.removeEventListener('keydown', closePopupByKey)
         )
     })
 

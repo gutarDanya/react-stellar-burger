@@ -22,7 +22,7 @@ export const IngredientsConstructor = ({ main, bun }) => {
     return (<>
         {bun && bun.length !== 0
             ? < ConstructorElement
-                text={bun.name}
+                text={`${bun.name} (верх)`}
                 thumbnail={bun.image}
                 price={bun.price}
                 type='top'
@@ -38,7 +38,7 @@ export const IngredientsConstructor = ({ main, bun }) => {
         })}
         {bun && bun.length !== 0
             ? < ConstructorElement
-                text={bun.name}
+                text={`${bun.name} (низ)`}
                 thumbnail={bun.image}
                 price={bun.price}
                 type='bottom'

@@ -18,7 +18,7 @@ export const IngredientList = React.forwardRef(({ title, type}, ref) => {
                 {ingredients && ingredients.length > 0 && ingredients.map((ingredient, i) => {
                     if (ingredient.type === `${type}`) {
                         return (
-                            <Ingredient ingredient={ingredient} key={i} />
+                            <Ingredient ingredient={ingredient} key={ingredient._id} />
                         )
                     }
                 })}

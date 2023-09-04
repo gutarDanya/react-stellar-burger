@@ -32,5 +32,8 @@ export const sendOrder = (ingredients) => {
                 payload: data
             })
         })
+        .catch((err) => {
+            console.log(`Ошибка: ${err.status}`)
+        })
     }
 }

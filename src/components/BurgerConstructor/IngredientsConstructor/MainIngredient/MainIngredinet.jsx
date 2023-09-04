@@ -4,6 +4,7 @@ import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burg
 import { useDrag, useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 import { sortingIngredientsGenerator } from '../../../services/actions/ingredientsConstructorAction';
+import { ingredientPropType } from '../../../../utils/prop-types';
 
 export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
     const dispatch = useDispatch();
@@ -15,6 +16,8 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
             index
         }
     })
+
+    console.log(index)
 
     const [, constructorDrop] = useDrop({
         accept: 'constructorIngredient',
@@ -44,3 +47,5 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
         </div>
     )
 }
+
+MainIngredient.propTypes = {...ingredientPropType}
