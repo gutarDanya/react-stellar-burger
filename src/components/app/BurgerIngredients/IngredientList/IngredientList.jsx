@@ -2,8 +2,7 @@ import React, { useEffect, forwardRef } from "react";
 import { useSelector } from "react-redux";
 import { Ingredient } from "./Ingredient/Ingredient";
 import styles from './IngredientList.module.css';
-import { getCurrentTab } from "../../../../services/actions/scrollIngredientsAction";
-import { useInView } from "react-intersection-observer";
+import PropTypes from "prop-types";
 
 
 export const IngredientList = React.forwardRef(({ title, type}, ref) => {
@@ -27,3 +26,8 @@ export const IngredientList = React.forwardRef(({ title, type}, ref) => {
     )
 }
 )
+
+IngredientList.propTypes = {
+    title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired
+}

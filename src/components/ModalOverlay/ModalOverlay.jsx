@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import styles from './ModalOverlay.module.css';
-import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { closeInfoModalWindow } from '../../services/actions/currentIngredientsToModalAction';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 
 export const ModalOverlay = ({children, closePopup}) => {
@@ -15,4 +14,8 @@ export const ModalOverlay = ({children, closePopup}) => {
             {children}
         </div>
     )
+}
+
+ModalOverlay.propTypes = {
+    closePopup: PropTypes.func.isRequired
 }

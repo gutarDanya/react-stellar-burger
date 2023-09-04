@@ -4,7 +4,7 @@ import { Counter, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-c
 import { OPEN_INFO_MODAL_WINDOW } from "../../../../../services/actions/currentIngredientsToModalAction";
 import styles from './Ingredient.module.css'
 import { useDispatch } from "react-redux";
-
+import PropTypes from "prop-types";
 
 
 export const Ingredient = ({ingredient}) => {
@@ -36,4 +36,8 @@ export const Ingredient = ({ingredient}) => {
             <p className={styles.name}>{ingredient.name}</p>
         </div>
     )
+}
+
+Ingredient.propTypes = {
+    ingredient: PropTypes.object.isRequired
 }

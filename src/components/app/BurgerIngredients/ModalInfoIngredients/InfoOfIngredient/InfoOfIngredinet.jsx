@@ -1,8 +1,7 @@
 import React from 'react';
 
 import styles from './InfoOfIngredient.module.css';
-
-import { data } from '../../../../../utils/data';
+import PropTypes from "prop-types";
 
 function InfoOfIngridient ({ingredient}) {
 
@@ -34,3 +33,7 @@ function InfoOfIngridient ({ingredient}) {
 }
 
 export default InfoOfIngridient;
+
+InfoOfIngridient.propTypes = {
+    ingredient: PropTypes.object.isRequired
+}

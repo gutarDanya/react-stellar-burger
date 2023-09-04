@@ -2,12 +2,9 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Modal.module.css'
 import { ModalOverlay } from '../ModalOverlay/ModalOverlay';
-import { closeInfoModalWindow } from '../../services/actions/currentIngredientsToModalAction';
-import { useDispatch, useSelector } from 'react-redux';
-import { closeOrderedModal } from '../../services/actions/orderedIngredientsAction';
-import { IngredientDetails } from '../app/BurgerIngredients/ModalInfoIngredients/IngredientDetails';
-import OrderDetails from '../OrderDetails/OrderDetails';
+import { useDispatch } from 'react-redux';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import PropTypes from "prop-types";
 
 const modalRoot = document.getElementById("modalRoot");
 
@@ -50,4 +47,10 @@ export const Modal = ({ modalType, handleClose, children, title }) => {
         )
     } else { return null }
 
+}
+
+Modal.propTypes = {
+    modalType: PropTypes.boolead.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired
 }

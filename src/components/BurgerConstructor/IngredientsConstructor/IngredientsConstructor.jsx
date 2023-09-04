@@ -3,10 +3,10 @@ import styles from './IngredientsConstructor.module.css';
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeIngredient } from '../../../services/actions/ingredientsConstructorAction';
-import { useDrag, useDrop } from 'react-dnd';
 import { removeCount } from '../../../services/actions/apiAction';
 import { MainIngredient } from './MainIngredient/MainIngredinet';
-import {v4 as uuid4 } from 'uuid'
+import {v4 as uuid4 } from 'uuid';
+import PropTypes from "prop-types";
 
 
 
@@ -46,4 +46,9 @@ export const IngredientsConstructor = ({ main, bun }) => {
             : null}
     </>
     )
+}
+
+IngredientsConstructor.propTypes = {
+    main: PropTypes.object.isRequired,
+    bun: PropTypes.object.isRequired
 }
