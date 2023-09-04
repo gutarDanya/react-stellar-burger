@@ -9,7 +9,7 @@ export const addBun = (bun) => {
     const item = {
         ...bun,
         ...bun.ingredient,
-        uniqueId: uuid4() 
+        superId: uuid4() 
     }
     return ({type: ADD_BUN_TO_CONSTRUCTOR, payload: item })
 }
@@ -17,10 +17,10 @@ export const addBun = (bun) => {
 export const addMainIngredient = (ingredient) => {
     const item = {
         ...ingredient,
-
-        uniqueId: uuid4()
+        ...ingredient.ingredient,
+        superId: uuid4()
     }
-    return ({type: ADD_MAIN_TO_CONSTRUCTOR, payload: ingredient})
+    return ({type: ADD_MAIN_TO_CONSTRUCTOR, payload: item})
 }
 
 export const removeIngredient = (ingredient) => {
