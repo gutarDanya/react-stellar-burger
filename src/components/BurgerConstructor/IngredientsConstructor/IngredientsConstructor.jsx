@@ -49,6 +49,6 @@ export const IngredientsConstructor = ({ main, bun }) => {
 }
 
 IngredientsConstructor.propTypes = {
-    main: PropTypes.object.isRequired,
-    bun: PropTypes.object.isRequired
+    main: PropTypes.array.isRequired,
+    bun: PropTypes.array.isRequired
 }

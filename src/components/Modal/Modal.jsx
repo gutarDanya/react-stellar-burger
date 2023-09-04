@@ -50,7 +50,7 @@ export const Modal = ({ modalType, handleClose, children, title }) => {
 }
 
 Modal.propTypes = {
-    modalType: PropTypes.boolead.isRequired,
     handleClose: PropTypes.func.isRequired,
+    modalType: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired
 }
