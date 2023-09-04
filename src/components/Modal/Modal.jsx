@@ -1,22 +1,48 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import styles from './Modal.module.css'
-import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { closeInfoModalWindow } from '../services/actions/currentIngredientsToModalAction';
-import { useDispatch } from 'react-redux';
+import { ModalOverlay } from '../ModalOverlay/ModalOverlay';
+import { closeInfoModalWindow } from '../../services/actions/currentIngredientsToModalAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeOrderedModal } from '../../services/actions/orderedIngredientsAction';
+import { IngredientDetails } from '../app/BurgerIngredients/ModalInfoIngredients/IngredientDetails';
+import OrderDetails from '../OrderDetails/OrderDetails';
 
+const modalRoot = document.getElementById("modalRoot");
 
-export const Modal = ({children, title, closePopup}) => {
+export const Modal = ({ modalType, handleClose, children }) => {
     const dispatch = useDispatch();
 
+    const closePopup = () => {
+        dispatch(handleClose())
+    }
 
-    return(
-        <div className={styles.popup}>
-            <div className={styles.container}>
-                <h2 className={styles.text}>{title}</h2>
-                <CloseIcon
-                onClick={closePopup}/>
-            </div>
-            {children}
-        </div>
-    )
+    function closePopupByKey(evt) {
+        if (evt.key === 'Escape') {
+            dispatch(handleClose)
+
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('keydown', closePopupByKey)
+
+        return (
+            document.removeEventListener('keydown', closePopupByKey)
+        )
+    })
+
+
+    if (modalType) {
+        return ReactDOM.createPortal(
+            <div className={styles.overlay}
+                onClick={closePopup}>
+                <ModalOverlay closePopup={closePopup}>
+                    {children}
+                </ModalOverlay>
+            </div>,
+            modalRoot
+        )
+    } else { return null }
+
 }

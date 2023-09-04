@@ -1,61 +1,23 @@
 import React, {useEffect} from 'react';
-import ReactDOM from 'react-dom';
 import styles from './ModalOverlay.module.css';
-import { Modal } from '../Modal/Modal';
-import { closeInfoModalWindow } from '../services/actions/currentIngredientsToModalAction';
-import { useDispatch, useSelector } from 'react-redux';
-import { closeOrderedModal } from '../services/actions/orderedIngredientsAction';
-import { IngredientDetails } from '../app/BurgerIngredients/ModalInfoIngredients/IngredientDetails';
-import OrderDetails from '../OrderDetails/OrderDetails';
+import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { closeInfoModalWindow } from '../../services/actions/currentIngredientsToModalAction';
+import { useDispatch } from 'react-redux';
 
-const modalRoot = document.getElementById("modalRoot")
 
-export const ModalOverlay = ({ modalType }) => {
+export const ModalOverlay = ({children, title, closePopup}) => {
     const dispatch = useDispatch();
 
-    const ingredientModalOpened = useSelector(state => state.currentIngredientReducer.modalWindowOpened);
-    const orderedIngredientModalOpened = useSelector(state => state.orderedIngredientsReducer.modalOpened)
 
-    const closePopupInfoModal = () => {
-        dispatch(closeInfoModalWindow());
-    }
-
-    const closePopupOrderModal = () => {
-        dispatch(closeOrderedModal())
-    }
-
-    function closePopupByKey(evt) {
-        if (evt.key === 'Escape') {
-            dispatch(closeInfoModalWindow())
-            dispatch(closeOrderedModal())
-        }
-    }
-
-    useEffect(() => {
-        document.addEventListener('keydown', closePopupByKey)
-
-        return(
-            document.removeEventListener('keydown', closePopupByKey)
-        )
-    })
-
-    const active = useSelector(state => state.currentIngredientReducer.modalWindowOpened);
-
-    if (ingredientModalOpened || orderedIngredientModalOpened) {
-        return ReactDOM.createPortal(
-            <div className={styles.overlay}>
-                {ingredientModalOpened
-
-                    ? <Modal closePopup={closePopupInfoModal} title='Детали Ингредиента'>
-                        <IngredientDetails />
-                    </Modal>
-
-                    : <Modal closePopup={closePopupOrderModal} title=''>
-                        <OrderDetails />
-                    </Modal>}
-            </div>,
-            modalRoot
-        )
-    } else { return null }
-
+    return(
+        <div className={styles.popup}
+        onClick={(e) => {e.stopPropagation()}}>
+            <div className={styles.container}>
+                <h2 className={styles.text}>{title}</h2>
+                <CloseIcon
+                onClick={closePopup}/>
+            </div>
+            {children}
+        </div>
+    )
 }

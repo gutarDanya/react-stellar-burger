@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './IngredientsConstructor.module.css';
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeIngredient } from '../../services/actions/ingredientsConstructorAction';
+import { removeIngredient } from '../../../services/actions/ingredientsConstructorAction';
 import { useDrag, useDrop } from 'react-dnd';
-import { removeCount } from '../../services/actions/apiAction';
+import { removeCount } from '../../../services/actions/apiAction';
 import { MainIngredient } from './MainIngredient/MainIngredinet';
 
 

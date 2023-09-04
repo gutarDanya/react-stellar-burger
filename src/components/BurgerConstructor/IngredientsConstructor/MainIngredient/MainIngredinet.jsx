@@ -3,7 +3,7 @@ import styles from './MainIngredient.module.css';
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDrag, useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
-import { sortingIngredientsGenerator } from '../../../services/actions/ingredientsConstructorAction';
+import { sortingIngredientsGenerator } from '../../../../services/actions/ingredientsConstructorAction';
 import { ingredientPropType } from '../../../../utils/prop-types';
 
 export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {

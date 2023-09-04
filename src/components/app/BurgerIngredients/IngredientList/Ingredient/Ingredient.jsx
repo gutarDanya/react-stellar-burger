@@ -1,7 +1,7 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import { Counter, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { OPEN_INFO_MODAL_WINDOW } from "../../../../services/actions/currentIngredientsToModalAction";
+import { OPEN_INFO_MODAL_WINDOW } from "../../../../../services/actions/currentIngredientsToModalAction";
 import styles from './Ingredient.module.css'
 import { useDispatch } from "react-redux";
 

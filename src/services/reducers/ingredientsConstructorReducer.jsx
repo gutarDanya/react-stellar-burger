@@ -5,7 +5,7 @@ import {
     GET_ALL_INGREDIENTS,
     SORTING_INGREDIENTS
 } from '../actions/ingredientsConstructorAction';
-import { data } from '../../../utils/data';
+import { data } from '../../utils/data';
 
 const initialState = {
     allIngredients: [],

@@ -4,7 +4,7 @@ import styles from './Navigation.module.css'
 import { useSelector } from 'react-redux';
 
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import { getCurrentTab } from '../../../services/actions/scrollIngredientsAction';
+import { getCurrentTab } from '../../../../services/actions/scrollIngredientsAction';
 
 function Navigation () {
 

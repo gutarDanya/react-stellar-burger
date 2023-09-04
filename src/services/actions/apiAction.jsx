@@ -1,5 +1,5 @@
-import { baseUrl } from "../../../utils/constants";
-import { checkResponse } from "../../../utils/constants";
+import { baseUrl } from "../../utils/constants";
+import { checkResponse } from "../../utils/constants";
 
 export const LOAD_START_INGREDIENTS_DATA ='LOAD_START_INGREDIENTS_DATA';
 export const LOAD_START_INGREDIENTS_DATA_REQUEST = 'LOAD_START_INGREDIENTS_DATA_REQUEST';

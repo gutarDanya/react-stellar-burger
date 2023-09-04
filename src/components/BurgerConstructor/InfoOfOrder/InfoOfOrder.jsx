@@ -2,11 +2,11 @@ import React, { useMemo } from 'react'
 
 import styles from './InfoOfOrder.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { OPEN_MODAL_WINDOW } from '../../services/actions/orderedIngredientsAction'
+import { OPEN_MODAL_WINDOW } from '../../../services/actions/orderedIngredientsAction'
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import ModalInfoOfOrder from '../../OrderDetails/OrderDetails';
-import { sendOrder } from '../../services/actions/orderedIngredientsAction';
+import { sendOrder } from '../../../services/actions/orderedIngredientsAction';
 
 export default function InfoOfOrder() {
 

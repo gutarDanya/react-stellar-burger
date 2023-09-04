@@ -4,16 +4,16 @@ import InfoOfOrder from './InfoOfOrder/InfoOfOrder';
 
 import styles from './BurgerConstructor.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { getStartConstructorElementsGenerator } from '../services/actions/ingredientsConstructorAction';
+import { getStartConstructorElementsGenerator } from '../../services/actions/ingredientsConstructorAction';
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDrag, useDrop } from 'react-dnd';
-import { ADDED_INGREDIENT_TO_CONSTRUCTOR } from '../services/actions/ingredientsConstructorAction';
-import { addBun, addMainIngredient } from '../services/actions/ingredientsConstructorAction';
-import { getAllIngredients } from '../services/actions/ingredientsConstructorAction';
+import { ADDED_INGREDIENT_TO_CONSTRUCTOR } from '../../services/actions/ingredientsConstructorAction';
+import { addBun, addMainIngredient } from '../../services/actions/ingredientsConstructorAction';
+import { getAllIngredients } from '../../services/actions/ingredientsConstructorAction';
 import { IngredientsConstructor } from './IngredientsConstructor/IngredientsConstructor';
-import { addCount } from '../services/actions/apiAction';
-import { sortingIngredientsGenerator } from '../services/actions/ingredientsConstructorAction';
+import { addCount } from '../../services/actions/apiAction';
+import { sortingIngredientsGenerator } from '../../services/actions/ingredientsConstructorAction';
 
 function BurgerConstructor() {
 

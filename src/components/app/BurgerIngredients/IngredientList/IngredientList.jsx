@@ -2,7 +2,7 @@ import React, { useEffect, forwardRef } from "react";
 import { useSelector } from "react-redux";
 import { Ingredient } from "./Ingredient/Ingredient";
 import styles from './IngredientList.module.css';
-import { getCurrentTab } from "../../../services/actions/scrollIngredientsAction";
+import { getCurrentTab } from "../../../../services/actions/scrollIngredientsAction";
 import { useInView } from "react-intersection-observer";
 
 

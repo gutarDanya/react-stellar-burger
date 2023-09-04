@@ -5,16 +5,24 @@ import AppHeader from './AppHeader/AppHeader.jsx'
 import BurgerIngredients from "./BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../services/actions/apiAction";
+import { getData } from "../../services/actions/apiAction";
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { IngredientDetails } from "./BurgerIngredients/ModalInfoIngredients/IngredientDetails";
+import OrderDetails from "../OrderDetails/OrderDetails";
+import { closeInfoModalWindow } from "../../services/actions/currentIngredientsToModalAction";
+import { closeOrderedModal } from "../../services/actions/orderedIngredientsAction";
 
 import React from 'react'
 import { useEffect, useState } from "react";
-import { ModalOverlay } from "../ModalOverlay/ModalOverlay";
+import { Modal } from "../Modal/Modal";
 
 
 function App() {
+
+  const ingredientModal = useSelector(state => state.currentIngredientReducer.modalWindowOpened);
+  const orderModal = useSelector(state => state.orderedIngredientsReducer.modalOpened);
+
 
   const dispatch = useDispatch();
 
@@ -32,7 +40,15 @@ function App() {
             <BurgerConstructor />
           </DndProvider>
         </main>
-        <ModalOverlay />
+
+        <Modal handleClose={closeInfoModalWindow} modalType={ingredientModal}>
+          <IngredientDetails />
+        </Modal>
+
+        <Modal handleClose={closeOrderedModal} modalType={orderModal}>
+          <OrderDetails />
+        </Modal>
+
       </pre>
     </div>
   );

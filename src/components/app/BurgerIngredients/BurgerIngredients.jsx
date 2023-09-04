@@ -4,7 +4,7 @@ import Navigation from './Navigation/Navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { IngredientList } from './IngredientList/IngredientList';
 import { useInView } from 'react-intersection-observer';
-import { getCurrentTab } from '../../services/actions/scrollIngredientsAction';
+import { getCurrentTab } from '../../../services/actions/scrollIngredientsAction';
 
 function BurgerIngredients () {
 

@@ -1,4 +1,4 @@
-import { ingredientPropType } from "../../../utils/prop-types";
+import { ingredientPropType } from "../../utils/prop-types";
 
 export const OPEN_INFO_MODAL_WINDOW = 'OPEN_INFO_MODAL_WINDOW';
 export const CLOSE_INFO_MODAL_WINDOW = 'CLOSE_INFO_MODAL_WINDOW'
