@@ -37,7 +37,6 @@ function BurgerConstructor() {
                 dispatch(addCount(item.ingredient))
                 dispatch(getAllIngredients(item.ingredient))
             }
-            console.log(item)
         }
     })
 

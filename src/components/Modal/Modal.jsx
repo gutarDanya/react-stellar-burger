@@ -23,14 +23,14 @@ export const Modal = ({ modalType, handleClose, children, title }) => {
             closePopup()
         }
     }
-    //ДОПИШИ ЗДЕСЬ DEPS
+
     useEffect(() => {
         document.addEventListener('keydown', closePopupByKey)
 
         return () => {
             document.removeEventListener('keydown', closePopupByKey)
         }
-    })
+    }, [modalType])
 
 
     if (modalType) {

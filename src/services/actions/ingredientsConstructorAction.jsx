@@ -6,21 +6,18 @@ export const ADD_MAIN_TO_CONSTRUCTOR = 'ADD_MAIN_TO_CONSTRUCTOR';
 export const SORTING_INGREDIENTS = 'SORTING_INGREDIENTS';
 
 export const addBun = (bun) => {
-    const item = {
-        ...bun,
-        ...bun.ingredient,
-        superId: uuid4() 
-    }
-    return ({type: ADD_BUN_TO_CONSTRUCTOR, payload: item })
+    return ({type: ADD_BUN_TO_CONSTRUCTOR, payload: {
+        ...bun, 
+        superId: uuid4()
+    }})
 }
 
 export const addMainIngredient = (ingredient) => {
-    const item = {
+
+    return ({type: ADD_MAIN_TO_CONSTRUCTOR, payload: {
         ...ingredient,
-        ...ingredient.ingredient,
         superId: uuid4()
-    }
-    return ({type: ADD_MAIN_TO_CONSTRUCTOR, payload: item})
+    }})
 }
 
 export const removeIngredient = (ingredient) => {
