@@ -10,21 +10,18 @@ import { sendOrder } from '../../../services/actions/orderedIngredientsAction';
 
 export default function InfoOfOrder() {
 
-    const ingredients = useSelector(state => state.constructorReducer.allIngredients);
+    const bun = useSelector(state => state.constructorReducer.bun);
+    const main = useSelector(state => state.constructorReducer.main);
+
 
     const openPopup = () => {
         dispatch({ type: OPEN_MODAL_WINDOW });
-        dispatch(sendOrder(ingredients));
+        dispatch(sendOrder([bun, ...main]));
     }
 
-    const totalPrice = ingredients.reduce((acc, ingredient) =>
-        ingredient.type === 'bun'
-            ? ingredient.price * 2 + acc
-            : ingredient.price + acc, 0)
+    const totalPrice = main.reduce((acc, { price }) => acc + price, 0) + bun.price * 2 || main.reduce((acc, { price }) => acc + price, 0)
+
     
-
-
-
     const dispatch = useDispatch();
 
 

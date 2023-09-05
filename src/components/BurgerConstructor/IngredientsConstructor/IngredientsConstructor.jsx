@@ -32,7 +32,7 @@ export const IngredientsConstructor = ({ main, bun }) => {
             : null}
         {main && main.length > 0 && main.map((ingredient, i) => {
             return (
-                    <MainIngredient key ={uuid4()} ingredient={ingredient} deleteIngredient={deleteIngredient} index={i} />
+                    <MainIngredient key ={i} ingredient={ingredient} deleteIngredient={deleteIngredient} index={i} />
             )
         })}
         {bun && bun.length !== 0
@@ -50,5 +50,4 @@ export const IngredientsConstructor = ({ main, bun }) => {
 
 IngredientsConstructor.propTypes = {
     main: PropTypes.array,
-    bun: PropTypes.object || PropTypes.object
 }

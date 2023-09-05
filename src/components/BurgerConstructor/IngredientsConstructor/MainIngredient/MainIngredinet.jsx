@@ -75,7 +75,7 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
 }
 
 MainIngredient.propTypes = {
-  ingredient: PropTypes.object.isRequired,
+  ingredient: ingredientPropType,
   deleteIngredient: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired
 }

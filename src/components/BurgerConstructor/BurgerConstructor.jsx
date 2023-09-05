@@ -30,12 +30,11 @@ function BurgerConstructor() {
             if (item.ingredient.type === 'bun') {
                 dispatch(addBun(item.ingredient))
                 dispatch(addCount(item.ingredient))
-                dispatch(getAllIngredients(item.ingredient))
 
             } else {
                 dispatch(addMainIngredient(item.ingredient))
                 dispatch(addCount(item.ingredient))
-                dispatch(getAllIngredients(item.ingredient))
+
             }
         }
     })
