@@ -32,7 +32,7 @@ export const constructorReducer = (state = initialState, action) => {
         case REMOVE_INGREDIENT_FROM_CONSTRUCTOR: {
             return {
                 ...state,
-                main: state.main.filter((ingredient) => ingredient.id !== action.payload.id)
+                main: state.main.filter((ingredient) => ingredient.superId !== action.payload.superId)
             }
         }
         case GET_ALL_INGREDIENTS: {
