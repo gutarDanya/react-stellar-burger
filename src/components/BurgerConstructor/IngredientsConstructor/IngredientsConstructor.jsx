@@ -19,6 +19,8 @@ export const IngredientsConstructor = ({ main, bun }) => {
         dispatch(removeCount(ingredient))
     }
 
+    console.log( main)
+
 
     return (<>
         {bun && bun.length !== 0
