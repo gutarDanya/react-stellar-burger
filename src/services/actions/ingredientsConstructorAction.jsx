@@ -24,10 +24,6 @@ export const removeIngredient = (ingredient) => {
     return ({type: REMOVE_INGREDIENT_FROM_CONSTRUCTOR, payload: ingredient})
 }
 
-export const getAllIngredients = (ingredient) => {
-    return ({type: GET_ALL_INGREDIENTS, payload: ingredient})
-}
-
 export const sortingIngredientsGenerator = (draggedIngredient, targetIngredient ) => {
     return ({type: SORTING_INGREDIENTS, payload: {draggedIngredient, targetIngredient}})
 }

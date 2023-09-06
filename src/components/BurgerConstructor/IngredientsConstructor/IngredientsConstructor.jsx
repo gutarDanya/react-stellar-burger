@@ -32,7 +32,7 @@ export const IngredientsConstructor = ({ main, bun }) => {
             : null}
         {main && main.length > 0 && main.map((ingredient, i) => {
             return (
-                    <MainIngredient key ={i} ingredient={ingredient} deleteIngredient={deleteIngredient} index={i} />
+                    <MainIngredient key={ingredient.superId} ingredient={ingredient} deleteIngredient={deleteIngredient} index={i} />
             )
         })}
         {bun && bun.length !== 0

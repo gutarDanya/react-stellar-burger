@@ -35,12 +35,6 @@ export const constructorReducer = (state = initialState, action) => {
                 main: state.main.filter((ingredient) => ingredient.superId !== action.payload.superId)
             }
         }
-        case GET_ALL_INGREDIENTS: {
-            return {
-                ...state,
-                allIngredients: [...state.allIngredients, action.payload]
-            }
-        }
         case SORTING_INGREDIENTS: { 
            const {draggedIngredient, targetIngredient} = action.payload
 
