@@ -5,7 +5,7 @@ import {
     GET_ALL_INGREDIENTS,
     SORTING_INGREDIENTS
 } from '../actions/ingredientsConstructorAction';
-import { data } from '../../utils/data';
+import update from 'immutability-helper'
 
 const initialState = {
     allIngredients: [],
@@ -40,23 +40,41 @@ export const constructorReducer = (state = initialState, action) => {
 
            let result = [];
 
-            if (draggedIngredient === targetIngredient) {
-                return
-            } else if (draggedIngredient > targetIngredient) {
-                result = [
-                ...state.main.slice(0, targetIngredient),
-                state.main[draggedIngredient],
-                state.main[targetIngredient],
-                ...state.main.slice(draggedIngredient + 1)
-                ]
-            } else {
-                result = [
-                    ...state.main.slice(0, draggedIngredient),
-                    state.main[targetIngredient],
-                    state.main[draggedIngredient],
-                    ...state.main.slice(targetIngredient + 1)
-                ]
-            }
+            // if (draggedIngredient === targetIngredient) {
+            //     return
+            // } else if (draggedIngredient > targetIngredient) {
+            //     result = [
+            //     ...state.main.slice(0, targetIngredient),
+            //     state.main[draggedIngredient],
+            //     state.main[targetIngredient],
+            //     ...state.main.slice(draggedIngredient + 1)
+            //     ]
+            // } else {
+            //     result = [
+            //         ...state.main.slice(0, draggedIngredient),
+            //         state.main[targetIngredient],
+            //         state.main[draggedIngredient],
+            //         ...state.main.slice(targetIngredient + 1)
+            //     ]
+            // }
+
+      if (draggedIngredient === targetIngredient) {
+        return state;
+      } else if (draggedIngredient > targetIngredient) {
+        result = [
+          ...state.main.slice(0, targetIngredient),
+          state.main[draggedIngredient],
+          ...state.main.slice(targetIngredient, draggedIngredient),
+          ...state.main.slice(draggedIngredient + 1),
+        ];
+      } else {
+        result = [
+          ...state.main.slice(0, draggedIngredient),
+          ...state.main.slice(draggedIngredient + 1, targetIngredient + 1),
+          state.main[draggedIngredient],
+          ...state.main.slice(targetIngredient + 1),
+        ];
+      }
 
             return {
                 ...state,

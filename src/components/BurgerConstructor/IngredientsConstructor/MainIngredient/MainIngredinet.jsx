@@ -30,6 +30,7 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
             const dragIndex = item.index
             const hoverIndex = index
 
+            console.log(index)
             if (dragIndex === hoverIndex) {
               return
             }
