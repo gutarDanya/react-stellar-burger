@@ -40,15 +40,19 @@ function App() {
             <BurgerConstructor />
           </DndProvider>
         </main>
-
-        <Modal handleClose={closeInfoModalWindow} modalType={ingredientModal} title={'Детали ингредиента'}>
+{       ingredientModal
+        ? <Modal handleClose={closeInfoModalWindow} title={'Детали ингредиента'}>
           <IngredientDetails />
         </Modal>
+        : null
+}
 
-        <Modal handleClose={closeOrderedModal} modalType={orderModal} title={''}>
+{orderModal
+        ? <Modal handleClose={closeOrderedModal} title={''}>
           <OrderDetails />
         </Modal>
-
+        : null
+}
       </pre>
     </div>
   );

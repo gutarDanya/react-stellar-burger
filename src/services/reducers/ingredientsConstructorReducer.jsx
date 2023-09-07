@@ -9,7 +9,7 @@ import update from 'immutability-helper'
 
 const initialState = {
     allIngredients: [],
-    bun: [],
+    bun: {},
     main: []
 }
 

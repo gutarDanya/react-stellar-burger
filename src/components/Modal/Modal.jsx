@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 
 const modalRoot = document.getElementById("modalRoot");
 
-export const Modal = ({ modalType, handleClose, children, title }) => {
+export const Modal = ({ handleClose, children, title }) => {
     const dispatch = useDispatch();
 
     const closePopup = () => {
@@ -27,10 +27,9 @@ export const Modal = ({ modalType, handleClose, children, title }) => {
         return () => {
             document.removeEventListener('keydown', closePopupByKey)
         }
-    }, [modalType])
+    }, [])
 
 
-    if (modalType) {
         return ReactDOM.createPortal(
             <ModalOverlay closePopup={closePopup}>
                 <div className={styles.popup}
@@ -45,12 +44,10 @@ export const Modal = ({ modalType, handleClose, children, title }) => {
             </ModalOverlay>,
             modalRoot
         )
-    } else { return null }
 
 }
 
 Modal.propTypes = {
     handleClose: PropTypes.func.isRequired,
-    modalType: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired
 }

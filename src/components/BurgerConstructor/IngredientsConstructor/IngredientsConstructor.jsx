@@ -23,7 +23,7 @@ export const IngredientsConstructor = ({ main, bun }) => {
 
 
     return (<>
-        {bun && bun.length !== 0
+        {bun && bun.name
             ? < ConstructorElement
                 text={`${bun.name} (верх)`}
                 thumbnail={bun.image}
@@ -37,7 +37,7 @@ export const IngredientsConstructor = ({ main, bun }) => {
                     <MainIngredient key={ingredient.superId} ingredient={ingredient} deleteIngredient={deleteIngredient} index={i} />
             )
         })}
-        {bun && bun.length !== 0
+        {bun && bun.name
             ? < ConstructorElement
                 text={`${bun.name} (низ)`}
                 thumbnail={bun.image}
@@ -52,4 +52,5 @@ export const IngredientsConstructor = ({ main, bun }) => {
 
 IngredientsConstructor.propTypes = {
     main: PropTypes.array,
+    bun: PropTypes.object.isRequired
 }
