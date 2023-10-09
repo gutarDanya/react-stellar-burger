@@ -15,7 +15,6 @@ export const closeOrderedModal = () => {
 
 export const sendOrder = (ingredients) => {
     return function(dispatch) {
-
         fetch(`${baseUrl}/orders`, {
             method: 'POST',
             headers: {
@@ -31,6 +30,7 @@ export const sendOrder = (ingredients) => {
                 type: SEND_ORDER,
                 payload: data
             })
+            console.log(data)
         })
         .catch((err) => {
             console.log(`Ошибка: ${err.status}`)
