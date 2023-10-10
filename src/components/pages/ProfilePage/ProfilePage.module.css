@@ -8,8 +8,7 @@
 }
 
 .window{
-    display: grid;
-    row-gap: 24px;
+    display: flex;
 }
 
 .header {
@@ -25,4 +24,10 @@
     font-size: 16px;
     font-weight: 400;
     text-align: center;
+}
+
+.inputs {
+    display: grid;
+    gap: 24px;
+    margin-left: 60px;
 }

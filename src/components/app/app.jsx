@@ -63,7 +63,7 @@ function App() {
           <Route path='/reset-password' exact={true}>
             <ResetPasswordPage />
           </Route>
-          <Route path='profile' exact={true}>
+          <Route path='/profile' exact={true}>
             <ProfilePage />
           </Route>
         </Switch>

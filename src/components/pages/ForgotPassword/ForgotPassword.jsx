@@ -21,8 +21,6 @@ export const ForgotPasswordPage = () => {
     const inputRef = React.useRef();
 
     const sendEmail = () => {
-        dispatch(getRequestPassword(currentValue))
-        console.log(request)
     }
 
     return (

@@ -4,8 +4,8 @@
     margin-top: 40;
     border: 2px #4C4CFF;
     justify-content: space-between;
-    align-content: center;
-    width: 100%;
+    align-content: space-between;
+    width: 100vw;
     background-color: #2F2F37;
     height: 56px;
 }
