@@ -5,9 +5,13 @@ import { constructorReducer } from "./ingredientsConstructorReducer";
 import { orderedIngredientsReducer } from './orderedIngredientsReducer';
 import { scrollReducer } from "./scrollIngredientsReducer";
 import { forgotPasswordReducer } from "./forgotPasswordReducer";
+import { registrationReducer } from "./RegistrationReducer";
+import { authorizationReducer } from "./AuthorizationReducer";
 
 
 export const rootReducer = combineReducers({
+    registrationReducer,
+    authorizationReducer,
     forgotPasswordReducer,
     apiReducer,
     currentIngredientReducer,

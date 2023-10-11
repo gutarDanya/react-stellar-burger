@@ -9,6 +9,7 @@
 
 .window{
     display: flex;
+    align-items: flex-start;
 }
 
 .header {
@@ -26,8 +27,20 @@
     text-align: center;
 }
 
-.inputs {
-    display: grid;
-    gap: 24px;
-    margin-left: 60px;
+.link{
+    line-height: 30px;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: white;
+}
+
+.inactiveLink {
+    line-height: 30px;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: #8585AD;
 }
