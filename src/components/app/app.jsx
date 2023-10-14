@@ -2,11 +2,8 @@ import styles from "./app.module.css";
 import { data } from "../../utils/data";
 import { ForgotPasswordPage } from "../pages/ForgotPassword/ForgotPassword";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-  useLocation
+  Routes,
+  Route
 } from 'react-router-dom'
 
 import AppHeader from './AppHeader/AppHeader.jsx'
@@ -43,30 +40,17 @@ function App() {
   }, [])
 
   return (
-    <Router>
     <div className={styles.app}>
       <pre className={styles.container}>
         <AppHeader />
-        <Switch>
-          <Route path='/' exact={true}>
-            <MainPage />
-          </Route>
-          <Route path='/login' exact={true}>
-            <LoginPage />
-          </Route>
-          <Route path='/registration' exact={true}>
-            <RegistrationPage />
-          </Route>
-          <Route path='/forgot-password' exact={true}>
-            <ForgotPasswordPage />
-          </Route>
-          <Route path='/reset-password' exact={true}>
-            <ResetPasswordPage />
-          </Route>
-          <Route path='/profile' exact={true}>
-            <ProfilePage />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path='/' element={<MainPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/registration' element={<RegistrationPage />} />
+          <Route path='/forgot-password' element={<ForgotPasswordPage />} />
+          <Route path='/reset-password' exact={<ResetPasswordPage />} />
+          <Route path='/profile' element={<ProfilePage />} />
+        </Routes>
         
 {       ingredientModal
         ? <Modal handleClose={closeInfoModalWindow} title={'Детали ингредиента'}>
@@ -83,7 +67,6 @@ function App() {
 }
       </pre>
     </div>
-    </Router>
   );
 }
 
