@@ -9,7 +9,7 @@ function PersonAcc () {
     return (
         <button className={styles.acc}>
             <ProfileIcon type='secondary'/>
-            <Link to='/profile'>
+            <Link to='/profile/:user-profile'>
             <h2 className={styles.text}>Личный кабинет</h2>
             </Link>
         </button>

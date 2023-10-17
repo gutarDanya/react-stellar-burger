@@ -8,6 +8,8 @@
 }
 
 .window{
+    margin-right: auto;
+    margin-left: 13vw;
     display: flex;
     align-items: flex-start;
 }
@@ -24,7 +26,8 @@
     color: #8585AD;
     font-size: 16px;
     font-weight: 400;
-    text-align: center;
+    text-align: left;
+    text-wrap: wrap;
 }
 
 .link{
@@ -43,4 +46,8 @@
     font-weight: 700;
     margin: 0;
     color: #8585AD;
+}
+
+.navigation {
+    max-width: 320px;
 }

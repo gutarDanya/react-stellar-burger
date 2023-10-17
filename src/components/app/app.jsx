@@ -24,6 +24,7 @@ import { RegistrationPage } from "../pages/RegistrationPage/RegistrationPage";
 import { ResetPasswordPage } from "../pages/ResetPassword/ResetPassword";
 import { ProfilePage } from "../pages/ProfilePage/ProfilePage";
 import { MainPage } from "../pages/MainPage/MainPage";
+import { Profile } from "../pages/ProfilePage/Profile/Profile";
 
 
 function App() {
@@ -49,22 +50,26 @@ function App() {
           <Route path='/registration' element={<RegistrationPage />} />
           <Route path='/forgot-password' element={<ForgotPasswordPage />} />
           <Route path='/reset-password' exact={<ResetPasswordPage />} />
-          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/profile' element={<ProfilePage />} >
+            <Route path=':user-profile' element={<Profile />} />
+            <Route path=':order-history' element={<p>Здесь будет история хаказов</p>} />
+            <Route path=':exit' element={<p>здесь будет выход</p>} />
+          </Route>
         </Routes>
-        
-{       ingredientModal
-        ? <Modal handleClose={closeInfoModalWindow} title={'Детали ингредиента'}>
-          <IngredientDetails />
-        </Modal>
-        : null
-}
 
-{orderModal
-        ? <Modal handleClose={closeOrderedModal} title={''}>
-          <OrderDetails />
-        </Modal>
-        : null
-}
+        {ingredientModal
+          ? <Modal handleClose={closeInfoModalWindow} title={'Детали ингредиента'}>
+            <IngredientDetails />
+          </Modal>
+          : null
+        }
+
+        {orderModal
+          ? <Modal handleClose={closeOrderedModal} title={''}>
+            <OrderDetails />
+          </Modal>
+          : null
+        }
       </pre>
     </div>
   );
