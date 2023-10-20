@@ -1,19 +1,16 @@
 import React from "react";
-import { GET_REGISTRATION_RESPONSE } from "../actions/RegistrationAction";
+import { REGISTARTION_ACTION } from "../actions/AuthAction";
 
 const initialState = {
-    'email': '',
-    'password': '',
-    'name': '',
-    accessToken: ''
+    success: false
 }
 
 export const registrationReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case GET_REGISTRATION_RESPONSE: {
+    switch(action.type) {
+        case REGISTARTION_ACTION : {
             return {
                 ...state,
-                accessToken: action.payload['accessToken']
+                success: action.payload.success
             }
         }
         default: return state

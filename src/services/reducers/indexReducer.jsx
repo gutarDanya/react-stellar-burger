@@ -5,13 +5,15 @@ import { constructorReducer } from "./ingredientsConstructorReducer";
 import { orderedIngredientsReducer } from './orderedIngredientsReducer';
 import { scrollReducer } from "./scrollIngredientsReducer";
 import { forgotPasswordReducer } from "./forgotPasswordReducer";
-import { registrationReducer } from "./RegistrationReducer";
-import { authorizationReducer } from "./AuthorizationReducer";
+import { registrationReducer } from "./registrationReducer";
+import { userInfoReduecer } from "./userInfoReducer";
+import { loginReducer } from "./LoginReduecer";
 
 
 export const rootReducer = combineReducers({
+    loginReducer,
+    userInfoReduecer,
     registrationReducer,
-    authorizationReducer,
     forgotPasswordReducer,
     apiReducer,
     currentIngredientReducer,

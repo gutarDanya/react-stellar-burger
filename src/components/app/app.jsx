@@ -1,5 +1,5 @@
 import styles from "./app.module.css";
-import { data } from "../../utils/data";
+
 import { ForgotPasswordPage } from "../pages/ForgotPassword/ForgotPassword";
 import {
   Routes,
@@ -7,8 +7,6 @@ import {
 } from 'react-router-dom'
 
 import AppHeader from './AppHeader/AppHeader.jsx'
-import BurgerIngredients from "./BurgerIngredients/BurgerIngredients";
-import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../services/actions/apiAction";
 import { IngredientDetails } from "./BurgerIngredients/ModalInfoIngredients/IngredientDetails";
@@ -16,8 +14,8 @@ import OrderDetails from "../OrderDetails/OrderDetails";
 import { closeInfoModalWindow } from "../../services/actions/currentIngredientsToModalAction";
 import { closeOrderedModal } from "../../services/actions/orderedIngredientsAction";
 
-import React from 'react'
-import { useEffect, useState } from "react";
+
+import React, { useEffect } from "react";
 import { Modal } from "../Modal/Modal";
 import { LoginPage } from "../pages/LoginPage/LoginPage";
 import { RegistrationPage } from "../pages/RegistrationPage/RegistrationPage";
@@ -25,10 +23,11 @@ import { ResetPasswordPage } from "../pages/ResetPassword/ResetPassword";
 import { ProfilePage } from "../pages/ProfilePage/ProfilePage";
 import { MainPage } from "../pages/MainPage/MainPage";
 import { Profile } from "../pages/ProfilePage/Profile/Profile";
+import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
+
 
 
 function App() {
-
 
   const ingredientModal = useSelector(state => state.currentIngredientReducer.modalWindowOpened);
   const orderModal = useSelector(state => state.orderedIngredientsReducer.modalOpened);
@@ -51,7 +50,7 @@ function App() {
           <Route path='/forgot-password' element={<ForgotPasswordPage />} />
           <Route path='/reset-password' exact={<ResetPasswordPage />} />
           <Route path='/profile' element={<ProfilePage />} >
-            <Route path=':user-profile' element={<Profile />} />
+            <Route path=':user-profile' element={<ProtectedRoute elemet={<Profile />} />} />
             <Route path=':order-history' element={<p>Здесь будет история хаказов</p>} />
             <Route path=':exit' element={<p>здесь будет выход</p>} />
           </Route>

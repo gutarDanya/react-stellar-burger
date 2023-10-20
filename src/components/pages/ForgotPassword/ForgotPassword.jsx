@@ -38,6 +38,7 @@ export const ForgotPasswordPage = () => {
             extraClass="ml-1"
              />
              <Button
+             htmlType="submit"
              size='small'
              onClick={sendEmail}>
                 Восстановить

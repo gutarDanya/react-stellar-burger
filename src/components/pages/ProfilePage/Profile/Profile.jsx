@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from './Profile.module.css';
 import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector, useDispatch } from "react-redux";
 
 export const Profile = () => {
+
+   const somethink = useSelector(state => state.loginReducer)
+   console.log(somethink)
+
+    const nameRef = useRef(null);
+    const emailRef = useRef(null);
+    const passwordRef = useRef(null);
 
     const dispatch = useDispatch();
 
@@ -21,6 +28,7 @@ export const Profile = () => {
             size='default'
             extraClass="ml-1"
             icon='EditIcon'
+            ref={nameRef}
              />
              <Input
             type='email'
@@ -30,6 +38,7 @@ export const Profile = () => {
             size='default'
             extraClass="ml-1"
             icon='EditIcon'
+            ref={emailRef}
              />
              <Input
             type='password'
@@ -39,6 +48,7 @@ export const Profile = () => {
             size='default'
             extraClass="ml-1"
             icon='EditIcon'
+            ref={passwordRef}
              />
             </div>
     )
