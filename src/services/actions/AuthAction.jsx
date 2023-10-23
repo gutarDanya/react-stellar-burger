@@ -60,6 +60,7 @@ export const userLogin = ({ email, password }) => {
                     //Здесь ты сетишь в куки, свой токен, по которому в дальнейшем будешь проходить аутентификацию
                     setCookie('accessToken', res.accessToken.split('Bearer ')[1])
                     setCookie('refreshToken', res.refreshToken)
+                    sessionStorage.setItem('logined', true)
                 }
             })
             .catch((err) => {
@@ -91,8 +92,8 @@ export const userLogout = () => {
                         payload: res.success
                     })
                     //Здесь ты удаляешь свой токен, что бы не могла пройти аутентификация тебя как пользователя
-                    deleteCookie('permissionToken')
-                    deleteCookie('refreshToken')
+                    deleteCookie('accessToken');
+                    sessionStorage.removeItem('logined')
                 }
             })
             .catch((err) => {
@@ -139,11 +140,12 @@ export const authUser = () => {
         .then((res) => {
             //Здесь тебе нужно, что бы проверялось, что в системе авторизован именно ты
             if (res.success) {
-                console.log('Всё чётенько, инфу получили')
+                console.log(res)
                 dispatch({
                     type: GET_USER_INFO,
                     payload: res
                 })
+                sessionStorage.setItem('logined', true)
             }
         })
         .catch((err) => {

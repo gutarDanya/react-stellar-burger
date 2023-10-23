@@ -1,11 +1,13 @@
 import React, {  useRef } from "react";
 import styles from './LoginPage.module.css'
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from "../../../services/actions/AuthAction";
 import { useDispatch } from "react-redux";
 
 export const LoginPage = () => {
+
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -19,6 +21,7 @@ export const LoginPage = () => {
              password: passwordRef.current.value
             })
         )
+        navigate('/')
     }
     
     

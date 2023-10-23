@@ -3,8 +3,8 @@ import React from "react";
 import { LOGIN_ACTION, LOGOUT_ACTION } from "../actions/AuthAction";
 
 const initialState = {
-    login: false,
-    logout: true
+    login: true,
+    logout: false
 }
 
 export const loginReducer = (state = initialState, action) => {

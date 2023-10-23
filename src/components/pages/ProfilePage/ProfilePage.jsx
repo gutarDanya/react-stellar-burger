@@ -2,7 +2,7 @@ import React from "react";
 import styles from './ProfilePage.module.css';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { authUser, patchDataUser, userLogout } from "../../../services/actions/AuthAction";
+import { authUser, patchDataUser, refreshToken, userLogout } from "../../../services/actions/AuthAction";
 
 export const ProfilePage = () => {
 
@@ -13,7 +13,7 @@ export const ProfilePage = () => {
     }
 
     const fuckingTest = () => {
-        dispatch(patchDataUser({name: 'Даня', email: 'gutardanya@gmail.com'}))
+        dispatch(refreshToken())
     }
 
     return(

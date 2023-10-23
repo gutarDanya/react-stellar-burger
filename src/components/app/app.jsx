@@ -24,6 +24,7 @@ import { ProfilePage } from "../pages/ProfilePage/ProfilePage";
 import { MainPage } from "../pages/MainPage/MainPage";
 import { Profile } from "../pages/ProfilePage/Profile/Profile";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
+import { authUser } from "../../services/actions/AuthAction";
 
 
 
@@ -37,6 +38,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getData())
+    dispatch(authUser())
   }, [])
 
   return (
@@ -44,13 +46,33 @@ function App() {
       <pre className={styles.container}>
         <AppHeader />
         <Routes>
-          <Route path='/' element={<MainPage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/registration' element={<RegistrationPage />} />
-          <Route path='/forgot-password' element={<ForgotPasswordPage />} />
-          <Route path='/reset-password' exact={<ResetPasswordPage />} />
-          <Route path='/profile' element={<ProfilePage />} >
-            <Route path=':user-profile' element={<ProtectedRoute elemet={<Profile />} />} />
+          <Route
+            path='/'
+            element={<MainPage />}
+          />
+          <Route
+            path='/login'
+            element={<LoginPage />}
+          />
+          <Route
+            path='/registration'
+            element={<RegistrationPage />}
+          />
+          <Route
+            path='/forgot-password'
+            element={<ForgotPasswordPage />}
+          />
+          <Route
+            path='/reset-password'
+            exact={<ResetPasswordPage />}
+          />
+          <Route
+            path='/profile' element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            } >
+            <Route path=':user-profile' element={<Profile />} />
             <Route path=':order-history' element={<p>Здесь будет история хаказов</p>} />
             <Route path=':exit' element={<p>здесь будет выход</p>} />
           </Route>
