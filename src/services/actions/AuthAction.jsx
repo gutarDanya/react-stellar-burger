@@ -7,8 +7,8 @@ export const LOGOUT_ACTION = 'LOGOUT_ACTION';
 export const GET_USER_INFO = 'GET_USER_UNFO';
 
 export const userRegister = ({ email, password, name }) => {
-    return function (dispatch) {
-         fetch(`${baseUrl}/auth/register`, {
+    return async function (dispatch) {
+         await fetch(`${baseUrl}/auth/register`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -36,8 +36,8 @@ export const userRegister = ({ email, password, name }) => {
 //Функция входа в учётку
 
 export const userLogin = ({ email, password }) => {
-    return function (dispatch) {
-         fetch(`${baseUrl}/auth/login`, {
+    return async function (dispatch) {
+        await fetch(`${baseUrl}/auth/login`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -72,8 +72,8 @@ export const userLogin = ({ email, password }) => {
 //Функция выхода из учётки
 
 export const userLogout = () => {
-    return function(dispatch) {
-         fetch(`${baseUrl}/auth/logout`, {
+    return async function(dispatch) {
+         await fetch(`${baseUrl}/auth/logout`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -105,8 +105,8 @@ export const userLogout = () => {
 //Функция Обновления токена
 
 export const refreshToken = () => {
-    return function (dispatch) {
-        fetch(`${baseUrl}/auth/token`, {
+    return async function (dispatch) {
+        await fetch(`${baseUrl}/auth/token`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -119,7 +119,6 @@ export const refreshToken = () => {
         .then((res) => {
             if (res.success) {
                 setCookie('accessToken', res.accessToken.split('Bearer ')[1])
-                setCookie('refreshToken', res.refreshToken)
             }
         })
     }
@@ -128,8 +127,8 @@ export const refreshToken = () => {
 //Функция аутентификии
 
 export const authUser = () => {
-    return function(dispatch) {
-        fetch(`${baseUrl}/auth/user`, {
+    return async function(dispatch) {
+        await fetch(`${baseUrl}/auth/user`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
@@ -158,8 +157,8 @@ export const authUser = () => {
 //Функция изменения данных о пользователе
 
 export const patchDataUser = ({email, name, password}) => {
-    return function(dispatch) {
-        fetch(`${baseUrl}/auth/user`, {
+    return async function(dispatch) {
+        await fetch(`${baseUrl}/auth/user`, {
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json",

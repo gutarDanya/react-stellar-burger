@@ -5,13 +5,15 @@ import {
     LOAD_START_INGREDIENTS_DATA_FAILED,
     ADD_NUMBER_TO_COUNT,
     REMOVE_NUMBER_FROM_COUNT,
-    UPDATE_COUNT_OF_BUN
+    UPDATE_COUNT_OF_BUN,
+    GET_CURRENT_INGREDIENT_TO_ROUTING_INGREDIENT
 } from '../actions/apiAction'
 
 const initialState = {
     ingredientData: [],
     getIngredientsFailed: false,
-    getIngredientsRequest: false
+    getIngredientsRequest: false,
+    currentIngredient: {}
 }
 
 export const apiReducer = (state = initialState, action) => {
@@ -63,6 +65,12 @@ export const apiReducer = (state = initialState, action) => {
                 ? {...ingredient,
                 __v: ingredient.__v - 1}
                 :ingredient)
+            }
+        }
+        case GET_CURRENT_INGREDIENT_TO_ROUTING_INGREDIENT: {
+            return {
+                ...state,
+                currentIngredient: state.ingredientData.find((ingredient) => ingredient._id === action.payload)
             }
         }
         default: return state

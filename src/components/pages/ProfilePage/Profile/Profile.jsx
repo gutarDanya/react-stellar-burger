@@ -2,8 +2,13 @@ import React, { useRef } from "react";
 import styles from './Profile.module.css';
 import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 export const Profile = () => {
+
+    const params = useParams();
+
+    console.log(params)
 
    const somethink = useSelector(state => state.loginReducer)
    console.log(somethink)

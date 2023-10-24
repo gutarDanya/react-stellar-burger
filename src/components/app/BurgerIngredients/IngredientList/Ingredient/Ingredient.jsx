@@ -5,6 +5,7 @@ import { OPEN_INFO_MODAL_WINDOW } from "../../../../../services/actions/currentI
 import styles from './Ingredient.module.css'
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
 
 
 export const Ingredient = ({ingredient}) => {

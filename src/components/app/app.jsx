@@ -13,6 +13,7 @@ import { IngredientDetails } from "./BurgerIngredients/ModalInfoIngredients/Ingr
 import OrderDetails from "../OrderDetails/OrderDetails";
 import { closeInfoModalWindow } from "../../services/actions/currentIngredientsToModalAction";
 import { closeOrderedModal } from "../../services/actions/orderedIngredientsAction";
+import { ErrorRoutingPage } from "../ErrorRoutingPage/ErrorRoutingPage";
 
 
 import React, { useEffect } from "react";
@@ -24,11 +25,17 @@ import { ProfilePage } from "../pages/ProfilePage/ProfilePage";
 import { MainPage } from "../pages/MainPage/MainPage";
 import { Profile } from "../pages/ProfilePage/Profile/Profile";
 import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
-import { authUser } from "../../services/actions/AuthAction";
+import { authUser, refreshToken } from "../../services/actions/AuthAction";
+import { Ingredient } from "./BurgerIngredients/IngredientList/Ingredient/Ingredient";
+import RoutingIngredient from "../RoutringIngredient/RoutingIngredient";
+import RoutingIngredientOverlay from "../RoutingIngredientOverlay/RoutingIngreidentOverlay";
 
 
 
 function App() {
+
+  const ingredient = useSelector(state => state.apiReducer.ingredientData)[4];
+  console.log(ingredient)
 
   const ingredientModal = useSelector(state => state.currentIngredientReducer.modalWindowOpened);
   const orderModal = useSelector(state => state.orderedIngredientsReducer.modalOpened);
@@ -38,6 +45,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getData())
+    dispatch(refreshToken())
     dispatch(authUser())
   }, [])
 
@@ -76,6 +84,12 @@ function App() {
             <Route path=':order-history' element={<p>Здесь будет история хаказов</p>} />
             <Route path=':exit' element={<p>здесь будет выход</p>} />
           </Route>
+
+          <Route path='/ingredients' element={<RoutingIngredientOverlay />} >
+            <Route path=':id' element={<RoutingIngredient />} />
+          </Route>
+
+          <Route path='*' element={<ErrorRoutingPage />} />
         </Routes>
 
         {ingredientModal
