@@ -5,8 +5,8 @@ import { OPEN_INFO_MODAL_WINDOW } from "../../../../../services/actions/currentI
 import styles from './Ingredient.module.css'
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
-
+import { useLocation, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Ingredient = ({ingredient}) => {
 
@@ -23,9 +23,13 @@ export const Ingredient = ({ingredient}) => {
         }
     })
 
+    const location = useLocation();
 
     return(
-        <div className={styles.ingredient}
+        <Link
+            to={`/ingredients/:${ingredient._id}`}
+            state={{backgroundLocation: location}}
+            className={styles.ingredient}
             onClick={() => openPopup(ingredient)}
             ref={ref}
             key={ingredient._id}>
@@ -35,7 +39,7 @@ export const Ingredient = ({ingredient}) => {
             <img src={ingredient.image} alt={ingredient.alt} />
             <h4 className={styles.price}>{ingredient.price} <CurrencyIcon /></h4>
             <p className={styles.name}>{ingredient.name}</p>
-        </div>
+        </Link>
     )
 }
 

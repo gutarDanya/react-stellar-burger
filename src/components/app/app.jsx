@@ -34,9 +34,6 @@ import RoutingIngredientOverlay from "../RoutingIngredientOverlay/RoutingIngreid
 
 function App() {
 
-  const ingredient = useSelector(state => state.apiReducer.ingredientData)[4];
-  console.log(ingredient)
-
   const ingredientModal = useSelector(state => state.currentIngredientReducer.modalWindowOpened);
   const orderModal = useSelector(state => state.orderedIngredientsReducer.modalOpened);
 
