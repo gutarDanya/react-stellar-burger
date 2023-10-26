@@ -3,7 +3,8 @@ import styles from "./app.module.css";
 import { ForgotPasswordPage } from "../pages/ForgotPassword/ForgotPassword";
 import {
   Routes,
-  Route
+  Route,
+  useLocation
 } from 'react-router-dom'
 
 import AppHeader from './AppHeader/AppHeader.jsx'
@@ -37,6 +38,9 @@ function App() {
   const ingredientModal = useSelector(state => state.currentIngredientReducer.modalWindowOpened);
   const orderModal = useSelector(state => state.orderedIngredientsReducer.modalOpened);
 
+  const location = useLocation();
+  const backgroundLocation = location.state?.backgroundLocation;
+
 
   const dispatch = useDispatch();
 
@@ -50,7 +54,7 @@ function App() {
     <div className={styles.app}> 
       <pre className={styles.container}>
         <AppHeader />
-        <Routes>
+        <Routes location={backgroundLocation || location}>
           <Route
             path='/'
             element={<MainPage />}
@@ -89,12 +93,13 @@ function App() {
           <Route path='*' element={<ErrorRoutingPage />} />
         </Routes>
 
-        {ingredientModal
-          ? <Modal handleClose={closeInfoModalWindow} title={'Детали ингредиента'}>
-            <IngredientDetails />
-          </Modal>
-          : null
-        }
+            <Routes>
+              <Route path='/ingredients/:id'
+              element={<Modal handleClose={closeInfoModalWindow} title={'Детали ингредиента'}>
+              <IngredientDetails />
+            </Modal>} />
+          </Routes>
+
 
         {orderModal
           ? <Modal handleClose={closeOrderedModal} title={''}>

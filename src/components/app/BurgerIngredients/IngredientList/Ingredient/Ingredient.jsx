@@ -28,7 +28,8 @@ export const Ingredient = ({ingredient}) => {
     return(
         <Link
             to={`/ingredients/:${ingredient._id}`}
-            state={{backgroundLocation: location}}
+            state={{backgroundLocation: location,
+                    modal: 'ingredient'}}
             className={styles.ingredient}
             onClick={() => openPopup(ingredient)}
             ref={ref}
