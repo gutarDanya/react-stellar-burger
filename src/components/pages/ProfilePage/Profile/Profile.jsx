@@ -3,25 +3,19 @@ import styles from './Profile.module.css';
 import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { setEmailValue, setNameValue, setPasswordValue } from "../../../../services/actions/inputAction";
 
 export const Profile = () => {
 
-    const params = useParams();
-
-    console.log(params)
-
-   const somethink = useSelector(state => state.loginReducer)
-   console.log(somethink)
+    const nameValue = useSelector(state => state.inputReducer.nameValue)
+    const emailValue = useSelector(state => state.inputReducer.emailValue);
+    const passwordValue = useSelector(state => state.inputReducer.passwordValue);
 
     const nameRef = useRef(null);
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
     const dispatch = useDispatch();
-
-    const sendCurrentData = (value) => {
-        
-    }
 
     return(
         <div className={styles.inputs}>
@@ -34,6 +28,8 @@ export const Profile = () => {
             extraClass="ml-1"
             icon='EditIcon'
             ref={nameRef}
+            value={nameValue}
+            onChange={e => dispatch(setNameValue(e.target.value))}
              />
              <Input
             type='email'
@@ -44,6 +40,8 @@ export const Profile = () => {
             extraClass="ml-1"
             icon='EditIcon'
             ref={emailRef}
+            value={emailValue}
+            onChange={e => dispatch(setEmailValue(e.target.value))}
              />
              <Input
             type='password'
@@ -52,8 +50,10 @@ export const Profile = () => {
             error={false}
             size='default'
             extraClass="ml-1"
-            icon='EditIcon'
+            icon='HideIcon'
             ref={passwordRef}
+            value={passwordValue}
+            onChange={e => dispatch(setPasswordValue(e.target.value))}
              />
             </div>
     )

@@ -1,14 +1,17 @@
-import React, {  useRef } from "react";
+import React, {  useRef, useState } from "react";
 import styles from './LoginPage.module.css'
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from "../../../services/actions/AuthAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setEmailValue, setPasswordValue } from "../../../services/actions/inputAction";
 
 export const LoginPage = () => {
 
-    const navigate = useNavigate();
+    const emailValue = useSelector(state => state.inputReducer.emailValue);
+    const passwordValue = useSelector(state => state.inputReducer.passwordValue)
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const emailRef = useRef(null);
@@ -21,7 +24,7 @@ export const LoginPage = () => {
              password: passwordRef.current.value
             })
         )
-        navigate('/')
+        navigate(-1, {replace: true})
     }
     
     
@@ -36,6 +39,8 @@ export const LoginPage = () => {
             size='default'
             extraClass='ml-1'
             ref={emailRef}
+            value={emailValue}
+            onChange={e => dispatch(setEmailValue(e.target.value))}
             />
             <Input
             type='text'
@@ -45,6 +50,8 @@ export const LoginPage = () => {
             size='default'
             extraClass="ml-1"
             ref={passwordRef}
+            value={passwordValue}
+            onChange={e => dispatch(setPasswordValue(e.target.value))}
             />
             <Button 
             htmlType="submit"

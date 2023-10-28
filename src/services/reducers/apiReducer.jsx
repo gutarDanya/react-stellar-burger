@@ -68,6 +68,7 @@ export const apiReducer = (state = initialState, action) => {
             }
         }
         case GET_CURRENT_INGREDIENT_TO_ROUTING_INGREDIENT: {
+            localStorage.setItem('ingredient', state.ingredientData.find((ingredient) => ingredient._id === action.payload))
             return {
                 ...state,
                 currentIngredient: state.ingredientData.find((ingredient) => ingredient._id === action.payload)

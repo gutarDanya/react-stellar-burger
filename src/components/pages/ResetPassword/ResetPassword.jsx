@@ -1,8 +1,21 @@
 import React from 'react';
 import styles from './ResetPassword.module.css';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPasswordValue, setResetMessage } from '../../../services/actions/inputAction';
+import { ResetPassword } from '../../../services/actions/AuthAction';
 
 export const ResetPasswordPage = () => {
+
+    const dispatch = useDispatch();
+
+    const passwordValue = useSelector(state => state.inputReducer.passwordValue);
+    const resetMessage = useSelector(state => state.inputReducer.resetMessage);
+
+    const handleSubmit = () => {
+        dispatch(ResetPassword({password: passwordValue, token: resetMessage}))
+    }
+
     return(
         <main className={styles.container}>
             <div className={styles.window}>
@@ -15,6 +28,8 @@ export const ResetPasswordPage = () => {
             size='default'
             extraClass="ml-1"
             icon='ShowIcon'
+            value={passwordValue}
+            onChange={e => dispatch(setPasswordValue(e.target.value))}
              />
              <Input
             type='text'
@@ -23,9 +38,12 @@ export const ResetPasswordPage = () => {
             error={false}
             size='default'
             extraClass="ml-1"
+            value={resetMessage}
+            onChange={e => dispatch(setResetMessage(e.target.value))}
              />
              <Button
-             size='small'>
+             size='small'
+             onClick={handleSubmit}>
                 Сохранить
              </Button>
              <p className={styles.text}>Вспомнили пароль?</p>

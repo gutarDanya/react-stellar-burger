@@ -1,27 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from './ForgotPassword.module.css';
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getRequestPassword } from "../../../services/actions/forgotPasswordAction";
-import { CHANGE_VALUE_OF_RESET } from "../../../services/actions/forgotPasswordAction";
+import { setEmailValue } from "../../../services/actions/inputAction";
 
 export const ForgotPasswordPage = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const request = useSelector(state => state.forgotPasswordReducer.request);
-    const currentValue = useSelector(state => state.forgotPasswordReducer.currentValue);
+    const emailValue = useSelector(state => state.inputReducer.emailValue);
+    const request = useSelector(state => state.forgotPasswordReducer.success);
 
-    const inputValueAdd = (value) => {
-        dispatch({type:CHANGE_VALUE_OF_RESET, payload: value})
-        console.log(currentValue)
-    }
 
     const inputRef = React.useRef();
 
     const sendEmail = () => {
-    }
+        dispatch(getRequestPassword(emailValue))
+        navigate('/reset-password')
+        }
 
     return (
         <main className={styles.container}>
@@ -30,7 +29,8 @@ export const ForgotPasswordPage = () => {
             <Input
             type='text'
             placeholder="укажите e-mail"
-            onChange={e => inputValueAdd(e.target.value)}
+            onChange={e => dispatch(setEmailValue(e.target.value))}
+            value={emailValue}
             name='name'
             error={false}
             ref={inputRef}

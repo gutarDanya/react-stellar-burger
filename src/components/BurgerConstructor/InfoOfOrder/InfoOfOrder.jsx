@@ -18,12 +18,8 @@ export default function InfoOfOrder() {
 
     const bun = useSelector(state => state.constructorReducer.bun);
     const main = useSelector(state => state.constructorReducer.main);
+    const userLogined = sessionStorage.getItem('logined')
 
-    let userLogined = null
-
-    useEffect(() => {
-        userLogined = sessionStorage.getItem('logined')
-    }, [])
 
     const openPopup = () => {
        if (userLogined) {

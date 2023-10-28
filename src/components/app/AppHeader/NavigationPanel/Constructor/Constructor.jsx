@@ -1,14 +1,15 @@
 import React from 'react'
 import styles from './Constructor.module.css'
+import { Link } from 'react-router-dom';
 
 import {BurgerIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 
 function Constructor () {
     return (
-        <button className={styles.constructor}>
+        <Link to='/' className={styles.constructor}>
             <BurgerIcon/> Конструктор
-        </button>
+        </Link>
     )
 }
 
-export default Constructor
+export default Constructor;

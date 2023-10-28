@@ -27,7 +27,7 @@ export const getData = () => {
         dispatch({
             type: LOAD_START_INGREDIENTS_DATA_REQUEST
         })
-        await fetch(`${baseUrl}/ingredients`)
+         await fetch(`${baseUrl}/ingredients`)
         .then(checkResponse)
         .then(res => {
                 dispatch({

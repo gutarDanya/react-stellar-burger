@@ -8,9 +8,11 @@ import { forgotPasswordReducer } from "./forgotPasswordReducer";
 import { registrationReducer } from "./registrationReducer";
 import { userInfoReduecer } from "./userInfoReducer";
 import { loginReducer } from "./LoginReduecer";
+import { inputReducer } from "./inputReduecer";
 
 
 export const rootReducer = combineReducers({
+    inputReducer,
     loginReducer,
     userInfoReduecer,
     registrationReducer,

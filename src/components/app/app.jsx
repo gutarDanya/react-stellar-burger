@@ -30,12 +30,11 @@ import { authUser, refreshToken } from "../../services/actions/AuthAction";
 import { Ingredient } from "./BurgerIngredients/IngredientList/Ingredient/Ingredient";
 import RoutingIngredient from "../RoutringIngredient/RoutingIngredient";
 import RoutingIngredientOverlay from "../RoutingIngredientOverlay/RoutingIngreidentOverlay";
+import { getCookie } from "../../utils/auth";
 
 
 
 function App() {
-
-  const ingredientModal = useSelector(state => state.currentIngredientReducer.modalWindowOpened);
   const orderModal = useSelector(state => state.orderedIngredientsReducer.modalOpened);
 
   const location = useLocation();
@@ -46,8 +45,6 @@ function App() {
 
   useEffect(() => {
     dispatch(getData())
-    dispatch(refreshToken())
-    dispatch(authUser())
   }, [])
 
   return (
@@ -73,7 +70,7 @@ function App() {
           />
           <Route
             path='/reset-password'
-            exact={<ResetPasswordPage />}
+            element={<ResetPasswordPage />}
           />
           <Route
             path='/profile' element={

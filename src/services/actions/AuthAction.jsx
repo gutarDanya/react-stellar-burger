@@ -26,6 +26,8 @@ export const userRegister = ({ email, password, name }) => {
                     type: REGISTARTION_ACTION,
                     payload: res
                 })
+                setCookie('accessToken', res.accessToken.split('Bearer ')[1])
+                setCookie('refreshToken', res.refreshToken)
             })
             .catch((err) => {
                 console.log(err)
@@ -171,6 +173,29 @@ export const patchDataUser = ({email, name, password}) => {
             }
         })
         .then(checkResponse)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+}
+
+//Функция ресета пароля
+
+export const ResetPassword = ({password, token}) => {
+    return async function(dispatch) {
+        await fetch(`${baseUrl}/password-reset/reset`, {
+           method: 'POST',
+           headers: {
+            "Content-Type": "application/json",
+           },
+           body: JSON.stringify({
+            password: password,
+            token: token
+           })
+        })
         .then((res) => {
             console.log(res)
         })

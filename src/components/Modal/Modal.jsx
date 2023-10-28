@@ -16,8 +16,6 @@ export const Modal = ({ handleClose, children, title }) => {
 
     const location = useLocation();
 
-    console.log(location.state.modal)
-
     const closePopup = () => {
         dispatch(handleClose())
         if (location.state.modal === 'ingredient') {

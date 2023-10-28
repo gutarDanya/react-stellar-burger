@@ -4,7 +4,8 @@ import { GET_USER_INFO } from "../actions/AuthAction";
 const initialState = {
     name: null,
     email: null,
-    password: null
+    password: null,
+    success: false
 }
 
 export const userInfoReduecer = (state = initialState, action) => {
@@ -13,7 +14,8 @@ export const userInfoReduecer = (state = initialState, action) => {
             return {
                 ...state,
                 name: action.payload.name,
-                email: action.payload.email
+                email: action.payload.email,
+                success: action.payload.success
             }
         }
         default: return state
