@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import InfoOfIngridient from "../app/BurgerIngredients/ModalInfoIngredients/InfoOfIngredient/InfoOfIngredinet";
 import { getCurrentIngredientToRouting, getData } from "../../services/actions/apiAction";
+import { ingredientModalWindowOpened } from "../../services/actions/currentIngredientsToModalAction";
 
 const RoutingIngredient = () => {
+
 
     const dispatch = useDispatch();
 
@@ -13,7 +15,8 @@ const RoutingIngredient = () => {
     
     useEffect(() => {
         dispatch(getCurrentIngredientToRouting(id.split(':')[1]))
-    })
+        dispatch(ingredientModalWindowOpened())
+    }, [])
 
     const currentIngredient = useSelector(state => state.apiReducer.currentIngredient)
     

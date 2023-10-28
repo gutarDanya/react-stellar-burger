@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import styles from './OrderDetails.module.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import done from '../../images/done.png'
+import { ingredientModalWindowOpened } from '../../services/actions/currentIngredientsToModalAction';
 
 
 function OrderDetails() {
 
+    const dispatch = useDispatch();
+
     const order = useSelector(state => state.orderedIngredientsReducer.order);
+
+    useEffect(() => {
+        dispatch(ingredientModalWindowOpened())
+    })
 
     return (
         <div className={styles.popup}>

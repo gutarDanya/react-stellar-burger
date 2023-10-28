@@ -1,10 +1,11 @@
 import React from "react";
-import { GET_CURRENT_INGREDIENT_TO_MODAL, REMOVE_CUURENT_INGREDIENT_FROM_MODAL, OPEN_INFO_MODAL_WINDOW, CLOSE_INFO_MODAL_WINDOW } from '../actions/currentIngredientsToModalAction'
+import { GET_CURRENT_INGREDIENT_TO_MODAL, REMOVE_CUURENT_INGREDIENT_FROM_MODAL, OPEN_INFO_MODAL_WINDOW, CLOSE_INFO_MODAL_WINDOW, INGREDIENT_MODAL_WINDOW_OPENED } from '../actions/currentIngredientsToModalAction'
 
 const initialState = {
     currentIngredient: [],
     modalWindowOpened: false,
-    orderedIngredient: []
+    orderedIngredient: [],
+    opened: false
 }
 
 export const currentIngredientReducer = (state = initialState, action) => {
@@ -33,6 +34,12 @@ export const currentIngredientReducer = (state = initialState, action) => {
                 ...state,
                 modalWindowOpened: false,
                 orderedIngredient: null
+            }
+        }
+        case INGREDIENT_MODAL_WINDOW_OPENED: {
+            return {
+                ...state,
+                opened: !state.opened
             }
         }
         default : return state

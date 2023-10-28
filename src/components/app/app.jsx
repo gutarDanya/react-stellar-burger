@@ -43,6 +43,8 @@ function App() {
 
   const dispatch = useDispatch();
 
+  const ingreidentModalOpened = useSelector(state => state.currentIngredientReducer.opened);
+
   useEffect(() => {
     dispatch(getData())
   }, [])
@@ -82,10 +84,12 @@ function App() {
             <Route path=':order-history' element={<p>Здесь будет история хаказов</p>} />
             <Route path=':exit' element={<p>здесь будет выход</p>} />
           </Route>
-
-          <Route path='/ingredients' element={<RoutingIngredientOverlay />} >
+            {ingreidentModalOpened
+            ? <Route path='/ingredients' element={<RoutingIngredientOverlay />} >
             <Route path=':id' element={<RoutingIngredient />} />
           </Route>
+          : null
+}
 
           <Route path='*' element={<ErrorRoutingPage />} />
         </Routes>
