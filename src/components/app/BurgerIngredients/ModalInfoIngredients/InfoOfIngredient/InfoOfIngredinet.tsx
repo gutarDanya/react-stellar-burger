@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './InfoOfIngredient.module.css';
 import PropTypes from "prop-types";
 
-function InfoOfIngridient ({ingredient}) {
+const InfoOfIngridient:React.FC<IIngredient> = ({ingredient}) => {
 
 
     return (
@@ -34,6 +34,6 @@ function InfoOfIngridient ({ingredient}) {
 
 export default InfoOfIngridient;
 
-InfoOfIngridient.propTypes = {
-    ingredient: PropTypes.object.isRequired
-}
+interface IIngredient {
+    ingredient: any;
+};

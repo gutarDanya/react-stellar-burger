@@ -1,8 +1,8 @@
 import React from "react";
 
 import styles from './NavigationPanel.module.css'
-import Constructor from "./Constructor/Constructor.jsx";
-import Sheets from "./Sheets/Sheets.jsx";
+import Constructor from "./Constructor/Constructor";
+import Sheets from "./Sheets/Sheets";
 
 function NavigationPanel() {
     return (

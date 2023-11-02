@@ -7,7 +7,7 @@ import {
   useLocation
 } from 'react-router-dom'
 
-import AppHeader from './AppHeader/AppHeader.jsx'
+import AppHeader from './AppHeader/AppHeader.tsx'
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../services/actions/apiAction";
 import { IngredientDetails } from "./BurgerIngredients/ModalInfoIngredients/IngredientDetails";
