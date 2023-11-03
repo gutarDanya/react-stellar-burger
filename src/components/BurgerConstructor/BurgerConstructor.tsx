@@ -74,9 +74,10 @@ interface IIngredient {
     calories: number;
     price: number;
     image: string;
-    image_mobile?: string;
-    image_large?: string;
+    image_mobile: string;
+    image_large: string;
     __v: number;
+    superId: string;
 };
 
 interface IDropIngredient {

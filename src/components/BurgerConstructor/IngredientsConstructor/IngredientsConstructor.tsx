@@ -7,9 +7,24 @@ import { removeCount } from '../../../services/actions/apiAction';
 import { MainIngredient } from './MainIngredient/MainIngredinet';
 import PropTypes from "prop-types";
 
+const initialStateOfBun = {
+    "_id": null,
+     "name":null,
+     "type":null,
+     "proteins":null,
+     "fat":null,
+     "carbohydrates":null,
+     "calories":null,
+     "price":null,
+     "image":null,
+     "image_mobile":null,
+     "image_large":null ,
+     "__v": null
+}
 
 
-export const IngredientsConstructor:React.FC<IProps> = ({ main, bun }) => {
+
+export const IngredientsConstructor:React.FC<IProps> = ({ main, bun = initialStateOfBun }) => {
     const dispatch = useDispatch();
 
 
@@ -25,13 +40,13 @@ export const IngredientsConstructor:React.FC<IProps> = ({ main, bun }) => {
         {bun && bun.name
             ? < ConstructorElement
                 text={`${bun.name} (верх)`}
-                thumbnail={bun.image}
-                price={bun.price}
+                thumbnail={bun.image || ''}
+                price={bun.price || 0}
                 type='top'
                 isLocked={true}
             />
             : null}
-        {main && main.length > 0 && main.map((ingredient, i) => {
+        {main && main.length > 0 && main.map((ingredient: IMain, i) => {
             return (
                     <MainIngredient key={ingredient.superId} ingredient={ingredient} deleteIngredient={deleteIngredient} index={i} />
             )
@@ -39,8 +54,8 @@ export const IngredientsConstructor:React.FC<IProps> = ({ main, bun }) => {
         {bun && bun.name
             ? < ConstructorElement
                 text={`${bun.name} (низ)`}
-                thumbnail={bun.image}
-                price={bun.price}
+                thumbnail={bun.image || ''}
+                price={bun.price || 0}
                 type='bottom'
                 isLocked={true}
             />
@@ -55,25 +70,25 @@ interface IProps {
 };
 
 interface IBun extends IIngredient {
-    type?: 'bun';
+    type: 'bun';
 };
 
 interface IMain extends IIngredient {
-    type?: 'main';
+    type: 'main';
 };
 
 interface IIngredient {
-    _id?: string;
-    name?: string;
-    proteins?: number;
-    fat?: number;
-    carbohydrates?: number;
-    calories?: number;
-    price?: number;
-    image?: string;
-    image_mobile?: string;
-    image_large?: string;
-    __v?: number;
-    main?: string;
-    superId?: string;
+    _id: string | undefined;
+    name: string | undefined;
+    proteins: number | undefined;
+    fat: number | undefined;
+    carbohydrates: number | undefined;
+    calories: number | undefined;
+    price: number | undefined;
+    image: string | undefined;
+    image_mobile: string | undefined;
+    image_large: string | undefined;
+    __v: number | undefined;
+    main?: string | undefined;
+    superId: string | undefined;
 };

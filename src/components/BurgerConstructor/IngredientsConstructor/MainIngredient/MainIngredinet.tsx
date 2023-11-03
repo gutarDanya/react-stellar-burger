@@ -7,7 +7,7 @@ import { sortingIngredientsGenerator } from '../../../../services/actions/ingred
 import { ingredientPropType } from '../../../../utils/prop-types';
 import PropTypes from "prop-types";
 
-export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
+export const MainIngredient:React.FC<IProps> = ({ ingredient, deleteIngredient, index }) => {
     const dispatch = useDispatch();
 
     const [, drag] = useDrag({
@@ -18,7 +18,7 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
         }
     })
 
-    const ref = useRef(null)
+    const ref = useRef<HTMLDivElement | null>(null);
 
     const [, drop] = useDrop({
         accept: 'constructorIngredient',
@@ -40,9 +40,12 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
             const hoverMiddleY =
               (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
 
-            const clientOffset = monitor.getClientOffset()
-            const hoverClientY = clientOffset.y - hoverBoundingRect.top
+            const clientOffset = monitor.getClientOffset();
+            const hoverClientY = clientOffset
+            ? clientOffset.y - hoverBoundingRect.top
+            : null
 
+            if (hoverClientY !== null) {
             if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
               return
             }
@@ -50,6 +53,7 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
             if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
               return
             }
+          }
 
             dispatch(sortingIngredientsGenerator(dragIndex, hoverIndex))
 
@@ -65,10 +69,10 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
             >
                 <DragIcon type='primary'/>
                 <ConstructorElement
-                    text={ingredient.name}
-                    price={ingredient.price}
+                    text={ingredient.name || ''}
+                    price={ingredient.price || 0}
                     isLocked={false}
-                    thumbnail={ingredient.image}
+                    thumbnail={ingredient.image || ''}
                     handleClose={() => deleteIngredient(ingredient)}
                 />
             </div>
@@ -77,4 +81,21 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
 
 interface IProps {
   index: number;
+  ingredient: IIngredient;
+  deleteIngredient: any;  
 }
+
+interface IIngredient {
+  _id: string | undefined;
+  name: string | undefined;
+  proteins: number | undefined;
+  fat: number | undefined;
+  carbohydrates: number | undefined;
+  calories: number | undefined;
+  price: number | undefined;
+  image: string | undefined;
+  image_mobile?: string | undefined;
+  image_large?: string | undefined;
+  __v: number | undefined;
+  type: string | undefined;
+};
