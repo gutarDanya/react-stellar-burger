@@ -8,7 +8,7 @@ import { getCurrentTab } from '../../../../services/actions/scrollIngredientsAct
 
 function Navigation () {
 
-  const current = useSelector(state => state.scrollReducer.currentTab)
+  const current = useSelector((state: TReducers) => state.scrollReducer.currentTab)
 
     return (
         <div className={styles.panel}>
@@ -26,3 +26,7 @@ function Navigation () {
 }
 
 export default Navigation
+
+type TReducers = {
+  scrollReducer: any;
+}

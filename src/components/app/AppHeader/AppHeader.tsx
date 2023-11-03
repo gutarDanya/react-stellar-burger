@@ -3,7 +3,7 @@ import styles from './AppHeader.module.css'
 
 import {Logo} from '@ya.praktikum/react-developer-burger-ui-components';
 import NavigationPanel from './NavigationPanel/NavigationPanel';
-import PersonAcc from './PersonAcc/PersonAcc.jsx';
+import PersonAcc from './PersonAcc/PersonAcc';
 
 function AppHeader () {
     return (

@@ -22,4 +22,4 @@ export const rootReducer = combineReducers({
     constructorReducer,
     orderedIngredientsReducer,
     scrollReducer
-})
+});

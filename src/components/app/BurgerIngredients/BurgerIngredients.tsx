@@ -8,7 +8,7 @@ import { getCurrentTab } from '../../../services/actions/scrollIngredientsAction
 
 function BurgerIngredients () {
 
-    const some = useSelector(state => state.scrollReducer.currentTab)
+    const some = useSelector((state: TReducers) => state.scrollReducer.currentTab)
 
     const dispatch = useDispatch();
 
@@ -47,6 +47,10 @@ function BurgerIngredients () {
             </div>
         </section>
     )
+}
+
+type TReducers = {
+    scrollReducer: any;
 }
 
 

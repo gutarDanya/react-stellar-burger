@@ -7,7 +7,7 @@ import {
   useLocation
 } from 'react-router-dom'
 
-import AppHeader from './AppHeader/AppHeader.tsx'
+import AppHeader from './AppHeader/AppHeader'
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../services/actions/apiAction";
 import { IngredientDetails } from "./BurgerIngredients/ModalInfoIngredients/IngredientDetails";
@@ -35,7 +35,7 @@ import { getCookie } from "../../utils/auth";
 
 
 function App() {
-  const orderModal = useSelector(state => state.orderedIngredientsReducer.modalOpened);
+  const orderModal = useSelector((state: IReducer) => state.orderedIngredientsReducer.modalOpened);
 
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
@@ -43,7 +43,7 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const ingreidentModalOpened = useSelector(state => state.currentIngredientReducer.opened);
+  const ingreidentModalOpened = useSelector((state: IReducer) => state.currentIngredientReducer.opened);
 
   useEffect(() => {
     dispatch(getData())
@@ -111,6 +111,11 @@ function App() {
       </pre>
     </div>
   );
+}
+
+interface IReducer {
+  orderedIngredientsReducer?: any;
+  currentIngredientReducer?: any;
 }
 
 export default App;

@@ -14,13 +14,15 @@ export const IngredientDetails = () => {
 
     const { id } = useParams();
 
-    const ingredients = useSelector(state => state.apiReducer.ingredientData)
+    const ingredients = useSelector((state: TReducers) => state.apiReducer.ingredientData)
 
-    const currentIngredient = useSelector(state => state.apiReducer.currentIngredient)
+    const currentIngredient = useSelector((state: TReducers) => state.apiReducer.currentIngredient)
 
     useEffect(() => {
         dispatch(getData())
+        if (id) {
         dispatch(getCurrentIngredientToRouting(id.split(':')[1]))
+        }
     }, [ingredients])
 
     return (
@@ -33,4 +35,8 @@ export const IngredientDetails = () => {
         )
         : null
     )
+}
+
+type TReducers = {
+    apiReducer: any;
 }

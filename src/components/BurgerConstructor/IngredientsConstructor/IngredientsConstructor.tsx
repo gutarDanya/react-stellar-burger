@@ -5,16 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeIngredient } from '../../../services/actions/ingredientsConstructorAction';
 import { removeCount } from '../../../services/actions/apiAction';
 import { MainIngredient } from './MainIngredient/MainIngredinet';
-import {v4 as uuid4 } from 'uuid';
 import PropTypes from "prop-types";
 
 
 
-export const IngredientsConstructor = ({ main, bun }) => {
+export const IngredientsConstructor:React.FC<IProps> = ({ main, bun }) => {
     const dispatch = useDispatch();
 
 
-    const deleteIngredient = (ingredient) => {
+    const deleteIngredient = (ingredient: IIngredient) => {
         dispatch(removeIngredient(ingredient))
         dispatch(removeCount(ingredient))
     }
@@ -50,7 +49,31 @@ export const IngredientsConstructor = ({ main, bun }) => {
     )
 }
 
-IngredientsConstructor.propTypes = {
-    main: PropTypes.array,
-    bun: PropTypes.object.isRequired
-}
+interface IProps {
+    main?: IMain[];
+    bun?: IBun;
+};
+
+interface IBun extends IIngredient {
+    type?: 'bun';
+};
+
+interface IMain extends IIngredient {
+    type?: 'main';
+};
+
+interface IIngredient {
+    _id?: string;
+    name?: string;
+    proteins?: number;
+    fat?: number;
+    carbohydrates?: number;
+    calories?: number;
+    price?: number;
+    image?: string;
+    image_mobile?: string;
+    image_large?: string;
+    __v?: number;
+    main?: string;
+    superId?: string;
+};

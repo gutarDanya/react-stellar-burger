@@ -22,7 +22,7 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
 
     const [, drop] = useDrop({
         accept: 'constructorIngredient',
-        hover (item, monitor) {
+        hover (item: any, monitor) {
             if (!ref.current) {
               return
             }
@@ -63,7 +63,7 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
                 key={index}
                 ref={ref}
             >
-                <DragIcon />
+                <DragIcon type='primary'/>
                 <ConstructorElement
                     text={ingredient.name}
                     price={ingredient.price}
@@ -75,8 +75,6 @@ export const MainIngredient = ({ ingredient, deleteIngredient, index }) => {
     )
 }
 
-MainIngredient.propTypes = {
-  ingredient: ingredientPropType,
-  deleteIngredient: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired
+interface IProps {
+  index: number;
 }
