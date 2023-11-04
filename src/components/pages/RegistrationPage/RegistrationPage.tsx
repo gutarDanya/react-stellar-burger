@@ -11,9 +11,9 @@ export const RegistrationPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const nameValue = useSelector(state => state.inputReducer.nameValue);
-    const emailValue = useSelector(state => state.inputReducer.emailValue);
-    const passwordValue = useSelector(state => state.inputReducer.passwordValue);
+    const nameValue = useSelector((state: IReducer) => state.inputReducer.nameValue);
+    const emailValue = useSelector((state: IReducer) => state.inputReducer.emailValue);
+    const passwordValue = useSelector((state: IReducer) => state.inputReducer.passwordValue);
 
     const emailRef = useRef(null);
     const nameRef = useRef(null);
@@ -21,12 +21,12 @@ export const RegistrationPage = () => {
 
     console.log()
 
-    const register = (evt) => {
+    const register = (evt: any) => {
         evt.preventDefault();
         dispatch(userRegister({
-            email: emailRef.current.value,
-             password: passwordRef.current.value,
-              name: nameRef.current.value
+            email: emailValue,
+             password: passwordValue,
+              name: nameValue
             })
         )
         navigate('/', {replace: true})
@@ -77,4 +77,8 @@ export const RegistrationPage = () => {
             </div>
         </main>
     )
+}
+
+interface IReducer {
+    inputReducer: any;
 }

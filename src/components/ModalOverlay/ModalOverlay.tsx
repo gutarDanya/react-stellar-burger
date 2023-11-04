@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 
-export const ModalOverlay = ({children, closePopup}) => {
+export const ModalOverlay: React.FC<IProps> = ({children, closePopup}) => {
     const dispatch = useDispatch();
 
 
@@ -16,6 +16,6 @@ export const ModalOverlay = ({children, closePopup}) => {
     )
 }
 
-ModalOverlay.propTypes = {
-    closePopup: PropTypes.func.isRequired
+interface IProps {
+    closePopup: any;
 }

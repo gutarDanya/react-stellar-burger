@@ -25,11 +25,11 @@ import { ResetPasswordPage } from "../pages/ResetPassword/ResetPassword";
 import { ProfilePage } from "../pages/ProfilePage/ProfilePage";
 import { MainPage } from "../pages/MainPage/MainPage";
 import { Profile } from "../pages/ProfilePage/Profile/Profile";
-import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
+import { ProtectedRoute } from "../pages/ProtectedRoute/ProtectedRoute";
 import { authUser, refreshToken } from "../../services/actions/AuthAction";
 import { Ingredient } from "./BurgerIngredients/IngredientList/Ingredient/Ingredient";
-import RoutingIngredient from "../RoutringIngredient/RoutingIngredient";
-import RoutingIngredientOverlay from "../RoutingIngredientOverlay/RoutingIngreidentOverlay";
+import RoutingIngredient from "../pages/RoutringIngredient/RoutingIngredient";
+import RoutingIngredientOverlay from "../pages/RoutingIngredientOverlay/RoutingIngreidentOverlay";
 import { getCookie } from "../../utils/auth";
 
 

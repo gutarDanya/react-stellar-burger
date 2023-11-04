@@ -7,9 +7,10 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from "prop-types";
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const modalRoot = document.getElementById("modalRoot");
+const modalRoot: any = document.getElementById("modalRoot");
 
-export const Modal = ({ handleClose, children, title }) => {
+export const Modal:React.FC<IProps> = ({ handleClose, children, title }) => {
+
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -23,7 +24,7 @@ export const Modal = ({ handleClose, children, title }) => {
         }
     }
 
-    function closePopupByKey(evt) {
+    function closePopupByKey(evt: any) {
         if (evt.key === 'Escape') {
             closePopup()
         }
@@ -45,17 +46,18 @@ export const Modal = ({ handleClose, children, title }) => {
                     <div className={styles.container}>
                         <h2 className={styles.text}>{title}</h2>
                         <CloseIcon
-                            onClick={closePopup} />
+                            onClick={closePopup}
+                            type='primary' />
                     </div>
                     {children}
                 </div>
             </ModalOverlay>,
-            modalRoot
+            modalRoot 
         )
 
 }
 
-Modal.propTypes = {
-    handleClose: PropTypes.func.isRequired,
-    title: PropTypes.string.isRequired
+interface IProps {
+    handleClose: any;
+    title?: string;
 }

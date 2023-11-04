@@ -11,11 +11,11 @@ export const ForgotPasswordPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const emailValue = useSelector(state => state.inputReducer.emailValue);
-    const request = useSelector(state => state.forgotPasswordReducer.success);
+    const emailValue = useSelector((state: IReducers) => state.inputReducer.emailValue);
+    const request = useSelector((state: IReducers) => state.forgotPasswordReducer.success);
 
 
-    const inputRef = React.useRef();
+    //const inputRef = React.useRef<HTMLDivElement | null>(null);
 
     const sendEmail = () => {
         dispatch(getRequestPassword(emailValue))
@@ -33,7 +33,7 @@ export const ForgotPasswordPage = () => {
             value={emailValue}
             name='name'
             error={false}
-            ref={inputRef}
+            //ref={inputRef}
             size='default'
             extraClass="ml-1"
              />
@@ -47,4 +47,9 @@ export const ForgotPasswordPage = () => {
              </div>
         </main>
     )
+}
+
+interface IReducers {
+    inputReducer?: any;
+    forgotPasswordReducer?: any;
 }

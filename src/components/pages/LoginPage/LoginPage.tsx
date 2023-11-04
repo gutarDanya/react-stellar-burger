@@ -8,8 +8,8 @@ import { setEmailValue, setPasswordValue } from "../../../services/actions/input
 
 export const LoginPage = () => {
 
-    const emailValue = useSelector(state => state.inputReducer.emailValue);
-    const passwordValue = useSelector(state => state.inputReducer.passwordValue)
+    const emailValue = useSelector((state: IReducer) => state.inputReducer.emailValue);
+    const passwordValue = useSelector((state: IReducer) => state.inputReducer.passwordValue)
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -17,14 +17,14 @@ export const LoginPage = () => {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
-    const userLoginToProfile = (evt) => {
+    const userLoginToProfile = (evt: any) => {
         evt.preventDefault()
         dispatch(userLogin({
-            email: emailRef.current.value,
-             password: passwordRef.current.value
+            email: emailValue,
+             password: passwordValue
             })
         )
-        navigate(-1, {replace: true})
+        navigate('/', {replace: true})
     }
     
     
@@ -64,4 +64,8 @@ export const LoginPage = () => {
             </div>
         </main>
     )
+}
+
+interface IReducer {
+    inputReducer: any;
 }

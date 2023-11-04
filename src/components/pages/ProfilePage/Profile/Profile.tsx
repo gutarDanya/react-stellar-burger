@@ -7,9 +7,9 @@ import { setEmailValue, setNameValue, setPasswordValue } from "../../../../servi
 
 export const Profile = () => {
 
-    const nameValue = useSelector(state => state.inputReducer.nameValue)
-    const emailValue = useSelector(state => state.inputReducer.emailValue);
-    const passwordValue = useSelector(state => state.inputReducer.passwordValue);
+    const nameValue = useSelector((state: IReducer) => state.inputReducer.nameValue)
+    const emailValue = useSelector((state: IReducer) => state.inputReducer.emailValue);
+    const passwordValue = useSelector((state: IReducer) => state.inputReducer.passwordValue);
 
     const nameRef = useRef(null);
     const emailRef = useRef(null);
@@ -57,4 +57,8 @@ export const Profile = () => {
              />
             </div>
     )
+}
+
+interface IReducer {
+inputReducer: any;
 }

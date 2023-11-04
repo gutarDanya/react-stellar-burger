@@ -9,8 +9,8 @@ export const ResetPasswordPage = () => {
 
     const dispatch = useDispatch();
 
-    const passwordValue = useSelector(state => state.inputReducer.passwordValue);
-    const resetMessage = useSelector(state => state.inputReducer.resetMessage);
+    const passwordValue = useSelector((state: IReducer) => state.inputReducer.passwordValue);
+    const resetMessage = useSelector((state: IReducer) => state.inputReducer.resetMessage);
 
     const handleSubmit = () => {
         dispatch(ResetPassword({password: passwordValue, token: resetMessage}))
@@ -42,6 +42,7 @@ export const ResetPasswordPage = () => {
             onChange={e => dispatch(setResetMessage(e.target.value))}
              />
              <Button
+             htmlType='submit'
              size='small'
              onClick={handleSubmit}>
                 Сохранить
@@ -50,4 +51,8 @@ export const ResetPasswordPage = () => {
              </div>
         </main>
     )
+}
+
+interface IReducer {
+    inputReducer: any;
 }

@@ -10,7 +10,7 @@ function OrderDetails() {
 
     const dispatch = useDispatch();
 
-    const order = useSelector(state => state.orderedIngredientsReducer.order);
+    const order = useSelector((state: Iselector) => state.orderedIngredientsReducer.order);
 
     useEffect(() => {
         dispatch(ingredientModalWindowOpened())
@@ -33,3 +33,7 @@ function OrderDetails() {
 }
 
 export default OrderDetails;
+
+interface Iselector {
+    orderedIngredientsReducer: any
+}
