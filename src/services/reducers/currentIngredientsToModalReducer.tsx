@@ -1,14 +1,16 @@
 import React from "react";
 import { GET_CURRENT_INGREDIENT_TO_MODAL, REMOVE_CUURENT_INGREDIENT_FROM_MODAL, OPEN_INFO_MODAL_WINDOW, CLOSE_INFO_MODAL_WINDOW, INGREDIENT_MODAL_WINDOW_OPENED } from '../actions/currentIngredientsToModalAction'
+import { TIngredientObject } from "../../utils/constantsOfTS";
+import { TCurrentIngredientToModalActions } from "../actions/currentIngredientsToModalAction";
 
-const initialState = {
-    currentIngredient: [],
+const initialState: IInitialState = {
+    currentIngredient: {},
     modalWindowOpened: false,
-    orderedIngredient: [],
+    orderedIngredient: {},
     opened: false
 }
 
-export const currentIngredientReducer = (state = initialState, action) => {
+export const currentIngredientReducer = (state = initialState, action: TCurrentIngredientToModalActions) => {
     switch (action.type) {
         case GET_CURRENT_INGREDIENT_TO_MODAL : {
             return {
@@ -45,3 +47,10 @@ export const currentIngredientReducer = (state = initialState, action) => {
         default : return state
     }
 }
+
+interface IInitialState {
+    currentIngredient: TIngredientObject | {};
+    modalWindowOpened: boolean;
+    orderedIngredient: {};
+    opened: boolean;
+};

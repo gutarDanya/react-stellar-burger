@@ -2,17 +2,11 @@ import React from "react";
 import { baseUrl } from "../../utils/constants";
 import { checkResponse } from "../../utils/constants";
 
-export const GET_REQUEST_OF_FORGOT_PASSWORD = 'GET_REQUEST_OF_FORGOT_PASSWORD';
-export const CHANGE_VALUE_OF_RESET = 'CHANGE_VALUE_OF_RESET';
+export const GET_REQUEST_OF_FORGOT_PASSWORD: 'GET_REQUEST_OF_FORGOT_PASSWORD' = 'GET_REQUEST_OF_FORGOT_PASSWORD';
+export const CHANGE_VALUE_OF_RESET: 'CHANGE_VALUE_OF_RESET' = 'CHANGE_VALUE_OF_RESET';
 
-
-export const getResponse = (answer) => {
-    return{type: GET_REQUEST_OF_FORGOT_PASSWORD, payload: answer}
-}
-
-
-export const getRequestPassword = (email) => {
-    return function (dispatch) {
+export const getRequestPassword = (email: string) => {
+    return function (dispatch: any) {
         fetch(`${baseUrl}/password-reset`, {
             method: 'POST',
             headers: {
@@ -34,3 +28,16 @@ export const getRequestPassword = (email) => {
         })
     }
 }
+
+interface IgetResponse {
+readonly type: typeof GET_REQUEST_OF_FORGOT_PASSWORD;
+payload: any;
+}
+
+interface IChangeValueOfReset {
+    readonly type: typeof CHANGE_VALUE_OF_RESET;
+    payload: string;
+}
+
+export type TforgotPasswordActions = IgetResponse |
+IChangeValueOfReset;

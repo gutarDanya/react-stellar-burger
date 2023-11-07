@@ -43,7 +43,7 @@ export const ForgotPasswordPage = () => {
              onClick={sendEmail}>
                 Восстановить
              </Button >
-             <p className={`${styles.text} text text_dark-grey-secondary-text`}>Вспомнили пароль?<Link to='/login'>Войдите</Link></p>
+             <p className={`${styles.text} text text_dark-grey-secondary-text`}>Вспомнили пароль?<Link className={styles.text} to='/login'>Войдите</Link></p>
              </div>
         </form>
     )

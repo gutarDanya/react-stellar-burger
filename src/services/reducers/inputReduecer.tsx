@@ -1,14 +1,15 @@
 import React from "react";
 import { SET_EMAIL_VALUE, SET_NAME_VALUE, SET_PASSWORD_VALUE, SET_RESET_MESSAGE } from "../actions/inputAction";
+import { TInputsActions } from "../actions/inputAction";
 
-const initialState = {
+const initialState: IInitialState = {
     emailValue: '',
     nameValue: '',
     passwordValue: '',
     resetMessage: ''
 }
 
-export const inputReducer = (state = initialState, action) => {
+export const inputReducer = (state = initialState, action: TInputsActions) : IInitialState => {
     switch(action.type) {
         case SET_EMAIL_VALUE: {
             return {
@@ -36,4 +37,11 @@ export const inputReducer = (state = initialState, action) => {
         }
         default: return state
     }
+}
+
+interface IInitialState {
+    emailValue: string;
+    nameValue: string;
+    passwordValue: string;
+    resetMessage: string;
 }
