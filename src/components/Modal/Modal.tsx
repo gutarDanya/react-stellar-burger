@@ -24,7 +24,7 @@ export const Modal:React.FC<IProps> = ({ handleClose, children, title }) => {
         }
     }
 
-    function closePopupByKey(evt: any) {
+    function closePopupByKey(evt) {
         if (evt.key === 'Escape') {
             closePopup()
         }
