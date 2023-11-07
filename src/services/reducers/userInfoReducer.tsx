@@ -1,14 +1,15 @@
 import React from "react";
 import { GET_USER_INFO } from "../actions/AuthAction";
+import { AuthActions } from "../actions/AuthAction";
 
-const initialState = {
-    name: null,
-    email: null,
-    password: null,
+const initialState: IInitialState = {
+    name: '',
+    email: '',
+    password: '',
     success: false
 }
 
-export const userInfoReduecer = (state = initialState, action) => {
+export const userInfoReduecer = (state = initialState, action: AuthActions) => {
     switch (action.type) {
         case GET_USER_INFO: {
             return {
@@ -20,4 +21,11 @@ export const userInfoReduecer = (state = initialState, action) => {
         }
         default: return state
     }
+}
+
+interface IInitialState {
+    name: string;
+    email: string;
+    password: string;
+    success: boolean
 }

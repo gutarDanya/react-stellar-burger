@@ -1,13 +1,14 @@
 import React from "react";
+import { AuthActions } from "../actions/AuthAction";
 
 import { LOGIN_ACTION, LOGOUT_ACTION } from "../actions/AuthAction";
 
-const initialState = {
+const initialState: IInitialState = {
     login: true,
     logout: false
 }
 
-export const loginReducer = (state = initialState, action) => {
+export const loginReducer = (state = initialState, action: AuthActions) => {
     switch (action.type) {
         case LOGIN_ACTION : {
             return {
@@ -25,4 +26,9 @@ export const loginReducer = (state = initialState, action) => {
         }
         default: return state
     }
+}
+
+interface IInitialState {
+    login: boolean;
+    logout: boolean;
 }

@@ -1,10 +1,8 @@
-import { IMain } from '../../components/BurgerConstructor/InfoOfOrder/InfoOfOrder';
 import { TIngredientObject } from '../../utils/constantsOfTS';
 import {
     ADD_BUN_TO_CONSTRUCTOR,
     ADD_MAIN_TO_CONSTRUCTOR,
     REMOVE_INGREDIENT_FROM_CONSTRUCTOR,
-    GET_ALL_INGREDIENTS,
     SORTING_INGREDIENTS
 } from '../actions/ingredientsConstructorAction';
 import { TIngredientConstructorActions } from '../actions/ingredientsConstructorAction';
@@ -89,6 +87,6 @@ export const constructorReducer = (state = initialState, action: TIngredientCons
 
 interface IInitialState {
     allIngredients: TIngredientObject[];
-    bun: any;
+    bun: TIngredientObject | {};
     main: TIngredientObject[];
 }

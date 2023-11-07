@@ -1,11 +1,12 @@
 import React from "react";
 import { REGISTARTION_ACTION } from "../actions/AuthAction";
+import { AuthActions } from "../actions/AuthAction";
 
-const initialState = {
+const initialState: IInitialState = {
     success: false
 }
 
-export const registrationReducer = (state = initialState, action) => {
+export const registrationReducer = (state = initialState, action: AuthActions) => {
     switch(action.type) {
         case REGISTARTION_ACTION : {
             return {
@@ -15,4 +16,8 @@ export const registrationReducer = (state = initialState, action) => {
         }
         default: return state
     }
+}
+
+interface IInitialState {
+    success: boolean
 }

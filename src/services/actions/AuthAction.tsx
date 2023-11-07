@@ -6,8 +6,16 @@ export const LOGIN_ACTION = 'LOGIN_ACTION';
 export const LOGOUT_ACTION = 'LOGOUT_ACTION';
 export const GET_USER_INFO = 'GET_USER_UNFO';
 
-export const userRegister = ({ email, password, name }) => {
-    return async function (dispatch) {
+//Функция Регистарции
+
+interface IregisterArg {
+    email: string;
+    password: string;
+    name: string
+}
+
+export const userRegister = ({ email, password, name } : IregisterArg) => {
+    return async function (dispatch:any) {
          await fetch(`${baseUrl}/auth/register`, {
             method: 'POST',
             headers: {
@@ -37,8 +45,13 @@ export const userRegister = ({ email, password, name }) => {
 
 //Функция входа в учётку
 
-export const userLogin = ({ email, password }) => {
-    return async function (dispatch) {
+interface ILoginArg {
+    email: string;
+    password: string;
+}
+
+export const userLogin = ({ email, password }: ILoginArg) => {
+    return async function (dispatch:any) {
         await fetch(`${baseUrl}/auth/login`, {
             method: 'POST',
             headers: {
@@ -62,7 +75,7 @@ export const userLogin = ({ email, password }) => {
                     //Здесь ты сетишь в куки, свой токен, по которому в дальнейшем будешь проходить аутентификацию
                     setCookie('accessToken', res.accessToken.split('Bearer ')[1])
                     setCookie('refreshToken', res.refreshToken)
-                    sessionStorage.setItem('logined', true)
+                    sessionStorage.setItem('logined', 'true')
                 }
             })
             .catch((err) => {
@@ -74,7 +87,7 @@ export const userLogin = ({ email, password }) => {
 //Функция выхода из учётки
 
 export const userLogout = () => {
-    return async function(dispatch) {
+    return async function(dispatch: any) {
          await fetch(`${baseUrl}/auth/logout`, {
             method: 'POST',
             headers: {
@@ -107,7 +120,7 @@ export const userLogout = () => {
 //Функция Обновления токена
 
 export const refreshToken = () => {
-    return async function (dispatch) {
+    return async function (dispatch: any) {
         await fetch(`${baseUrl}/auth/token`, {
             method: 'POST',
             headers: {
@@ -129,7 +142,7 @@ export const refreshToken = () => {
 //Функция аутентификии
 
 export const authUser = () => {
-    return async function(dispatch) {
+    return async function(dispatch: any) {
         await fetch(`${baseUrl}/auth/user`, {
             method: 'GET',
             headers: {
@@ -146,7 +159,7 @@ export const authUser = () => {
                     type: GET_USER_INFO,
                     payload: res
                 })
-                sessionStorage.setItem('logined', true)
+                sessionStorage.setItem('logined', 'true')
             }
         })
         .catch((err) => {
@@ -158,19 +171,25 @@ export const authUser = () => {
 
 //Функция изменения данных о пользователе
 
-export const patchDataUser = ({email, name, password}) => {
-    return async function(dispatch) {
+interface IPatchDataArg {
+    email: string;
+    name: string;
+    password: string;
+}
+
+export const patchDataUser = ({email, name, password}: IPatchDataArg ) => {
+    return async function(dispatch: any) {
         await fetch(`${baseUrl}/auth/user`, {
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json",
                 authorization: 'Bearer ' + getCookie('accessToken')
             },
-            body: {
-                email: email,
+            body: JSON.stringify({
+                'email': email,
                 name: name,
                 password: password
-            }
+            })
         })
         .then(checkResponse)
         .then((res) => {
@@ -184,8 +203,13 @@ export const patchDataUser = ({email, name, password}) => {
 
 //Функция ресета пароля
 
-export const ResetPassword = ({password, token}) => {
-    return async function(dispatch) {
+interface IResetPasswordArg {
+    password: string;
+    token: string;
+}
+
+export const ResetPassword = ({password, token}: IResetPasswordArg) => {
+    return async function(dispatch: any) {
         await fetch(`${baseUrl}/password-reset/reset`, {
            method: 'POST',
            headers: {
@@ -204,3 +228,32 @@ export const ResetPassword = ({password, token}) => {
         })
     }
 }
+
+interface IRegistartion {
+    readonly type: typeof REGISTARTION_ACTION;
+    payload: {success: boolean};
+}
+
+interface ILogin {
+    readonly type: typeof LOGIN_ACTION;
+    payload: ILoginArg
+}
+
+interface ILogout {
+    readonly type: typeof LOGOUT_ACTION;
+    payload: ILoginArg
+}
+
+interface IGetUserInfo {
+    readonly type: typeof GET_USER_INFO;
+    payload: {
+        name: string;
+        email: string;
+        success: true;
+    }
+}
+
+export type AuthActions = IRegistartion |
+ILogin |
+ILogout |
+IGetUserInfo;
