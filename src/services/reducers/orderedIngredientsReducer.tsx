@@ -1,14 +1,16 @@
 import { string } from "prop-types";
 import { COLLECT_ORDER, OPEN_MODAL_WINDOW, CLOSE_MODAL_WINDOW, SEND_ORDER } from "../actions/orderedIngredientsAction";
+import { TOrderedIngredientActions } from "../actions/orderedIngredientsAction";
+import { TIngredientObject } from "../../utils/constantsOfTS";
 
-const initialState = {
+const initialState: IInitialState = {
     modalOpened: false,
     orderedIngredinets: [],
-    order: string
+    order: 'number of order'
 }
 
 
-export const orderedIngredientsReducer = (state = initialState, action) => {
+export const orderedIngredientsReducer = (state = initialState, action: TOrderedIngredientActions) => {
     switch (action.type) {
         case COLLECT_ORDER: {
             return {
@@ -36,4 +38,10 @@ export const orderedIngredientsReducer = (state = initialState, action) => {
         }
         default: return state
     }
+}
+
+interface IInitialState {
+    modalOpened: boolean;
+    orderedIngredinets: TIngredientObject[];
+    order: string;
 }

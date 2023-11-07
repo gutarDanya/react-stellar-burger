@@ -55,16 +55,17 @@ interface IIngredient {
     calories: number;
     price: number;
     image: string;
-    image_mobile?: string;
-    image_large?: string;
+    image_mobile: string;
+    image_large: string;
     __v: number;
+    superId: number;
 }
 
-interface IBun extends IIngredient {
+export interface IBun extends IIngredient {
     type: 'bun';
 }
 
-interface IMain extends IIngredient {
+export interface IMain extends IIngredient {
     type: 'main';
 }
 

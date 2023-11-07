@@ -1,3 +1,5 @@
+import { IMain } from '../../components/BurgerConstructor/InfoOfOrder/InfoOfOrder';
+import { TIngredientObject } from '../../utils/constantsOfTS';
 import {
     ADD_BUN_TO_CONSTRUCTOR,
     ADD_MAIN_TO_CONSTRUCTOR,
@@ -5,9 +7,9 @@ import {
     GET_ALL_INGREDIENTS,
     SORTING_INGREDIENTS
 } from '../actions/ingredientsConstructorAction';
-import update from 'immutability-helper'
+import { TIngredientConstructorActions } from '../actions/ingredientsConstructorAction';
 
-const initialState = {
+const initialState: IInitialState = {
     allIngredients: [],
     bun: {},
     main: []
@@ -15,7 +17,7 @@ const initialState = {
 
 //Увеличь занчение коунт при перетаскивании ингредиента
 
-export const constructorReducer = (state = initialState, action) => {
+export const constructorReducer = (state = initialState, action: TIngredientConstructorActions): IInitialState => {
     switch (action.type) {
         case ADD_BUN_TO_CONSTRUCTOR : {
             return {
@@ -83,4 +85,10 @@ export const constructorReducer = (state = initialState, action) => {
         }
         default: return state
     }
+}
+
+interface IInitialState {
+    allIngredients: TIngredientObject[];
+    bun: any;
+    main: TIngredientObject[];
 }
