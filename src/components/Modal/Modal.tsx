@@ -17,14 +17,14 @@ export const Modal:React.FC<IProps> = ({ handleClose, children, title }) => {
 
     const location = useLocation();
 
-    const closePopup = (): void => {
+    const closePopup = () : void => {
         dispatch(handleClose())
         if (location.state.modal === 'ingredient') {
             navigate(-1)
         }
     }
 
-    function closePopupByKey(evt: any) {
+    function closePopupByKey(evt) {
         if (evt.key === 'Escape') {
             closePopup()
         }
