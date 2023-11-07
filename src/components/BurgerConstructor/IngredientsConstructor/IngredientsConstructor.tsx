@@ -33,8 +33,6 @@ export const IngredientsConstructor:React.FC<IProps> = ({ main, bun = initialSta
         dispatch(removeCount(ingredient))
     }
 
-    console.log( main)
-
 
     return (<>
         {bun && bun.name
@@ -88,7 +86,8 @@ interface IIngredient {
     image: string | undefined;
     image_mobile: string | undefined;
     image_large: string | undefined;
-    __v: number | undefined;
+    __v: number;
     main?: string | undefined;
     superId: string | undefined;
+    type: 'bun' | 'main'
 };
