@@ -17,7 +17,7 @@ export const ResetPasswordPage = () => {
     }
 
     return(
-        <main className={styles.container}>
+        <form className={styles.container}>
             <div className={styles.window}>
             <h1 className={styles.header}>Восстановление пароля</h1>
             <Input
@@ -49,7 +49,7 @@ export const ResetPasswordPage = () => {
              </Button>
              <p className={styles.text}>Вспомнили пароль?</p>
              </div>
-        </main>
+        </form>
     )
 }
 

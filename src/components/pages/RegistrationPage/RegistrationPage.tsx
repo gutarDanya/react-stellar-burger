@@ -33,7 +33,7 @@ export const RegistrationPage = () => {
     }
 
     return(
-        <main className={styles.container}>
+        <form className={styles.container}>
             <div className={styles.window}>
             <h1 className={styles.header}>Зарегестрироваться</h1>
             <Input type='text'
@@ -75,7 +75,7 @@ export const RegistrationPage = () => {
             </Button>
             <p className={styles.text}>Уже зарегистрированы? <Link to='/login'>Войти</Link></p>
             </div>
-        </main>
+        </form>
     )
 }
 

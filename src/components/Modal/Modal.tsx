@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, KeyboardEvent, SyntheticEvent } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Modal.module.css'
 import { ModalOverlay } from '../ModalOverlay/ModalOverlay';
@@ -17,7 +17,7 @@ export const Modal:React.FC<IProps> = ({ handleClose, children, title }) => {
 
     const location = useLocation();
 
-    const closePopup = () => {
+    const closePopup = (): void => {
         dispatch(handleClose())
         if (location.state.modal === 'ingredient') {
             navigate(-1)
@@ -52,7 +52,7 @@ export const Modal:React.FC<IProps> = ({ handleClose, children, title }) => {
                     {children}
                 </div>
             </ModalOverlay>,
-            modalRoot 
+            modalRoot as HTMLDivElement
         )
 
 }
