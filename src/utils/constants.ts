@@ -1,6 +1,6 @@
 export const baseUrl = 'https://norma.nomoreparties.space/api';
 
-export function checkResponse(res) {
+export function checkResponse(res: any) {
     if (res.ok) {
         return res.json()
     } else {

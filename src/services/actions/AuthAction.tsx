@@ -1,6 +1,5 @@
 import { baseUrl, checkResponse } from "../../utils/constants";
 import { getCookie, setCookie, deleteCookie } from "../../utils/auth";
-
 export const REGISTARTION_ACTION = 'REGISTARTION_ACTION';
 export const LOGIN_ACTION = 'LOGIN_ACTION';
 export const LOGOUT_ACTION = 'LOGOUT_ACTION';

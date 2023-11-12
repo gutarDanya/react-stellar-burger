@@ -1,0 +1,42 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.title {
+    text-align: end;
+    margin-bottom: 20px;
+}
+
+.text {
+    margin: 60px 0 0 0;
+}
+
+.info {
+    display: flex;
+}
+
+.info :first-of-type {
+    margin-right: 36px;
+}
+
+.main {
+    display: flex;
+}
+
+.readinessPanel {
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+}
+
+.orders {
+    display: grid;
+    gap: 16px;
+    max-height: 800px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

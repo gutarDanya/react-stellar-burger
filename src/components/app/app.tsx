@@ -30,7 +30,7 @@ import { authUser, refreshToken } from "../../services/actions/AuthAction";
 import { Ingredient } from "./BurgerIngredients/IngredientList/Ingredient/Ingredient";
 import RoutingIngredient from "../pages/RoutringIngredient/RoutingIngredient";
 import RoutingIngredientOverlay from "../pages/RoutingIngredientOverlay/RoutingIngreidentOverlay";
-import { getCookie } from "../../utils/auth";
+import { Feed } from "../Feed/Feed";
 
 
 
@@ -83,6 +83,9 @@ function App() {
             <Route path=':user-profile' element={<Profile />} />
             <Route path=':order-history' element={<p>Здесь будет история хаказов</p>} />
             <Route path=':exit' element={<p>здесь будет выход</p>} />
+          </Route>
+          <Route path='/feed' element={<Feed />} >
+            {/* ЗДЕСЬ БУДУТ ВЛОЖЕННЫЕ РОУТЫ ЛЕНТЫ ЗАКАЗОВ */}
           </Route>
             {ingreidentModalOpened
             ? <Route path='/ingredients' element={<RoutingIngredientOverlay />} >
