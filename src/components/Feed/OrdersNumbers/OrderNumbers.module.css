@@ -3,6 +3,12 @@
     margin: 8px 0 8px 0;
 }
 
+.orders {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 230px;
+}
+
 .cooking {
    margin: 8px 0 8px 0;
 }

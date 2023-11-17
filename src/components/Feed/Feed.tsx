@@ -1,35 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Feed.module.css';
 import { Order } from './Order/Order';
 import { OrederNumbers } from './OrdersNumbers/OrderNumbers';
+import { useAppDispatch, useAppSelector } from '../../services/hooks/reduxHooks';
+import { WS_CLOSE, WS_CONNECTING } from '../../services/actions/WSAction';
+import { wsUrl } from '../../utils/constants';
+import { v4 as uuid4 } from 'uuid'
 
 export const Feed = () => {
 
-    const someArr: string[] | number[] = [145125612, 512315124, 1412312, 124166919124];
-    const someArr2: string[] | number[] = ['1', '2', '2', '3']
+    const dispatch = useAppDispatch()
 
-    const total = '12311';
-    const today = '123'
+
+    const someArr2: string[] | number[] = ['1', '2', '2', '3'];
+
+    const orders = useAppSelector(store => store.WSReducer.orders);
+
+    console.log(orders)
+
+    const readyOrders = orders.map((order: any) => {return order.status === 'done' ? order.number : null})
+    const cookingOrders = orders.map((order: any) => {return order.status !== 'done' ? order.number : null})
+
+    let total: string | number = useAppSelector((state) => state.WSReducer.total);
+    let totalToday: number = useAppSelector((state) => state.WSReducer.totalToday);
+
+    useEffect(() => {
+        dispatch({ type: WS_CONNECTING, payload: `${wsUrl}/orders/all` })
+        return () => {
+            dispatch({type: WS_CLOSE})
+        }
+    }, [])
 
     return (
         <div className={styles.page}>
             <h1 className={`${styles.title} + text text_type_main-large`} >Лента заказов</h1>
             <div className={`${styles.main}`} >
                 <div className={`${styles.orders} custom-scroll`}>
-                    <Order title='бургер "Вкусный"' price={480} date='сегодня 16:20' numbers={`#10472`}/>
-                    <Order title='бургер пива и чипсов' price={480} date='сегодня 16:20' numbers={`#10472`}/>
-                    <Order title='бургер Рика и Морти' price={480} date='сегодня 16:20' numbers={`#10472`}/>
-                    <Order title='бургер как будто это бургер' price={480} date='сегодня 16:20' numbers={`#10472`}/>
+                    {orders && orders.length > 0 && orders.map((order: any, i: any) => {
+                        return (
+                            <Order title={order.name} ingredients={order.ingredients} date={order.createdAt} numbers={order.number} key={uuid4()}/>
+                        )
+                    })}
                 </div>
                 <div className={`${styles.readinessPanel}`}>
                     <div className={`${styles.info}`}>
-                        <OrederNumbers type='ready' title='Готовы:' orders={someArr} />
-                        <OrederNumbers type='noReady' title='В работе:' orders={someArr2} />
+                        <OrederNumbers type='ready' title='Готовы:' orders={readyOrders} />
+                        <OrederNumbers type='noReady' title='В работе:' orders={cookingOrders} />
                     </div>
                     <p className={`${styles.text} text text_type_main-medium`}>Выполнено за все время:</p>
                     <p className={`${styles.numbers} text text_type_digits-large`}>{total}</p>
                     <p className={`${styles.text} text text_type_main-medium`}>Выполнено за сегодня:</p>
-                    <p className={`${styles.numbers} text text_type_digits-large`}>{today}</p>
+                    <p className={`${styles.numbers} text text_type_digits-large`}>{totalToday}</p>
                 </div>
             </div>
         </div>

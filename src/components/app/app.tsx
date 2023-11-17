@@ -84,9 +84,11 @@ function App() {
             <Route path=':order-history' element={<p>Здесь будет история хаказов</p>} />
             <Route path=':exit' element={<p>здесь будет выход</p>} />
           </Route>
+
           <Route path='/feed' element={<Feed />} >
-            {/* ЗДЕСЬ БУДУТ ВЛОЖЕННЫЕ РОУТЫ ЛЕНТЫ ЗАКАЗОВ */}
+            <Route path=':ingredient' element={<RoutingIngredient/>} />
           </Route>
+
             {ingreidentModalOpened
             ? <Route path='/ingredients' element={<RoutingIngredientOverlay />} >
             <Route path=':id' element={<RoutingIngredient />} />

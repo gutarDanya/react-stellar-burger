@@ -3,11 +3,12 @@ import { useSelector } from "react-redux";
 import { Ingredient } from "./Ingredient/Ingredient";
 import styles from './IngredientList.module.css';
 import PropTypes from "prop-types";
+import { useAppSelector } from "../../../../services/hooks/reduxHooks";
 
 
 export const IngredientList:React.FC<IProps> = React.forwardRef(({ title, type}, ref) => {
 
-    const ingredients = useSelector((state: IReducers) => state.apiReducer.ingredientData);
+    const ingredients = useAppSelector((state: IReducers) => state.apiReducer.ingredientData);
 
     return (
         <section

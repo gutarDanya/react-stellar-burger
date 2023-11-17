@@ -1,4 +1,5 @@
 export const baseUrl = 'https://norma.nomoreparties.space/api';
+export const wsUrl = 'wss://norma.nomoreparties.space'
 
 export function checkResponse(res: any) {
     if (res.ok) {
@@ -6,4 +7,10 @@ export function checkResponse(res: any) {
     } else {
         return Promise.reject(`Ошибка ${res.status}`)
     }
+}
+
+export enum WSEnum {
+    connectig = 'connectig',
+    online = 'online',
+    offline = 'offline'
 }

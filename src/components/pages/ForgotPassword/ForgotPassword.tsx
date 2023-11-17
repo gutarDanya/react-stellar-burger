@@ -5,14 +5,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getRequestPassword } from "../../../services/actions/forgotPasswordAction";
 import { setEmailValue } from "../../../services/actions/inputAction";
+import { useAppSelector } from "../../../services/hooks/reduxHooks";
 
 export const ForgotPasswordPage = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const emailValue = useSelector((state: IReducers) => state.inputReducer.emailValue);
-    const request = useSelector((state: IReducers) => state.forgotPasswordReducer.success);
+    const emailValue = useAppSelector((state: IReducers) => state.inputReducer.emailValue);
+    const request = useAppSelector((state: IReducers) => state.forgotPasswordReducer.success);
 
 
     //const inputRef = React.useRef<HTMLDivElement | null>(null);
