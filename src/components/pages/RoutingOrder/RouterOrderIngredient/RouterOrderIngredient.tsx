@@ -1,6 +1,5 @@
-import React from "react";;
+import React from "react";
 import styles from './RouterOrderIngredient.module.css';
-import { Ingredient } from "../../../app/BurgerIngredients/IngredientList/Ingredient/Ingredient";
 
 export const RouterOrderIngredient: React.FC<IProps> = ({image, name, price}) => {
     return (

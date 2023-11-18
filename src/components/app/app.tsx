@@ -31,7 +31,8 @@ import { Ingredient } from "./BurgerIngredients/IngredientList/Ingredient/Ingred
 import RoutingIngredient from "../pages/RoutringIngredient/RoutingIngredient";
 import RoutingIngredientOverlay from "../pages/RoutingIngredientOverlay/RoutingIngreidentOverlay";
 import { Feed } from "../Feed/Feed";
-
+import HistoryOfOrders from "../pages/HistoryOfOrders/HistroryOfOrders";
+import RoutingOrder from "../pages/RoutingOrder/RoutingOrder";
 
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
   }, [])
 
   return (
-    <div className={styles.app}> 
+    <div className={styles.app}>
       <pre className={styles.container}>
         <AppHeader />
         <Routes location={backgroundLocation || location}>
@@ -81,30 +82,32 @@ function App() {
               </ProtectedRoute>
             } >
             <Route path=':user-profile' element={<Profile />} />
-            <Route path=':order-history' element={<p>Здесь будет история хаказов</p>} />
+            <Route path=':order-history' element={<HistoryOfOrders />} />
             <Route path=':exit' element={<p>здесь будет выход</p>} />
           </Route>
 
+          <Route path='/profile/:order-history/:id' element={<RoutingOrder />} />
+
           <Route path='/feed' element={<Feed />} >
-            <Route path=':ingredient' element={<RoutingIngredient/>} />
+            <Route path=':ingredient' element={<RoutingOrder />} />
           </Route>
 
-            {ingreidentModalOpened
+          {ingreidentModalOpened
             ? <Route path='/ingredients' element={<RoutingIngredientOverlay />} >
-            <Route path=':id' element={<RoutingIngredient />} />
-          </Route>
-          : null
-}
+              <Route path=':id' element={<RoutingIngredient />} />
+            </Route>
+            : null
+          }
 
           <Route path='*' element={<ErrorRoutingPage />} />
         </Routes>
 
-            <Routes>
-              <Route path='/ingredients/:id'
-              element={<Modal handleClose={closeInfoModalWindow} title={'Детали ингредиента'}>
+        <Routes>
+          <Route path='/ingredients/:id'
+            element={<Modal handleClose={closeInfoModalWindow} title={'Детали ингредиента'}>
               <IngredientDetails />
             </Modal>} />
-          </Routes>
+        </Routes>
 
 
         {orderModal

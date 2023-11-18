@@ -1,5 +1,6 @@
 import { Middleware } from "redux";
-
+import { WSActions } from "../actions/WSAction";
+import { WSHistoryActions } from "../actions/WSHistoryAction";
 // socketMiddleware.ts
 
 export const socketMiddleware = (wsActions: any): Middleware => {

@@ -2,8 +2,13 @@ import React from "react";
 import styles from './Routing.module.css';
 import { Ingredient } from "../../app/BurgerIngredients/IngredientList/Ingredient/Ingredient";
 import { RouterOrderIngredient } from "./RouterOrderIngredient/RouterOrderIngredient";
+import { useParams } from "react-router-dom";
 
-export const RoutingIngredient = () => {
+const RoutingOrder = () => {
+
+    const params = useParams();
+
+    console.log(params)
     const order: string | number = '#123123';
     const title: string = 'бургер залупы'
     const ingredient = [{
@@ -38,3 +43,5 @@ export const RoutingIngredient = () => {
         </div>
     )
 }
+
+export default RoutingOrder

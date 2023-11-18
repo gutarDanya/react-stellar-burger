@@ -14,6 +14,7 @@ import { applyMiddleware, compose } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { WSActions } from "../actions/WSAction";
 import { socketMiddleware } from "../middlewares/WSMiddleWare";
+import { WSHistroyReducer } from '../reducers/TWSHistoryReducer'
 
 
 export const rootReducer = combineReducers({
@@ -27,7 +28,8 @@ export const rootReducer = combineReducers({
     currentIngredientReducer,
     constructorReducer,
     orderedIngredientsReducer,
-    scrollReducer
+    scrollReducer,
+    WSHistroyReducer
 });
 
 declare global {

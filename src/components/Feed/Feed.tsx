@@ -38,7 +38,7 @@ export const Feed = () => {
                 <div className={`${styles.orders} custom-scroll`}>
                     {orders && orders.length > 0 && orders.map((order: any, i: any) => {
                         return (
-                            <Order title={order.name} ingredients={order.ingredients} date={order.createdAt} numbers={order.number} key={uuid4()}/>
+                            <Order id={order._id} title={order.name} ingredients={order.ingredients} date={order.createdAt} numbers={order.number} key={uuid4()}/>
                         )
                     })}
                 </div>
