@@ -2,11 +2,14 @@ import React from "react";
 import styles from './Order.module.css';
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { TIngredientObject } from "../../../utils/constantsOfTS";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Ingredient } from "../../app/BurgerIngredients/IngredientList/Ingredient/Ingredient";
 import { useAppSelector } from "../../../services/hooks/reduxHooks";
+import { v4 } from "uuid";
 
-export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id }) => {
+export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id, from }) => {
+
+    const params = useParams();
 
     const allIngredients = useAppSelector((state) => state.apiReducer.ingredientData);
 
@@ -22,7 +25,7 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id 
 
 
     return (
-        <Link to={`/ingredient/:${id}`} className={`${styles.container}`} >
+        <Link to={`${id}`} state={{from: from}} className={`${styles.container}`} >
             <div className={`${styles.order}`}>
                 <p className={`${styles.numberOrder} text text_type_digits-default`}>{numbers}</p>
                 <p className={`${styles.timer} text text_type_main-default text_color_inactive`}>{date}</p>
@@ -32,7 +35,7 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id 
                 <div className={`${styles.ingredients}`}>
                     {ingredientsInOrder && ingredientsInOrder.length > 0 && ingredientsInOrder.map((ingredient: any, i: number) => {
                         return (
-                            <img src={ingredient.image} alt={ingredient.name} style={{ zIndex: i }} className={`${styles.image}`} />
+                            <img src={ingredient.image} alt={ingredient.name} style={{ zIndex: i }} className={`${styles.image}`}/>
                         )
                     }
                     )}
@@ -52,4 +55,5 @@ interface IProps {
     date: string;
     numbers: number | string;
     id: any;
+    from: string;
 }

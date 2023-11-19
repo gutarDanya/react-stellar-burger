@@ -1,0 +1,12 @@
+.ingredient {
+    display: flex;
+}
+
+.price {
+    margin-left: auto
+}
+
+.image {
+    width: 112px;
+    height: 56px;
+}

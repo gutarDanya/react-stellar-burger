@@ -11,12 +11,7 @@ export const Feed = () => {
 
     const dispatch = useAppDispatch()
 
-
-    const someArr2: string[] | number[] = ['1', '2', '2', '3'];
-
     const orders = useAppSelector(store => store.WSReducer.orders);
-
-    console.log(orders)
 
     const readyOrders = orders.map((order: any) => {return order.status === 'done' ? order.number : null})
     const cookingOrders = orders.map((order: any) => {return order.status !== 'done' ? order.number : null})
@@ -37,8 +32,9 @@ export const Feed = () => {
             <div className={`${styles.main}`} >
                 <div className={`${styles.orders} custom-scroll`}>
                     {orders && orders.length > 0 && orders.map((order: any, i: any) => {
+                        console.log(order)
                         return (
-                            <Order id={order._id} title={order.name} ingredients={order.ingredients} date={order.createdAt} numbers={order.number} key={uuid4()}/>
+                            <Order id={order._id} title={order.name} ingredients={order.ingredients} date={order.createdAt} numbers={order.number} from='feed' key={uuid4()}/>
                         )
                     })}
                 </div>

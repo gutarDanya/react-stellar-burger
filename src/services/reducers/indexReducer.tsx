@@ -15,6 +15,7 @@ import thunk from "redux-thunk";
 import { WSActions } from "../actions/WSAction";
 import { socketMiddleware } from "../middlewares/WSMiddleWare";
 import { WSHistroyReducer } from '../reducers/TWSHistoryReducer'
+import { WSHistoryActions } from "../actions/WSHistoryAction";
 
 
 export const rootReducer = combineReducers({
@@ -42,7 +43,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancer = composeEnhancers(
     applyMiddleware(
-        thunk, socketMiddleware(WSActions)
+        thunk, socketMiddleware(WSActions), socketMiddleware(WSHistoryActions)
     )
 )
 
