@@ -11,10 +11,11 @@ import { addBun, addMainIngredient } from '../../services/actions/ingredientsCon
 import { IngredientsConstructor } from './IngredientsConstructor/IngredientsConstructor';
 import { addCount } from '../../services/actions/apiAction';
 import { sortingIngredientsGenerator } from '../../services/actions/ingredientsConstructorAction';
+import { useAppDispatch } from '../../services/hooks/reduxHooks';
 
 function BurgerConstructor() {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const bun = useSelector((state: TSelector) => state.constructorReducer.bun);
     const main = useSelector((state: TSelector) => state.constructorReducer.main);

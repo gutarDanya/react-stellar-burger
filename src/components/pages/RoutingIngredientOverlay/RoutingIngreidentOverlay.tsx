@@ -2,7 +2,7 @@ import React from "react";
 import styles from './RoutingIngreidentOverlay.module.css';
 import { Outlet } from "react-router-dom";
 
-const RoutingIngredientOverlay = () => {
+const RoutingOverlay = () => {
     return(
         <div className={styles.overlay} >
             <Outlet />
@@ -10,4 +10,4 @@ const RoutingIngredientOverlay = () => {
     )
 }
 
-export default RoutingIngredientOverlay
+export default RoutingOverlay

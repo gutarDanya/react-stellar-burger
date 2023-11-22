@@ -4,6 +4,7 @@ import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setEmailValue, setNameValue, setPasswordValue } from "../../../../services/actions/inputAction";
+import { useAppDispatch } from "../../../../services/hooks/reduxHooks";
 
 export const Profile = () => {
 
@@ -15,7 +16,7 @@ export const Profile = () => {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     return(
         <form className={styles.inputs}>

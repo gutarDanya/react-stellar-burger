@@ -5,12 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IngredientList } from './IngredientList/IngredientList';
 import { useInView } from 'react-intersection-observer';
 import { getCurrentTab } from '../../../services/actions/scrollIngredientsAction';
+import { useAppDispatch } from '../../../services/hooks/reduxHooks';
 
 function BurgerIngredients () {
 
-    const some = useSelector((state: TReducers) => state.scrollReducer.currentTab)
-
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const {ref: bunRef, inView: bunInView} = useInView({
         threshold: 1,

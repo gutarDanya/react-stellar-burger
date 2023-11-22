@@ -6,12 +6,13 @@ import { useDispatch } from 'react-redux';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from "prop-types";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../services/hooks/reduxHooks';
 
 const modalRoot: any = document.getElementById("modalRoot");
 
 export const Modal:React.FC<IProps> = ({ handleClose, children, title }) => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const navigate = useNavigate();
 

@@ -10,12 +10,13 @@ import { sendOrder } from '../../../services/actions/orderedIngredientsAction';
 import { authUser } from '../../../services/actions/AuthAction';
 import { useNavigate } from 'react-router-dom';
 import { constructorReducer } from '../../../services/reducers/ingredientsConstructorReducer';
+import { useAppDispatch } from '../../../services/hooks/reduxHooks';
 
 export default function InfoOfOrder() {
 
     const navigate = useNavigate();
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const bun = useSelector((state: TSelector) => state.constructorReducer.bun);
     const main = useSelector((state: TSelector) => state.constructorReducer.main);

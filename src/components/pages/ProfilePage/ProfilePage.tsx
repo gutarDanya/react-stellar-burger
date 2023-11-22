@@ -3,10 +3,11 @@ import styles from './ProfilePage.module.css';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { authUser, patchDataUser, refreshToken, userLogout } from "../../../services/actions/AuthAction";
+import { useAppDispatch } from "../../../services/hooks/reduxHooks";
 
 export const ProfilePage = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const exitProfile = () => {
         dispatch(userLogout())

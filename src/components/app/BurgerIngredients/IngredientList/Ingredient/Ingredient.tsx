@@ -7,10 +7,11 @@ import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { useLocation, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../../../../services/hooks/reduxHooks";
 
 export const Ingredient:React.FC<IProps> = ({ingredient}) => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const openPopup = (ingredient: TIngredient) => {
         dispatch({type: OPEN_INFO_MODAL_WINDOW, payload: ingredient})

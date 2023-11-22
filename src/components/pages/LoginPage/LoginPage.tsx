@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from "../../../services/actions/AuthAction";
 import { useDispatch, useSelector } from "react-redux";
 import { setEmailValue, setPasswordValue } from "../../../services/actions/inputAction";
+import { useAppDispatch } from "../../../services/hooks/reduxHooks";
 
 export const LoginPage = () => {
 
@@ -12,7 +13,7 @@ export const LoginPage = () => {
     const passwordValue = useSelector((state: IReducer) => state.inputReducer.passwordValue)
 
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
@@ -29,7 +30,8 @@ export const LoginPage = () => {
     
     
     return (
-        <form className={styles.container}>
+        <form className={styles.container}
+        onSubmit={userLoginToProfile}>
             <div className={styles.window}>
             <h1 className={styles.header}>Вход</h1>
             <Input type='text'

@@ -7,10 +7,11 @@ import InfoOfIngridient from './InfoOfIngredient/InfoOfIngredinet';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getCurrentIngredientToRouting, getData } from '../../../../services/actions/apiAction';
+import { useAppDispatch } from '../../../../services/hooks/reduxHooks';
 
 export const IngredientDetails = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const { id } = useParams();
 
@@ -19,7 +20,6 @@ export const IngredientDetails = () => {
     const currentIngredient = useSelector((state: TReducers) => state.apiReducer.currentIngredient)
 
     useEffect(() => {
-        dispatch(getData())
         if (id) {
         dispatch(getCurrentIngredientToRouting(id.split(':')[1]))
         }

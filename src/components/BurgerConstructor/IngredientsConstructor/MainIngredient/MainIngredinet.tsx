@@ -4,9 +4,10 @@ import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burg
 import { useDrag, useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 import { sortingIngredientsGenerator } from '../../../../services/actions/ingredientsConstructorAction';
+import { useAppDispatch } from '../../../../services/hooks/reduxHooks';
 
 export const MainIngredient: React.FC<IProps> = ({ ingredient, deleteIngredient, index }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [, drag] = useDrag({
     type: 'constructorIngredient',

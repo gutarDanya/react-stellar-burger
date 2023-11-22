@@ -5,10 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { userRegister } from '../../../services/actions/AuthAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNameValue, setEmailValue, setPasswordValue } from '../../../services/actions/inputAction';
+import { useAppDispatch } from '../../../services/hooks/reduxHooks';
 
 export const RegistrationPage = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const nameValue = useSelector((state: IReducer) => state.inputReducer.nameValue);
@@ -33,7 +34,8 @@ export const RegistrationPage = () => {
     }
 
     return(
-        <form className={styles.container}>
+        <form className={styles.container}
+        onSubmit={register}>
             <div className={styles.window}>
             <h1 className={styles.header}>Зарегестрироваться</h1>
             <Input type='text'

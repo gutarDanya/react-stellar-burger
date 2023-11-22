@@ -29,22 +29,21 @@ import { ProtectedRoute } from "../pages/ProtectedRoute/ProtectedRoute";
 import { authUser, refreshToken } from "../../services/actions/AuthAction";
 import { Ingredient } from "./BurgerIngredients/IngredientList/Ingredient/Ingredient";
 import RoutingIngredient from "../pages/RoutringIngredient/RoutingIngredient";
-import RoutingIngredientOverlay from "../pages/RoutingIngredientOverlay/RoutingIngreidentOverlay";
+import RoutingOverlay from "../pages/RoutingIngredientOverlay/RoutingIngreidentOverlay";
 import { Feed } from "../Feed/Feed";
 import HistoryOfOrders from "../pages/HistoryOfOrders/HistroryOfOrders";
 import RoutingOrder from "../pages/RoutingOrder/RoutingOrder";
+import { useAppDispatch, useAppSelector } from "../../services/hooks/reduxHooks";
 
 
 function App() {
-  const orderModal = useSelector((state: IReducer) => state.orderedIngredientsReducer.modalOpened);
+  const orderModal = useAppSelector((state: IReducer) => state.orderedIngredientsReducer.modalOpened);
 
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
 
 
-  const dispatch = useDispatch();
-
-  const ingreidentModalOpened = useSelector((state: IReducer) => state.currentIngredientReducer.opened);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getData())
@@ -59,6 +58,8 @@ function App() {
             path='/'
             element={<MainPage />}
           />
+          <Route path='ingredients/:id'
+          element={<RoutingIngredient/>}/>
           <Route
             path='/login'
             element={<LoginPage />}
@@ -89,14 +90,6 @@ function App() {
 
           <Route path='/feed' element={<Feed />} />
           <Route path='/feed/:id' element={<RoutingOrder />} />
-
-
-          {ingreidentModalOpened
-            ? <Route path='/ingredients' element={<RoutingIngredientOverlay />} >
-              <Route path=':id' element={<RoutingIngredient />} />
-            </Route>
-            : null
-          }
 
           <Route path='*' element={<ErrorRoutingPage />} />
         </Routes>

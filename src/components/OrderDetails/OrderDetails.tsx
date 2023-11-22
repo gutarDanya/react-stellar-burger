@@ -4,11 +4,12 @@ import styles from './OrderDetails.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import done from '../../images/done.png'
 import { ingredientModalWindowOpened } from '../../services/actions/currentIngredientsToModalAction';
+import { useAppDispatch } from '../../services/hooks/reduxHooks';
 
 
 function OrderDetails() {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const order = useSelector((state: Iselector) => state.orderedIngredientsReducer.order);
 

@@ -6,6 +6,7 @@ import { removeIngredient } from '../../../services/actions/ingredientsConstruct
 import { removeCount } from '../../../services/actions/apiAction';
 import { MainIngredient } from './MainIngredient/MainIngredinet';
 import PropTypes from "prop-types";
+import { useAppDispatch } from '../../../services/hooks/reduxHooks';
 
 const initialStateOfBun = {
     "_id": null,
@@ -25,7 +26,7 @@ const initialStateOfBun = {
 
 
 export const IngredientsConstructor:React.FC<IProps> = ({ main, bun = initialStateOfBun }) => {
-    const dispatch = useDispatch();
+    const dispatch =  useAppDispatch();
 
 
     const deleteIngredient = (ingredient: IIngredient) => {

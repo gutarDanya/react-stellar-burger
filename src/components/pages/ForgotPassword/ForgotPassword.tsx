@@ -5,11 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getRequestPassword } from "../../../services/actions/forgotPasswordAction";
 import { setEmailValue } from "../../../services/actions/inputAction";
-import { useAppSelector } from "../../../services/hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../../services/hooks/reduxHooks";
 
 export const ForgotPasswordPage = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const emailValue = useAppSelector((state: IReducers) => state.inputReducer.emailValue);
@@ -24,7 +24,8 @@ export const ForgotPasswordPage = () => {
         }
 
     return (
-        <form className={styles.container}>
+        <form className={styles.container}
+        onSubmit={sendEmail}>
             <div className={styles.window}>
             <h1 className={styles.header}>Восстановление пароля</h1>
             <Input
