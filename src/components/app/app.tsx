@@ -34,6 +34,7 @@ import { Feed } from "../Feed/Feed";
 import HistoryOfOrders from "../pages/HistoryOfOrders/HistroryOfOrders";
 import RoutingOrder from "../pages/RoutingOrder/RoutingOrder";
 import { useAppDispatch, useAppSelector } from "../../services/hooks/reduxHooks";
+import { HistoryOrderDetails } from "../HistoryOrderDetails/HistoryOrderDetails";
 
 
 function App() {
@@ -94,12 +95,17 @@ function App() {
           <Route path='*' element={<ErrorRoutingPage />} />
         </Routes>
 
-        <Routes>
+        {backgroundLocation && <Routes>
           <Route path='/ingredients/:id'
             element={<Modal handleClose={closeInfoModalWindow} title={'Детали ингредиента'}>
               <IngredientDetails />
             </Modal>} />
-        </Routes>
+
+            <Route path='/feed/:id'
+            element={<Modal handleClose={closeInfoModalWindow} title=''>
+              <HistoryOrderDetails />
+            </Modal>} />
+        </Routes>}
 
 
         {orderModal
