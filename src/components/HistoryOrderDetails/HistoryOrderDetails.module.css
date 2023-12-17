@@ -1,0 +1,58 @@
+.title {
+    margin-top: 40px;
+}
+
+.statusGreen {
+    color: #0CC;
+}
+
+.status {
+    color: gray
+}
+
+.text {
+    margin-top: 60px;
+}
+
+.ingredients {
+    margin-top: 24px;
+    height: 376px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 260px;
+}
+
+.ingredientPrice {
+    display: flex;
+    margin-left: 94px;
+}
+
+.ingredient {
+    display: flex;
+}
+
+.image {
+    height: 56px;
+    width: 112px;
+}
+
+.name {
+    max-width: 320px;
+    text-wrap: wrap;
+}
+
+.footer {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.priceContainer {
+    display: flex;
+}
+
+.totalPrice {
+    margin-right: 8px;
+}

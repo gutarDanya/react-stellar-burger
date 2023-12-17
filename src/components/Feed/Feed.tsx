@@ -21,9 +21,6 @@ export const Feed = () => {
 
     useEffect(() => {
         dispatch({ type: WS_CONNECTING, payload: `${wsUrl}/orders/all` })
-        return () => {
-            dispatch({type: WS_CLOSE})
-        }
     }, [])
 
     return (

@@ -5,6 +5,7 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../services/hooks/reduxHooks";
 import { getData } from "../../services/actions/apiAction";
+import { GET_CURRENT_ORDER } from "../../services/actions/WSAction";
 
 
 export const HistoryOrderDetails = () => {
@@ -13,34 +14,68 @@ export const HistoryOrderDetails = () => {
 
     const { id } = useParams();
 
-    const numbers = '#034533'
-    const title = 'бургер говна';
-    const status = 'выполнен';
-    const ingredients: TIngredientObject[] = [];
-    const when = 'вчера';
-    const price = '50'
+    const currentOrder = useAppSelector(state => state.WSReducer.currentOrder);
+    const allIngredients = useAppSelector(state => state.apiReducer.ingredientData)
+
+    console.log(currentOrder)
+
+    useEffect(() => {
+        dispatch({ type: GET_CURRENT_ORDER, payload: id })
+    }, []);
+
+    const numbers: number = currentOrder.number;
+    const title: string = currentOrder.name;
+    const status: string = currentOrder.status === 'done' ? 'выполнен' : 'в работе';
+    const ingredientsInOrder = currentOrder.ingredients && currentOrder.ingredients.map((ingredient: string) => {
+        return allIngredients.some((ing) => { return ing._id === ingredient })
+            ? allIngredients.find((ing) => ing._id === ingredient)
+            : null
+    });
+    const ingredients: any = Array.from(new Set(ingredientsInOrder));
+
+    ingredients.forEach((ing: any) => {
+        let sum = 0;
+        ingredientsInOrder.forEach((allIng: any) => {
+            if (ing._id === allIng._id) {
+                sum = sum + 1
+            }
+            ing.sum = sum
+        })
+    })
+
+    const when = currentOrder.createdAt;
+    const price = ingredientsInOrder && ingredientsInOrder.reduce((acc: any, item: any) => {
+        return acc + item.price
+    }, 0);
 
 
     return (
         <div className={`${styles.conrainer}`}>
-            <p className={`${styles.numbers}`} >{numbers}</p>
-            <h2 className={`${styles.title}`}>{title}</h2>
-            <p className={`${status === 'выполнен' ? styles.statusGreen : styles.status}`}>{status}</p>
-            <p className={`${styles.text}`}>Состав:</p>
-            <div className={`${styles.ingredients}`}>
-                {ingredients && ingredients.length > 0 && ingredients.map((ingredient: TIngredientObject) => {
+            <p className={`${styles.numbers} text text_type_digits-default`} >#{numbers}</p>
+            <h2 className={`${styles.title}text text_type_main-medium`}>{title}</h2>
+            <p className={`${status === 'выполнен' ? styles.statusGreen : styles.status} text text_type_main-default`}>{status}</p>
+            <p className={`${styles.text} text text_type_main-medium`}>Состав:</p>
+            <div className={`${styles.ingredients} custom-scroll`}>
+                {ingredients && ingredients.length > 0 && ingredients.map((ingredient: any) => {
                     return (
-                        <img src={ingredient.image} className={styles.image} />
+                        <div className={styles.ingredient}>
+                            <img src={ingredient.image} className={styles.image} />
+                            <p className={`${styles.name} text text_type_main-default`}>{ingredient.name}</p>
+                            <div className={styles.ingredientPrice}>
+                                <p className={`${styles.price} text text_type_digits-default`}>{ingredient.sum} X {ingredient.price}</p>
+                                <CurrencyIcon type='primary' />
+                            </div>
+                        </div>
                     )
                 })}
-                <footer className={`${styles.footer}`}>
-                    <p className={`${styles.date}`}>{when}</p>
-                    <div className={`${styles.priceContainer}`}>
-                        <p className={`${styles.totalPrice}`}>{price}</p>
-                        <CurrencyIcon type='primary' />
-                    </div>
-                </footer>
             </div>
+            <footer className={`${styles.footer}`}>
+                <p className={`${styles.date} text text_type_main-default text_color_inactive`}>{when}</p>
+                <div className={`${styles.priceContainer}`}>
+                    <p className={`${styles.totalPrice} text text_type_digits-default`}>{price}</p>
+                    <CurrencyIcon type='primary' />
+                </div>
+            </footer>
         </div>
     )
 }

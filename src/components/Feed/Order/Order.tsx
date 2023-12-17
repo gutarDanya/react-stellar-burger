@@ -2,14 +2,14 @@ import React from "react";
 import styles from './Order.module.css';
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { TIngredientObject } from "../../../utils/constantsOfTS";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Ingredient } from "../../app/BurgerIngredients/IngredientList/Ingredient/Ingredient";
 import { useAppSelector } from "../../../services/hooks/reduxHooks";
 import { v4 } from "uuid";
 
 export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id, from }) => {
 
-    const params = useParams();
+    const location = useLocation();
 
     const allIngredients = useAppSelector((state) => state.apiReducer.ingredientData);
 
@@ -25,7 +25,7 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id,
 
 
     return (
-        <Link to={`${id}`} state={{from: from}} className={`${styles.container}`} >
+        <Link to={`${id}`} state={{from: from, backgroundLocation: location}} className={`${styles.container}`} >
             <div className={`${styles.order}`}>
                 <p className={`${styles.numberOrder} text text_type_digits-default`}>{numbers}</p>
                 <p className={`${styles.timer} text text_type_main-default text_color_inactive`}>{date}</p>

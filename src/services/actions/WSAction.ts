@@ -5,6 +5,7 @@ export const WS_OPEN: 'WS_OPEN' = 'WS_OPEN';
 export const WS_CLOSE: 'WS_CLOSE' = 'WS_CLOSE';
 export const WS_MESSAGE: 'WS_MESSAGE' = 'WS_MESSAGE';
 export const WS_ERROR: 'WS_ERROR' = 'WS_ERROR';
+export const GET_CURRENT_ORDER: 'GET_CURRENT_ORDER' = 'GET_CURRENT_ORDER'
 
 export const WSActions = {
     WS_CONNECT,
@@ -13,7 +14,8 @@ export const WSActions = {
     WS_OPEN,
     WS_CLOSE,
     WS_MESSAGE,
-    WS_ERROR
+    WS_ERROR,
+    GET_CURRENT_ORDER
 }
 
 interface IConnecting {
@@ -47,10 +49,16 @@ interface IConnect {
     readonly type: typeof WS_CONNECT;
 }
 
+interface IGetCurrentOrder {
+    readonly type: typeof GET_CURRENT_ORDER;
+    payload: string | number
+}
+
 export type TWSActions = IConnecting |
 IConnect |
 IOpen |
 IMessage |
 IError |
 IClose |
-IDissconnect
+IDissconnect |
+IGetCurrentOrder
