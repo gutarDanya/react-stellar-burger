@@ -1,21 +1,22 @@
-.acc {
+.container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-left: auto;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border-radius: 40px;
     width: 167px;
     height: 56px;
     border: 0;
     margin-left: auto;
+    text-decoration: none;
 }
 
-.text {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    margin-left: 8px;
-    color: #8585AD;
+.active {
+    color: white;
+}
+
+.inactive {
+    color: #8585AD
 }

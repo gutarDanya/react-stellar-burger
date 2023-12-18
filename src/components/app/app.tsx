@@ -1,4 +1,5 @@
 import styles from "./app.module.css";
+import { useState } from "react";
 
 import { ForgotPasswordPage } from "../pages/ForgotPassword/ForgotPassword";
 import {
@@ -44,6 +45,7 @@ function App() {
   const backgroundLocation = location.state?.backgroundLocation;
 
 
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -60,7 +62,7 @@ function App() {
             element={<MainPage />}
           />
           <Route path='ingredients/:id'
-          element={<RoutingIngredient/>}/>
+            element={<RoutingIngredient />} />
           <Route
             path='/login'
             element={<LoginPage />}
@@ -97,23 +99,30 @@ function App() {
 
         {backgroundLocation && <Routes>
           <Route path='/ingredients/:id'
-            element={<Modal handleClose={closeInfoModalWindow} title={'Детали ингредиента'}>
+            element={
+            <Modal title={'Детали ингредиента'}>
               <IngredientDetails />
             </Modal>} />
 
-            <Route path='/feed/:id'
-            element={<Modal handleClose={closeInfoModalWindow} title=''>
+          <Route path='/feed/:id'
+            element={
+            <Modal title=''>
               <HistoryOrderDetails />
             </Modal>} />
+
+            <Route path='/profile/:order-history/:id'
+            element={
+              <Modal title="">
+                <HistoryOrderDetails />
+              </Modal>
+            } />
+
+          <Route path='/finalOrder'
+            element={
+            <Modal title=''>
+              <OrderDetails />
+            </Modal>} />
         </Routes>}
-
-
-        {orderModal
-          ? <Modal handleClose={closeOrderedModal} title={''}>
-            <OrderDetails />
-          </Modal>
-          : null
-        }
       </pre>
     </div>
   );

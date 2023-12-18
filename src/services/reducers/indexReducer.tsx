@@ -16,6 +16,7 @@ import { WSActions } from "../actions/WSAction";
 import { socketMiddleware } from "../middlewares/WSMiddleWare";
 import { WSHistroyReducer } from '../reducers/TWSHistoryReducer'
 import { WSHistoryActions } from "../actions/WSHistoryAction";
+import { headerReducer } from "./headerReducer";
 
 
 export const rootReducer = combineReducers({
@@ -30,7 +31,8 @@ export const rootReducer = combineReducers({
     constructorReducer,
     orderedIngredientsReducer,
     scrollReducer,
-    WSHistroyReducer
+    WSHistroyReducer,
+    headerReducer
 });
 
 declare global {

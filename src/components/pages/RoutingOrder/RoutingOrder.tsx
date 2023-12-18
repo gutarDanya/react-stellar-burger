@@ -4,56 +4,72 @@ import { Ingredient } from "../../app/BurgerIngredients/IngredientList/Ingredien
 import { RouterOrderIngredient } from "./RouterOrderIngredient/RouterOrderIngredient";
 import { useLocation, useParams } from "react-router-dom";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useAppSelector } from "../../../services/hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../../services/hooks/reduxHooks";
+import { WS_CLOSE, WS_CONNECTING } from "../../../services/actions/WSAction";
+import { WS_CONNECTING as WS_HISTORY_CONNECTING, WS_CLOSE as WS_HISTORY_CLOSE } from "../../../services/actions/WSHistoryAction";
+import { getData } from "../../../services/actions/apiAction";
+import { wsUrl } from "../../../utils/constants";
+import { getCookie } from "../../../utils/auth";
 
 const RoutingOrder = () => {
 
     const { id } = useParams();
+    const dispatch = useAppDispatch();
 
-    console.log(useParams())
-
-    const { from } = useLocation().state
-
-    console.log(from)
+    const from = useLocation().pathname;
 
     const allIngredients = useAppSelector(state => state.apiReducer.ingredientData);
     const historyOrders = useAppSelector(store => store.WSHistroyReducer.orders);
     const feedOrders = useAppSelector(store => store.WSReducer.orders);
 
-    const orders = from === 'feed' ? feedOrders : historyOrders;
+    const orders = from.includes('feed') ? feedOrders : historyOrders;
 
     const currentOrder = orders.find((order: any) => {
         return order._id === id
     });
 
-    let numbers: string | number = currentOrder.number;
-    let title: string = currentOrder.name;
-    let status: string = currentOrder.status === 'done' ? 'готов' : 'готовится';
-    let date: string = currentOrder.createdAt;
-    let ingredients: any = currentOrder.ingredients
+    const numbers = currentOrder && currentOrder.number;
+    const title = currentOrder && currentOrder.name;
+    const status = currentOrder && currentOrder.status === 'done' ? 'готов' : 'готовится';
+    const date = currentOrder && currentOrder.createdAt;
+    const ingredients: any = currentOrder && currentOrder.ingredients;
 
-    console.log(currentOrder, feedOrders)
-
-    useEffect(() => {
-         numbers = currentOrder.number;
-         title = currentOrder.name;
-         status = currentOrder.status === 'done' ? 'готов' : 'готовится';
-         date = currentOrder.createdAt;
-        ingredients = currentOrder.ingredients
-    }, [orders])
-
-    const ingredientsInOrder = ingredients && ingredients.map((ingredient: string, i: number) => {
+    const notSortedIngredientsInOrder = ingredients && ingredients.map((ingredient: string, i: number) => {
         return allIngredients.some((ing) => { return ing._id === ingredient })
             ? allIngredients.find((ing) => ing._id === ingredient)
             : null
     });
 
-    const totalPrice = ingredientsInOrder.reduce((acc: any, item: any) => {
-        
+    const ingredientsInOrder = Array.from(new Set(notSortedIngredientsInOrder))
+
+    const totalPrice = ingredientsInOrder && ingredientsInOrder.reduce((acc: any, item: any) => {
+
         return item.type === 'bun'
-        ? acc + item.price * 2
-        : acc + item.price
-    }, 0)
+            ? acc + item.price * 2
+            : acc + item.price
+    }, 0) 
+
+    ingredientsInOrder.forEach((ing: any) => {
+        let sum = 0;
+        notSortedIngredientsInOrder.forEach((allIng: any) => {
+            if (ing._id === allIng._id) {
+                sum = sum + 1
+            }
+            ing.sum = sum
+        })
+    })
+    
+    useEffect(() => {
+        if (from.includes('feed')) {
+            dispatch({type: WS_CONNECTING, payload: `${wsUrl}/orders/all`});
+        } else {
+            dispatch({type: WS_HISTORY_CONNECTING, payload: `${wsUrl}/orders?token=${getCookie('accessToken')}`});
+        }
+        return () => {
+            dispatch({type: WS_CLOSE})
+            dispatch({type: WS_HISTORY_CLOSE})
+        }
+    }, []);
 
     return (
         <div className={`${styles.page}`}>
@@ -65,7 +81,7 @@ const RoutingOrder = () => {
                 <div className={`${styles.ingredients} custom-scroll`}>
                     {ingredientsInOrder && ingredientsInOrder.length > 0 && ingredientsInOrder.map((ingredient: any) => {
                         return (
-                            <RouterOrderIngredient image={ingredient.image} name={ingredient.name} price={ingredient.price} />
+                            <RouterOrderIngredient image={ingredient.image} name={ingredient.name} price={ingredient.price} sum={ingredient.sum}/>
                         )
                     })}
                 </div>

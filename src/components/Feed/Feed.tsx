@@ -21,6 +21,9 @@ export const Feed = () => {
 
     useEffect(() => {
         dispatch({ type: WS_CONNECTING, payload: `${wsUrl}/orders/all` })
+        return () => {
+            dispatch({type: WS_CLOSE})
+        }
     }, [])
 
     return (
@@ -29,7 +32,6 @@ export const Feed = () => {
             <div className={`${styles.main}`} >
                 <div className={`${styles.orders} custom-scroll`}>
                     {orders && orders.length > 0 && orders.map((order: any, i: any) => {
-                        console.log(order)
                         return (
                             <Order id={order._id} title={order.name} ingredients={order.ingredients} date={order.createdAt} numbers={order.number} from='feed' key={uuid4()}/>
                         )

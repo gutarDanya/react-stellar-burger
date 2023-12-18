@@ -5,7 +5,7 @@ import { TIngredientObject } from "../../../utils/constantsOfTS";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { Ingredient } from "../../app/BurgerIngredients/IngredientList/Ingredient/Ingredient";
 import { useAppSelector } from "../../../services/hooks/reduxHooks";
-import { v4 } from "uuid";
+import { v4 as uuid4 } from "uuid";
 
 export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id, from }) => {
 
@@ -35,7 +35,7 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id,
                 <div className={`${styles.ingredients}`}>
                     {ingredientsInOrder && ingredientsInOrder.length > 0 && ingredientsInOrder.map((ingredient: any, i: number) => {
                         return (
-                            <img src={ingredient.image} alt={ingredient.name} style={{ zIndex: i }} className={`${styles.image}`}/>
+                            <img src={ingredient.image} alt={ingredient.name} style={{ zIndex: i }} className={`${styles.image}`} key={uuid4()}/>
                         )
                     }
                     )}

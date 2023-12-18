@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../services/hooks/reduxHooks";
 import { getData } from "../../services/actions/apiAction";
 import { GET_CURRENT_ORDER } from "../../services/actions/WSAction";
+import { v4 as uuid4 } from 'uuid'
 
 
 export const HistoryOrderDetails = () => {
@@ -56,9 +57,9 @@ export const HistoryOrderDetails = () => {
             <p className={`${status === 'выполнен' ? styles.statusGreen : styles.status} text text_type_main-default`}>{status}</p>
             <p className={`${styles.text} text text_type_main-medium`}>Состав:</p>
             <div className={`${styles.ingredients} custom-scroll`}>
-                {ingredients && ingredients.length > 0 && ingredients.map((ingredient: any) => {
+                {ingredients && ingredients.length > 0 && ingredients.map((ingredient: any, key: number) => {
                     return (
-                        <div className={styles.ingredient}>
+                        <div className={styles.ingredient} key={uuid4()}>
                             <img src={ingredient.image} className={styles.image} />
                             <p className={`${styles.name} text text_type_main-default`}>{ingredient.name}</p>
                             <div className={styles.ingredientPrice}>

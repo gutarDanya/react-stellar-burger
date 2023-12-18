@@ -15,7 +15,7 @@ const initialState: IinitialState = {
     ingredientData: [],
     getIngredientsFailed: false,
     getIngredientsRequest: false,
-    currentIngredient: {}
+    currentIngredient: undefined
 }
 
 export const apiReducer = (state = initialState, action: TApiActions) : IinitialState => {
@@ -77,5 +77,5 @@ export interface IinitialState{
     ingredientData: Array<TIngredientObject>;
     getIngredientsFailed: boolean;
     getIngredientsRequest: boolean;
-    currentIngredient: TIngredientObject | {} | undefined
+    currentIngredient: TIngredientObject | undefined
 }

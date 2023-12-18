@@ -12,11 +12,18 @@
     line-height: 24px;
     background-color: rgba(0,0,0,0);
     border: 0;
-    color: white;
     text-decoration: none;
 }
 
 .burger {
     height: 24px;
     width: 24px;
+}
+
+.active {
+    color: white;
+}
+
+.inactive {
+    color: #8585AD
 }

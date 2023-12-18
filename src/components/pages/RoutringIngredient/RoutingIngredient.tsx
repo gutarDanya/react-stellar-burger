@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import InfoOfIngridient from "../../app/BurgerIngredients/ModalInfoIngredients/InfoOfIngredient/InfoOfIngredinet";
 import { getCurrentIngredientToRouting, getData } from "../../../services/actions/apiAction";
 import { INGREDIENT_MODAL_WINDOW_OPENED, closeInfoModalWindow, ingredientModalWindowOpened } from "../../../services/actions/currentIngredientsToModalAction";
-import { useAppDispatch } from "../../../services/hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../../services/hooks/reduxHooks";
 
 const RoutingIngredient = () => {
 
@@ -13,15 +13,15 @@ const RoutingIngredient = () => {
     const dispatch = useAppDispatch();
 
     const { id } = useParams();
+
+    const currentIngredient = useAppSelector(state => state.apiReducer.currentIngredient);
     
     useEffect(() => {
         id
         ? dispatch(getCurrentIngredientToRouting(id.split(':')[1]))
         : console.log(id)
-        dispatch({type: INGREDIENT_MODAL_WINDOW_OPENED})
-    }, [])
+    }, [currentIngredient]) 
 
-    const currentIngredient = useSelector((state: IReducer) => state.apiReducer.currentIngredient)
     
         return(
             currentIngredient

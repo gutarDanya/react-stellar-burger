@@ -1,3 +1,8 @@
+.container {
+    text-decoration: none;
+    margin-top: 15px;
+}
+
 .sheets {
     display:flex;
     flex-direction: row;
@@ -6,6 +11,14 @@
     background-color: rgba(0,0,0,0);
     border: 0;
     border-radius: 40%;
+    color: #8585AD;
+}
+
+.active {
+    color: white;
+}
+
+.inactive {
     color: #8585AD;
 }
 

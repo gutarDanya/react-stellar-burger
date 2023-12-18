@@ -27,6 +27,7 @@
 .ingredientPrice {
     display: flex;
     margin-left: 94px;
+    margin-left: auto;
 }
 
 .ingredient {

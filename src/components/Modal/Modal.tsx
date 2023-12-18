@@ -10,19 +10,14 @@ import { useAppDispatch } from '../../services/hooks/reduxHooks';
 
 const modalRoot: any = document.getElementById("modalRoot");
 
-export const Modal:React.FC<IProps> = ({ handleClose, children, title }) => {
-
-    const dispatch = useAppDispatch();
+export const Modal:React.FC<IProps> = ({ children, title }) => {
 
     const navigate = useNavigate();
 
     const location = useLocation();
 
     const closePopup = () : void => {
-        dispatch(handleClose())
-        if (location.state.modal === 'ingredient') {
-            navigate(-1)
-        }
+        navigate(-1)
     }
 
     function closePopupByKey(evt: any) {
@@ -59,6 +54,5 @@ export const Modal:React.FC<IProps> = ({ handleClose, children, title }) => {
 }
 
 interface IProps {
-    handleClose: any;
     title?: string;
 }

@@ -25,8 +25,8 @@ export default function InfoOfOrder() {
 
     const openPopup = () => {
        if (userLogined && bun) {
-        dispatch({ type: OPEN_MODAL_WINDOW });
         dispatch(sendOrder([bun, ...main]));
+        navigate('/finalOrder')
        } else {
         navigate('/login')
        }
