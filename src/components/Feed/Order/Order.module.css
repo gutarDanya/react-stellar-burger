@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 536px;
+    background-color: #1C1C21;
+    border-radius: 40px;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.container:first-of-type {
+    margin-top: 0;
+}
+
+.order {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    margin: 24px;
+    text-wrap: wrap
+}
+
+.ingredients {
+    display: flex;
+    width: calc(100% - 300px);
+}
+
+.image {
+    width: 112px;
+    height: 56px;
+    margin-left: -70px
+}
+
+.image:first-of-type {
+    margin-left: 24px
+}
+
+.price {
+    display: flex;
+    margin-right: 24px;
+}

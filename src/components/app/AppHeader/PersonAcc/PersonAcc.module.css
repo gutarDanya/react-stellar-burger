@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 40px;
+    width: 167px;
+    height: 56px;
+    border: 0;
+    margin-left: auto;
+    text-decoration: none;
+}
+
+.active {
+    color: white;
+}
+
+.inactive {
+    color: #8585AD
+}

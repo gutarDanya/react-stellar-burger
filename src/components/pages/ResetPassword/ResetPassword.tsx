@@ -1,0 +1,60 @@
+import React from 'react';
+import styles from './ResetPassword.module.css';
+import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPasswordValue, setResetMessage } from '../../../services/actions/inputAction';
+import { ResetPassword } from '../../../services/actions/AuthAction';
+import { useAppDispatch } from '../../../services/hooks/reduxHooks';
+
+export const ResetPasswordPage = () => {
+
+    const dispatch = useAppDispatch();
+
+    const passwordValue = useSelector((state: IReducer) => state.inputReducer.passwordValue);
+    const resetMessage = useSelector((state: IReducer) => state.inputReducer.resetMessage);
+
+    const handleSubmit = () => {
+        dispatch(ResetPassword({password: passwordValue, token: resetMessage}))
+    }
+
+    return(
+        <form className={styles.container}
+        onSubmit={handleSubmit}>
+            <div className={styles.window}>
+            <h1 className={styles.header}>Восстановление пароля</h1>
+            <Input
+            type='text'
+            placeholder="Введите новый пароль"
+            name='new-password'
+            error={false}
+            size='default'
+            extraClass="ml-1"
+            icon='ShowIcon'
+            value={passwordValue}
+            onChange={e => dispatch(setPasswordValue(e.target.value))}
+             />
+             <Input
+            type='text'
+            placeholder="Введите код из письма"
+            name='taken-password'
+            error={false}
+            size='default'
+            extraClass="ml-1"
+            value={resetMessage}
+            onChange={e => dispatch(setResetMessage(e.target.value))}
+             />
+             <Button
+             htmlType='submit'
+             size='small'
+             onClick={handleSubmit}>
+                Сохранить
+             </Button>
+             <p className={styles.text}>Вспомнили пароль?</p>
+             </div>
+        </form>
+    )
+}
+
+interface IReducer {
+    inputReducer: any;
+}

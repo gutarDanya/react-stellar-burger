@@ -1,0 +1,49 @@
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    min-width: 640px;
+}
+
+.title {
+    margin-top: 40px;
+    text-wrap: wrap;
+}
+
+.order {
+    margin-left:auto;
+    margin-right: auto
+}
+
+.status {
+    margin-top: 12px;
+}
+
+.statusGreen {
+    color: #0CC;
+    margin-top: 12px;
+}
+
+.subTitle {
+    margin: 60px auto 24px 0;
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: none;
+}
+
+.footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,40 @@
+.container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 32px auto;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    text-wrap: wrap;
+    margin-top: 16px;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.text {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.numbers {
+    font-size: 28px;
+    line-height: 24px;
+    font-weight: 400;
+}
