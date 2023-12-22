@@ -24,9 +24,9 @@ export const HistoryOrderDetails = () => {
         dispatch({ type: GET_CURRENT_ORDER, payload: id })
     }, []);
 
-    const numbers: number = currentOrder.number;
-    const title: string = currentOrder.name;
-    const status: string = currentOrder.status === 'done' ? 'выполнен' : 'в работе';
+    const numbers: number = currentOrder.number || 1488;
+    const title: string = currentOrder.name || '';
+    const status: string = currentOrder.status === 'done' ? 'выполнен' : 'в работе' || '';
     const ingredientsInOrder = currentOrder.ingredients && currentOrder.ingredients.map((ingredient: string) => {
         return allIngredients.some((ing) => { return ing._id === ingredient })
             ? allIngredients.find((ing) => ing._id === ingredient)
