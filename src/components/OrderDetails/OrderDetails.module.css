@@ -1,0 +1,41 @@
+.popup {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.picture {
+    margin: auto;
+    width: 120px;
+    height: 120px;
+}
+
+.order {
+    font-size: 144px;
+    line-height: 120px;
+    font-weight: 400;
+    margin: 16px auto 0;
+}
+
+.title {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+    margin: 32px auto 60px;
+}
+
+.wait {
+    margin: 60px auto 0;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.bluredText {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 8px auto 120px;
+    color: #8585AD;
+}

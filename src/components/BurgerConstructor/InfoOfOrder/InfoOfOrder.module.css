@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    margin-top: 40px;
+    width: calc(100% - 32px);
+    height: 64px;
+    justify-content: flex-end;
+}
+
+.total {
+    margin: auto 40px auto auto;
+    font-size: 48px;
+    line-height: 36px;
+    font-weight: 400;
+    font-family: 'JetBrains Mono';
+}
