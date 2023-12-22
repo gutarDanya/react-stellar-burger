@@ -18,7 +18,7 @@ export const Profile = () => {
     const dispatch = useDispatch();
 
     return(
-        <div className={styles.inputs}>
+        <form className={styles.inputs}>
             <Input
             type='text'
             placeholder="Имя"
@@ -55,7 +55,7 @@ export const Profile = () => {
             value={passwordValue}
             onChange={e => dispatch(setPasswordValue(e.target.value))}
              />
-            </div>
+            </form>
     )
 }
 

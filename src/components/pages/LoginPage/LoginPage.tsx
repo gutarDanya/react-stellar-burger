@@ -29,7 +29,7 @@ export const LoginPage = () => {
     
     
     return (
-        <main className={styles.container}>
+        <form className={styles.container}>
             <div className={styles.window}>
             <h1 className={styles.header}>Вход</h1>
             <Input type='text'
@@ -62,7 +62,7 @@ export const LoginPage = () => {
             <p className={styles.text}>Вы - новый пользователь? <Link to='/registration'>Зарегестрироваться</Link></p>
             <p className={styles.text}>Забыли пароль? <Link to='/forgot-password'>Восстановить пароль</Link></p>
             </div>
-        </main>
+        </form>
     )
 }
 

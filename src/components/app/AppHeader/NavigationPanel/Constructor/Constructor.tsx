@@ -6,7 +6,7 @@ import {BurgerIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 
 function Constructor () {
     return (
-        <Link to='/' className={styles.constructor}>
+        <Link to='/' className={`${styles.constructor}`}>
             <BurgerIcon type='primary'/> Конструктор
         </Link>
     )
