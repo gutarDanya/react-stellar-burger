@@ -1,5 +1,4 @@
 import styles from "./app.module.css";
-import { useState } from "react";
 
 import { ForgotPasswordPage } from "../pages/ForgotPassword/ForgotPassword";
 import {
@@ -9,12 +8,9 @@ import {
 } from 'react-router-dom'
 
 import AppHeader from './AppHeader/AppHeader'
-import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../../services/actions/apiAction";
 import { IngredientDetails } from "./BurgerIngredients/ModalInfoIngredients/IngredientDetails";
 import OrderDetails from "../OrderDetails/OrderDetails";
-import { closeInfoModalWindow } from "../../services/actions/currentIngredientsToModalAction";
-import { closeOrderedModal } from "../../services/actions/orderedIngredientsAction";
 import { ErrorRoutingPage } from "../ErrorRoutingPage/ErrorRoutingPage";
 
 
@@ -27,10 +23,7 @@ import { ProfilePage } from "../pages/ProfilePage/ProfilePage";
 import { MainPage } from "../pages/MainPage/MainPage";
 import { Profile } from "../pages/ProfilePage/Profile/Profile";
 import { ProtectedRoute } from "../pages/ProtectedRoute/ProtectedRoute";
-import { authUser, refreshToken } from "../../services/actions/AuthAction";
-import { Ingredient } from "./BurgerIngredients/IngredientList/Ingredient/Ingredient";
 import RoutingIngredient from "../pages/RoutringIngredient/RoutingIngredient";
-import RoutingOverlay from "../pages/RoutingIngredientOverlay/RoutingIngreidentOverlay";
 import { Feed } from "../Feed/Feed";
 import HistoryOfOrders from "../pages/HistoryOfOrders/HistroryOfOrders";
 import RoutingOrder from "../pages/RoutingOrder/RoutingOrder";
@@ -117,7 +110,7 @@ function App() {
               </Modal>
             } />
 
-          <Route path='/finalOrder'
+          <Route path='/finalorder'
             element={
             <Modal title=''>
               <OrderDetails />

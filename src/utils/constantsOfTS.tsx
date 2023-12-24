@@ -5,7 +5,7 @@ export type TIngredientObject = {
     fat: number | undefined;
     carbohydrates: number | undefined;
     calories: number | undefined;
-    price: number | undefined;
+    price: number | 0;
     image: string | undefined;
     image_mobile: string | undefined;
     image_large: string | undefined;

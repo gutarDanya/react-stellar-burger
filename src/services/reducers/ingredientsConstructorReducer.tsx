@@ -87,6 +87,6 @@ export const constructorReducer = (state = initialState, action: TIngredientCons
 
 interface IInitialState {
     allIngredients: TIngredientObject[];
-    bun: TIngredientObject | {};
+    bun: any;
     main: TIngredientObject[];
 }

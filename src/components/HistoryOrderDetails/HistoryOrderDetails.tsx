@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import styles from './HistoryOrderDetails.module.css'
-import { TIngredientObject } from "../../utils/constantsOfTS";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../services/hooks/reduxHooks";
-import { getData } from "../../services/actions/apiAction";
 import { GET_CURRENT_ORDER } from "../../services/actions/WSAction";
 import { v4 as uuid4 } from 'uuid'
 
@@ -51,7 +49,7 @@ export const HistoryOrderDetails = () => {
 
 
     return (
-        <div className={`${styles.conrainer}`}>
+        <div className={`${styles.container}`}>
             <p className={`${styles.numbers} text text_type_digits-default`} >#{numbers}</p>
             <h2 className={`${styles.title}text text_type_main-medium`}>{title}</h2>
             <p className={`${status === 'выполнен' ? styles.statusGreen : styles.status} text text_type_main-default`}>{status}</p>

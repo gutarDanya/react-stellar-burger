@@ -1,9 +1,7 @@
 import React from "react";
 import styles from './Order.module.css';
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { TIngredientObject } from "../../../utils/constantsOfTS";
-import { Link, useLocation, useParams } from "react-router-dom";
-import { Ingredient } from "../../app/BurgerIngredients/IngredientList/Ingredient/Ingredient";
+import { Link, useLocation } from "react-router-dom";
 import { useAppSelector } from "../../../services/hooks/reduxHooks";
 import { v4 as uuid4 } from "uuid";
 
@@ -11,7 +9,7 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id,
 
     const location = useLocation();
 
-    const allIngredients = useAppSelector((state) => state.apiReducer.ingredientData);
+    const allIngredients = useAppSelector(state => state.apiReducer.ingredientData);
 
     const ingredientsInOrder = ingredients && ingredients.map((ingredient: string, i: number) => {
         return allIngredients.some((ing) => { return ing._id === ingredient })
@@ -34,6 +32,7 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id,
             <div className={`${styles.details}`}>
                 <div className={`${styles.ingredients}`}>
                     {ingredientsInOrder && ingredientsInOrder.length > 0 && ingredientsInOrder.map((ingredient: any, i: number) => {
+                        console.log(i)
                         return (
                             <img src={ingredient.image} alt={ingredient.name} style={{ zIndex: i }} className={`${styles.image}`} key={uuid4()}/>
                         )

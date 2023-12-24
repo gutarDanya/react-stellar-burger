@@ -7,6 +7,7 @@ import { removeCount } from '../../../services/actions/apiAction';
 import { MainIngredient } from './MainIngredient/MainIngredinet';
 import PropTypes from "prop-types";
 import { useAppDispatch } from '../../../services/hooks/reduxHooks';
+import { TIngredientObject } from '../../../utils/constantsOfTS';
 
 const initialStateOfBun = {
     "_id": null,
@@ -29,7 +30,7 @@ export const IngredientsConstructor:React.FC<IProps> = ({ main, bun = initialSta
     const dispatch =  useAppDispatch();
 
 
-    const deleteIngredient = (ingredient: IIngredient) => {
+    const deleteIngredient = (ingredient: TIngredientObject) => {
         dispatch(removeIngredient(ingredient))
         dispatch(removeCount(ingredient))
     }
@@ -45,7 +46,7 @@ export const IngredientsConstructor:React.FC<IProps> = ({ main, bun = initialSta
                 isLocked={true}
             />
             : null}
-        {main && main.length > 0 && main.map((ingredient: IMain, i) => {
+        {main && main.length > 0 && main.map((ingredient: TIngredientObject, i) => {
             return (
                     <MainIngredient key={ingredient.superId} ingredient={ingredient} deleteIngredient={deleteIngredient} index={i} />
             )
@@ -64,31 +65,6 @@ export const IngredientsConstructor:React.FC<IProps> = ({ main, bun = initialSta
 }
 
 interface IProps {
-    main?: IMain[];
-    bun?: IBun;
-};
-
-interface IBun extends IIngredient {
-    type: 'bun';
-};
-
-interface IMain extends IIngredient {
-    type: 'main';
-};
-
-interface IIngredient {
-    _id: string | undefined;
-    name: string | undefined;
-    proteins: number | undefined;
-    fat: number | undefined;
-    carbohydrates: number | undefined;
-    calories: number | undefined;
-    price: number | undefined;
-    image: string | undefined;
-    image_mobile: string | undefined;
-    image_large: string | undefined;
-    __v: number;
-    main?: string | undefined;
-    superId: string | undefined;
-    type: 'bun' | 'main'
+    main?: TIngredientObject[];
+    bun?: TIngredientObject;
 };

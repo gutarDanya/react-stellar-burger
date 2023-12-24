@@ -1,20 +1,19 @@
 import { v4 as uuid4 } from 'uuid'
 import { TIngredientObject } from '../../utils/constantsOfTS';
-import { IBun, IMain } from '../../components/BurgerConstructor/InfoOfOrder/InfoOfOrder';
 export const GET_ALL_INGREDIENTS = 'GET_ALL_INGREDIENTS';
 export const REMOVE_INGREDIENT_FROM_CONSTRUCTOR = 'REMOVE_INGREDIENT_FROM_CONSTRUCTOR';
 export const ADD_BUN_TO_CONSTRUCTOR = 'ADD_BUN_TO_CONSTRUCTOR';
 export const ADD_MAIN_TO_CONSTRUCTOR = 'ADD_MAIN_TO_CONSTRUCTOR';
 export const SORTING_INGREDIENTS = 'SORTING_INGREDIENTS';
 
-export const addBun = (bun: IBun) => {
+export const addBun = (bun: TIngredientObject) => {
     return ({type: ADD_BUN_TO_CONSTRUCTOR, payload: {
         ...bun, 
         superId: uuid4()
     }})
 }
 
-export const addMainIngredient = (ingredient: IMain) => {
+export const addMainIngredient = (ingredient: TIngredientObject) => {
 
     return ({type: ADD_MAIN_TO_CONSTRUCTOR, payload: {
         ...ingredient,

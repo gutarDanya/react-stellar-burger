@@ -5,6 +5,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 import { sortingIngredientsGenerator } from '../../../../services/actions/ingredientsConstructorAction';
 import { useAppDispatch } from '../../../../services/hooks/reduxHooks';
+import { TIngredientObject } from '../../../../utils/constantsOfTS';
 
 export const MainIngredient: React.FC<IProps> = ({ ingredient, deleteIngredient, index }) => {
   const dispatch = useAppDispatch();
@@ -80,21 +81,6 @@ export const MainIngredient: React.FC<IProps> = ({ ingredient, deleteIngredient,
 
 interface IProps {
   index: number;
-  ingredient: IIngredient;
+  ingredient: TIngredientObject;
   deleteIngredient: any;
 }
-
-interface IIngredient {
-  _id: string | undefined;
-  name: string | undefined;
-  proteins: number | undefined;
-  fat: number | undefined;
-  carbohydrates: number | undefined;
-  calories: number | undefined;
-  price: number | undefined;
-  image: string | undefined;
-  image_mobile?: string | undefined;
-  image_large?: string | undefined;
-  __v: number | undefined;
-  type: string | undefined;
-};

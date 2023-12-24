@@ -3,7 +3,7 @@ import { COLLECT_ORDER, OPEN_MODAL_WINDOW, CLOSE_MODAL_WINDOW, SEND_ORDER } from
 import { TOrderedIngredientActions } from "../actions/orderedIngredientsAction";
 import { TIngredientObject } from "../../utils/constantsOfTS";
 
-const initialState: IInitialState = {
+const initialState: TInitialState = {
     modalOpened: false,
     orderedIngredinets: [],
     order: 'number of order'
@@ -40,8 +40,8 @@ export const orderedIngredientsReducer = (state = initialState, action: TOrdered
     }
 }
 
-interface IInitialState {
+type TInitialState = {
     modalOpened: boolean;
     orderedIngredinets: TIngredientObject[];
-    order: string;
+    order: any;
 }
