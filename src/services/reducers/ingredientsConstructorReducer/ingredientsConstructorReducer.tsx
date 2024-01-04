@@ -1,11 +1,11 @@
-import { TIngredientObject } from '../../utils/constantsOfTS';
+import { TIngredientObject } from '../../../utils/constantsOfTS';
 import {
     ADD_BUN_TO_CONSTRUCTOR,
     ADD_MAIN_TO_CONSTRUCTOR,
     REMOVE_INGREDIENT_FROM_CONSTRUCTOR,
     SORTING_INGREDIENTS
-} from '../actions/ingredientsConstructorAction';
-import { TIngredientConstructorActions } from '../actions/ingredientsConstructorAction';
+} from '../../actions/ingredientsConstructorAction';
+import { TIngredientConstructorActions } from '../../actions/ingredientsConstructorAction';
 
 const initialState: IInitialState = {
     allIngredients: [],

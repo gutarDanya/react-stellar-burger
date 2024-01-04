@@ -1,7 +1,7 @@
 import { string } from "prop-types";
-import { COLLECT_ORDER, OPEN_MODAL_WINDOW, CLOSE_MODAL_WINDOW, SEND_ORDER } from "../actions/orderedIngredientsAction";
-import { TOrderedIngredientActions } from "../actions/orderedIngredientsAction";
-import { TIngredientObject } from "../../utils/constantsOfTS";
+import { COLLECT_ORDER, OPEN_MODAL_WINDOW, CLOSE_MODAL_WINDOW, SEND_ORDER } from "../../actions/orderedIngredientsAction";
+import { TOrderedIngredientActions } from "../../actions/orderedIngredientsAction";
+import { TIngredientObject } from "../../../utils/constantsOfTS";
 
 const initialState: TInitialState = {
     modalOpened: false,

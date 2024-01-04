@@ -1,6 +1,6 @@
 import React from "react";
-import { CHANGE_VALUE_OF_RESET, GET_REQUEST_OF_FORGOT_PASSWORD } from "../actions/forgotPasswordAction";
-import { TforgotPasswordActions } from "../actions/forgotPasswordAction";
+import { CHANGE_VALUE_OF_RESET, GET_REQUEST_OF_FORGOT_PASSWORD } from "../../actions/forgotPasswordAction";
+import { TforgotPasswordActions } from "../../actions/forgotPasswordAction";
 
 const initialState: IInitialState = {
     success: false,

@@ -1,7 +1,7 @@
 import React from "react";
-import { GET_CURRENT_INGREDIENT_TO_MODAL, REMOVE_CUURENT_INGREDIENT_FROM_MODAL, OPEN_INFO_MODAL_WINDOW, CLOSE_INFO_MODAL_WINDOW, INGREDIENT_MODAL_WINDOW_OPENED } from '../actions/currentIngredientsToModalAction'
-import { TIngredientObject } from "../../utils/constantsOfTS";
-import { TCurrentIngredientToModalActions } from "../actions/currentIngredientsToModalAction";
+import { GET_CURRENT_INGREDIENT_TO_MODAL, REMOVE_CUURENT_INGREDIENT_FROM_MODAL, OPEN_INFO_MODAL_WINDOW, CLOSE_INFO_MODAL_WINDOW, INGREDIENT_MODAL_WINDOW_OPENED } from '../../actions/currentIngredientsToModalAction'
+import { TIngredientObject } from "../../../utils/constantsOfTS";
+import { TCurrentIngredientToModalActions } from "../../actions/currentIngredientsToModalAction";
 
 const initialState: IInitialState = {
     currentIngredient: {},

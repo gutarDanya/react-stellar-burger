@@ -1,6 +1,6 @@
 import { current } from "@reduxjs/toolkit"
-import { GET_CURRENT_TAB } from "../actions/scrollIngredientsAction";
-import { TScrollAction } from "../actions/scrollIngredientsAction";
+import { GET_CURRENT_TAB } from "../../actions/scrollIngredientsAction";
+import { TScrollAction } from "../../actions/scrollIngredientsAction";
 
 const initialState: {currentTab: string} = {
     currentTab: 'one'

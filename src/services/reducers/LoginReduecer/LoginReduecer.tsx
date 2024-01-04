@@ -1,7 +1,7 @@
 import React from "react";
-import { AuthActions } from "../actions/AuthAction";
+import { AuthActions } from "../../actions/AuthAction";
 
-import { LOGIN_ACTION, LOGOUT_ACTION } from "../actions/AuthAction";
+import { LOGIN_ACTION, LOGOUT_ACTION } from "../../actions/AuthAction";
 
 const initialState: IInitialState = {
     login: true,

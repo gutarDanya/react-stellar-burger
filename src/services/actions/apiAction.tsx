@@ -9,6 +9,7 @@ export const LOAD_START_INGREDIENTS_DATA_FAILED: 'LOAD_START_INGREDIENTS_DATA_FA
 export const ADD_NUMBER_TO_COUNT: 'ADD_NUMBER_TO_COUNT' = 'ADD_NUMBER_TO_COUNT';
 export const REMOVE_NUMBER_FROM_COUNT: 'REMOVE_NUMBER_FROM_COUNT' = 'REMOVE_NUMBER_FROM_COUNT';
 export const GET_CURRENT_INGREDIENT_TO_ROUTING_INGREDIENT: 'GET_CURRENT_INGREDIENT_TO_ROUTING_INGREDIENT' = 'GET_CURRENT_INGREDIENT_TO_ROUTING_INGREDIENT';
+export const CLEAR_STATE_API_REDUCER: 'CLEAR_STATE_API-REDUCER' = 'CLEAR_STATE_API-REDUCER';
 
 export const addCount = (ingredient: TIngredientObject) => {
     return ({type: ADD_NUMBER_TO_COUNT, payload: ingredient})
@@ -74,10 +75,15 @@ interface IgetCurrentIngredientToRouting {
     payload: string | number
 };
 
+interface IclearState {
+    readonly type: typeof CLEAR_STATE_API_REDUCER
+}
+
 export type TApiActions = IloadStartIngredientsData |
 IloadStartIngredientsDataRequset |
 IloadStartIngredientsDataSuccess |
 IloadStartIngredientsDataFailed |
 IaddNumberToCount |
 IremoverNumberFromCount |
-IgetCurrentIngredientToRouting;
+IgetCurrentIngredientToRouting |
+IclearState;

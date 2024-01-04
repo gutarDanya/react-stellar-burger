@@ -1,6 +1,6 @@
 import React from "react";
-import { REGISTARTION_ACTION } from "../actions/AuthAction";
-import { AuthActions } from "../actions/AuthAction";
+import { REGISTARTION_ACTION } from "../../actions/AuthAction";
+import { AuthActions } from "../../actions/AuthAction";
 
 const initialState: IInitialState = {
     success: false

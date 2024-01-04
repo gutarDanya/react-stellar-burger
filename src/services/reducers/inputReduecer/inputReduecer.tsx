@@ -1,6 +1,6 @@
 import React from "react";
-import { SET_EMAIL_VALUE, SET_NAME_VALUE, SET_PASSWORD_VALUE, SET_RESET_MESSAGE } from "../actions/inputAction";
-import { TInputsActions } from "../actions/inputAction";
+import { SET_EMAIL_VALUE, SET_NAME_VALUE, SET_PASSWORD_VALUE, SET_RESET_MESSAGE } from "../../actions/inputAction";
+import { TInputsActions } from "../../actions/inputAction";
 
 const initialState: IInitialState = {
     emailValue: '',

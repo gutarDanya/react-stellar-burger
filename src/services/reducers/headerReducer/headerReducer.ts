@@ -1,4 +1,4 @@
-import { ACTIVE_LINK_IS_CONSTRUCTOR, ACTIVE_LINK_IS_ORDERS, ACTIVE_LINK_IS_PROFILE, THeaderActions } from "../actions/headerAction";
+import { ACTIVE_LINK_IS_CONSTRUCTOR, ACTIVE_LINK_IS_ORDERS, ACTIVE_LINK_IS_PROFILE, THeaderActions } from "../../actions/headerAction";
 
 type TInitialState = {
     constructor: boolean;

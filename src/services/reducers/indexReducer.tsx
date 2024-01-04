@@ -1,22 +1,22 @@
-import { apiReducer } from "./apiReducer";
+import { apiReducer } from "./apiReducer/apiReducer";
 import { combineReducers, configureStore, createStore } from "@reduxjs/toolkit";
-import { currentIngredientReducer } from "./currentIngredientsToModalReducer";
-import { constructorReducer } from "./ingredientsConstructorReducer";
-import { orderedIngredientsReducer } from './orderedIngredientsReducer';
-import { scrollReducer } from "./scrollIngredientsReducer";
-import { forgotPasswordReducer } from "./forgotPasswordReducer";
-import { registrationReducer } from "./registrationReducer";
-import { userInfoReduecer } from "./userInfoReducer";
-import { loginReducer } from "./LoginReduecer";
-import { inputReducer } from "./inputReduecer";
-import { WSReducer } from "./WSReducer";
+import { currentIngredientReducer } from "./currentIngredientsToModalReducer/currentIngredientsToModalReducer";
+import { constructorReducer } from "./ingredientsConstructorReducer/ingredientsConstructorReducer";
+import { orderedIngredientsReducer } from './orderedIngredientsReducer/orderedIngredientsReducer';
+import { scrollReducer } from "./scrollIngredientsReducer/scrollIngredientsReducer";
+import { forgotPasswordReducer } from "./forgotPasswordReducer/forgotPasswordReducer";
+import { registrationReducer } from "./registrationReducer/registrationReducer";
+import { userInfoReduecer } from "./userInfoReducer/userInfoReducer";
+import { loginReducer } from "./LoginReduecer/LoginReduecer";
+import { inputReducer } from "./inputReduecer/inputReduecer";
+import { WSReducer } from "./WSReducer/WSReducer";
 import { applyMiddleware, compose } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { WSActions } from "../actions/WSAction";
 import { socketMiddleware } from "../middlewares/WSMiddleWare";
-import { WSHistroyReducer } from '../reducers/TWSHistoryReducer'
+import { WSHistroyReducer } from './TWSHistoryReducer/TWSHistoryReducer'
 import { WSHistoryActions } from "../actions/WSHistoryAction";
-import { headerReducer } from "./headerReducer";
+import { headerReducer } from "./headerReducer/headerReducer";
 
 
 export const rootReducer = combineReducers({

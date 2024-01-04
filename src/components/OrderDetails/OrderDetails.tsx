@@ -12,11 +12,14 @@ function OrderDetails() {
     const dispatch = useAppDispatch();
 
     const order = useAppSelector(state => state.orderedIngredientsReducer.order);
-    console.log(order)
 
     useEffect(() => {
         dispatch(ingredientModalWindowOpened())
     })
+
+    useEffect(() => {
+        console.log(order)
+    }, [order])
 
     return (
         <div className={styles.popup}>

@@ -5,13 +5,14 @@ import {
     LOAD_START_INGREDIENTS_DATA_FAILED,
     ADD_NUMBER_TO_COUNT,
     REMOVE_NUMBER_FROM_COUNT,
-    GET_CURRENT_INGREDIENT_TO_ROUTING_INGREDIENT
-} from '../actions/apiAction';
-import { TIngredientObject } from '../../utils/constantsOfTS';
-import { TApiActions } from '../actions/apiAction';
+    GET_CURRENT_INGREDIENT_TO_ROUTING_INGREDIENT,
+    CLEAR_STATE_API_REDUCER
+} from '../../actions/apiAction';
+import { TIngredientObject } from '../../../utils/constantsOfTS';
+import { TApiActions } from '../../actions/apiAction';
 
 
-const initialState: IinitialState = {
+export const initialState: IinitialState = {
     ingredientData: [],
     getIngredientsFailed: false,
     getIngredientsRequest: false,
@@ -67,6 +68,14 @@ export const apiReducer = (state = initialState, action: TApiActions) : Iinitial
             return {
                 ...state,
                 currentIngredient: state.ingredientData.find((ingredient) => ingredient._id === action.payload)
+            }
+        }
+        case CLEAR_STATE_API_REDUCER: {
+            return {
+                ingredientData: [],
+                getIngredientsFailed: false,
+                getIngredientsRequest: false,
+                currentIngredient: undefined
             }
         }
         default: return state

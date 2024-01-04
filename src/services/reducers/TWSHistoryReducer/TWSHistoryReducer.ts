@@ -1,12 +1,11 @@
-import { GET_CURRENT_ORDER, TWSActions, WS_CLOSE, WS_CONNECT, WS_CONNECTING, WS_DISCONNECT, WS_ERROR, WS_MESSAGE, WS_OPEN } from "../actions/WSAction"
+import { TWSHistoryActions, WS_CLOSE, WS_CONNECT, WS_CONNECTING, WS_DISCONNECT, WS_ERROR, WS_MESSAGE, WS_OPEN } from "../../actions/WSHistoryAction"
 
 const initialState: TInitialState = {
     status: 'offline',
     connectingError: '',
     orders: [] ,
     total: 1488,
-    totalToday: 322,
-    currentOrder: {}
+    totalToday: 322
 };
 
 type TInitialState = {
@@ -15,10 +14,9 @@ type TInitialState = {
     orders: [];
     total: number;
     totalToday: number;
-    currentOrder: any;
 }
 
-export const WSReducer = (state = initialState, action: TWSActions) => {
+export const WSHistroyReducer = (state = initialState, action: TWSHistoryActions) => {
 switch (action.type) {
     case WS_CONNECTING: 
     console.log(action.payload)
@@ -65,12 +63,6 @@ switch (action.type) {
         return {
             ...state,
             status: 'online'
-        }
-    }
-    case GET_CURRENT_ORDER: {
-        return {
-            ...state,
-            currentOrder: state.orders.find((order: any) => order._id === action.payload)
         }
     }
     default: return state

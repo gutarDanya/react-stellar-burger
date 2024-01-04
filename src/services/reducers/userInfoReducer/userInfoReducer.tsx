@@ -1,6 +1,6 @@
 import React from "react";
-import { GET_USER_INFO } from "../actions/AuthAction";
-import { AuthActions } from "../actions/AuthAction";
+import { GET_USER_INFO } from "../../actions/AuthAction";
+import { AuthActions } from "../../actions/AuthAction";
 
 const initialState: IInitialState = {
     name: '',
