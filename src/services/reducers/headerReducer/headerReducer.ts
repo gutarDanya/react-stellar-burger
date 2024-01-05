@@ -7,7 +7,7 @@ type TInitialState = {
 }
 
 
-const initialState = {
+export const initialState = {
     constructor: true,
     orders: false,
     profile: false

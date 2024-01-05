@@ -7,7 +7,7 @@ import {
 } from '../../actions/ingredientsConstructorAction';
 import { TIngredientConstructorActions } from '../../actions/ingredientsConstructorAction';
 
-const initialState: IInitialState = {
+export const initialState: IInitialState = {
     allIngredients: [],
     bun: {},
     main: []

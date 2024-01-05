@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react';
 
 import styles from './OrderDetails.module.css'
-import { useDispatch, useSelector } from 'react-redux';
 import done from '../../images/done.png'
-import { ingredientModalWindowOpened } from '../../services/actions/currentIngredientsToModalAction';
 import { useAppDispatch, useAppSelector } from '../../services/hooks/reduxHooks';
 
 
@@ -12,10 +10,6 @@ function OrderDetails() {
     const dispatch = useAppDispatch();
 
     const order = useAppSelector(state => state.orderedIngredientsReducer.order);
-
-    useEffect(() => {
-        dispatch(ingredientModalWindowOpened())
-    })
 
     useEffect(() => {
         console.log(order)

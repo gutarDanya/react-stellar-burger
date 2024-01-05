@@ -112,7 +112,7 @@ describe('тестирование apiReducer', () => {
 
     it('тестирование исходного состояния apiReducer',
         () => {
-            expect(apiReducer(initialState, {})).toEqual({
+            expect(apiReducer(undefined, {})).toEqual({
                 ingredientData: [],
                 getIngredientsFailed: false,
                 getIngredientsRequest: false,

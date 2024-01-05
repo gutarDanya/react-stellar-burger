@@ -5,6 +5,7 @@ export const REMOVE_INGREDIENT_FROM_CONSTRUCTOR = 'REMOVE_INGREDIENT_FROM_CONSTR
 export const ADD_BUN_TO_CONSTRUCTOR = 'ADD_BUN_TO_CONSTRUCTOR';
 export const ADD_MAIN_TO_CONSTRUCTOR = 'ADD_MAIN_TO_CONSTRUCTOR';
 export const SORTING_INGREDIENTS = 'SORTING_INGREDIENTS';
+export const CLEAR_STATE_CONSTRUCTOR_REDUCER: 'CLEAR_STATE_CONSTRUCTOR_REDUCER' = 'CLEAR_STATE_CONSTRUCTOR_REDUCER';
 
 export const addBun = (bun: TIngredientObject) => {
     return ({type: ADD_BUN_TO_CONSTRUCTOR, payload: {
@@ -54,7 +55,12 @@ interface ISortingIngredients {
     payload: IArguments;
 }
 
+interface IClearState {
+    readonly type: typeof CLEAR_STATE_CONSTRUCTOR_REDUCER
+}
+
 export type TIngredientConstructorActions = IAddBun |
 IAddMain |
 IRemoveIngredient |
-ISortingIngredients;
+ISortingIngredients |
+IClearState;
