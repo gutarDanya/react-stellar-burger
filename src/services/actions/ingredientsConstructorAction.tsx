@@ -7,18 +7,18 @@ export const ADD_MAIN_TO_CONSTRUCTOR = 'ADD_MAIN_TO_CONSTRUCTOR';
 export const SORTING_INGREDIENTS = 'SORTING_INGREDIENTS';
 export const CLEAR_STATE_CONSTRUCTOR_REDUCER: 'CLEAR_STATE_CONSTRUCTOR_REDUCER' = 'CLEAR_STATE_CONSTRUCTOR_REDUCER';
 
-export const addBun = (bun: TIngredientObject) => {
+export const addBun = (bun: TIngredientObject, id: string) => {
     return ({type: ADD_BUN_TO_CONSTRUCTOR, payload: {
         ...bun, 
-        superId: uuid4()
+        superId: id
     }})
 }
 
-export const addMainIngredient = (ingredient: TIngredientObject) => {
+export const addMainIngredient = (ingredient: TIngredientObject, id: string) => {
 
     return ({type: ADD_MAIN_TO_CONSTRUCTOR, payload: {
         ...ingredient,
-        superId: uuid4()
+        superId: id
     }})
 }
 

@@ -3,15 +3,13 @@ import React, { useEffect } from 'react';
 import InfoOfOrder from './InfoOfOrder/InfoOfOrder';
 
 import styles from './BurgerConstructor.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
-import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { useSelector} from 'react-redux';
 import { useDrag, useDrop } from 'react-dnd';
 import { addBun, addMainIngredient } from '../../services/actions/ingredientsConstructorAction';
 import { IngredientsConstructor } from './IngredientsConstructor/IngredientsConstructor';
 import { addCount } from '../../services/actions/apiAction';
-import { sortingIngredientsGenerator } from '../../services/actions/ingredientsConstructorAction';
 import { useAppDispatch } from '../../services/hooks/reduxHooks';
+import { v4 as uuid4 } from 'uuid';
 
 function BurgerConstructor() {
 
@@ -26,11 +24,11 @@ function BurgerConstructor() {
         accept: 'ingredient',
         drop(item: any ) {
             if (item.ingredient.type === 'bun') {
-                dispatch(addBun(item.ingredient))
+                dispatch(addBun(item.ingredient, uuid4()))
                 dispatch(addCount(item.ingredient))
                 console.log(item.ingredient)
             } else {
-                dispatch(addMainIngredient(item.ingredient))
+                dispatch(addMainIngredient(item.ingredient, uuid4()))
                 dispatch(addCount(item.ingredient))
                 console.log(item)
             }
