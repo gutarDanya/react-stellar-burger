@@ -3,18 +3,8 @@ import { checkResponse } from "../../utils/constants";
 import { TIngredientObject } from "../../utils/constantsOfTS";
 import { getCookie } from "../../utils/auth";
 
-export const COLLECT_ORDER = 'COLLECT_ORDER';
-export const OPEN_MODAL_WINDOW = 'OPEN_MODAL_WINDOW';
-export const CLOSE_MODAL_WINDOW = 'CLOSE_MODAL_WINDOW';
 export const SEND_ORDER = 'SEND_ORDER';
-
-export const collectOrderGenerator = (ingredients: TIngredientObject[]) => {
-    return{type: COLLECT_ORDER, payload: ingredients}
-}
-
-export const closeOrderedModal = () => {
-    return {type: CLOSE_MODAL_WINDOW}
-}
+export const CLEAR_STATE_ORDERED_INGREDIENTS: 'CLEAR_STATE_ORDERED_INGREDIENTS' ='CLEAR_STATE_ORDERED_INGREDIENTS';
 
 export const sendOrder = (ingredients: TIngredientObject[]) => {
     return function(dispatch: any) {
@@ -42,25 +32,16 @@ export const sendOrder = (ingredients: TIngredientObject[]) => {
     }
 }
 
-interface ICollectOreder {
-    readonly type: typeof COLLECT_ORDER;
-    payload: TIngredientObject[];
-};
-
-interface IOpenModal {
-    readonly type: typeof OPEN_MODAL_WINDOW;
-};
-
-interface ICloseModal {
-    readonly type: typeof CLOSE_MODAL_WINDOW;
-};
 
 interface ISend {
     readonly type: typeof SEND_ORDER;
-    payload: TIngredientObject[];
+    payload: any;
 };
 
-export type TOrderedIngredientActions = ICollectOreder |
-IOpenModal |
-ICloseModal |
-ISend;
+interface IClearState {
+    readonly type: typeof CLEAR_STATE_ORDERED_INGREDIENTS
+}
+
+
+export type TOrderedIngredientActions = ISend |
+IClearState

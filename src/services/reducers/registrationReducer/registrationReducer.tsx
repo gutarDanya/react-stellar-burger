@@ -1,8 +1,8 @@
 import React from "react";
-import { REGISTARTION_ACTION } from "../../actions/AuthAction";
+import { CLEAR_STATE_REGISTRATION_REDUCER, REGISTARTION_ACTION } from "../../actions/AuthAction";
 import { AuthActions } from "../../actions/AuthAction";
 
-const initialState: IInitialState = {
+export const initialState: IInitialState = {
     success: false
 }
 
@@ -13,6 +13,10 @@ export const registrationReducer = (state = initialState, action: AuthActions) =
                 ...state,
                 success: action.payload.success
             }
+        }
+
+        case CLEAR_STATE_REGISTRATION_REDUCER: {
+            return initialState
         }
         default: return state
     }

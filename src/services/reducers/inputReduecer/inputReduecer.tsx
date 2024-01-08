@@ -1,8 +1,8 @@
 import React from "react";
-import { SET_EMAIL_VALUE, SET_NAME_VALUE, SET_PASSWORD_VALUE, SET_RESET_MESSAGE } from "../../actions/inputAction";
+import { CLEAR_STATE_INPUT_REDUCER, SET_EMAIL_VALUE, SET_NAME_VALUE, SET_PASSWORD_VALUE, SET_RESET_MESSAGE } from "../../actions/inputAction";
 import { TInputsActions } from "../../actions/inputAction";
 
-const initialState: IInitialState = {
+export const initialState: IInitialState = {
     emailValue: '',
     nameValue: '',
     passwordValue: '',
@@ -34,6 +34,9 @@ export const inputReducer = (state = initialState, action: TInputsActions) : IIn
                 ...state,
                 resetMessage: action.payload
             }
+        }
+        case CLEAR_STATE_INPUT_REDUCER: {
+            return initialState
         }
         default: return state
     }

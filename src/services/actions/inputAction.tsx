@@ -4,6 +4,7 @@ export const SET_EMAIL_VALUE: 'SET_EMAIL_VALUE' = 'SET_EMAIL_VALUE';
 export const SET_NAME_VALUE: 'SET_NAME_VALUE' = 'SET_NAME_VALUE';
 export const SET_PASSWORD_VALUE: 'SET_PASSWORD_VALUE' = 'SET_PASSWORD_VALUE';
 export const SET_RESET_MESSAGE: 'SET_RESET_MESSAGE' = 'SET_RESET_MESSAGE'
+export const CLEAR_STATE_INPUT_REDUCER: 'CLEAR_STATE_INPUT_REDUCER' = 'CLEAR_STATE_INPUT_REDUCER';
 
 export const setEmailValue = (value: string) => {
     return{type: SET_EMAIL_VALUE, payload: value}
@@ -41,7 +42,12 @@ interface IsetResetMessage {
     payload: string
 }
 
+interface IclearState {
+    readonly type: typeof CLEAR_STATE_INPUT_REDUCER
+}
+
 export type TInputsActions = IsetEmailValue |
 IsetNameValue |
 IsetPasswordValue | 
-IsetResetMessage;
+IsetResetMessage | 
+IclearState;

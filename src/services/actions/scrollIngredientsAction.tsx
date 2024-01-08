@@ -1,7 +1,8 @@
 export const GET_CURRENT_TAB = 'GET_CURRENT_TAB';
+export const CLEAR_STATE_SCROLL_REDUCER: 'CLEAR_STATE_SCROLL_REDUCER' = 'CLEAR_STATE_SCROLL_REDUCER';
 
 export const getCurrentTab = (currentTab: string) => {
-    return ({type: GET_CURRENT_TAB, payload: currentTab})
+    return ({ type: GET_CURRENT_TAB, payload: currentTab })
 }
 
 interface IGetCurrentTab {
@@ -9,4 +10,8 @@ interface IGetCurrentTab {
     payload: string;
 }
 
-export type TScrollAction = IGetCurrentTab
+interface IClearState {
+    readonly type: typeof CLEAR_STATE_SCROLL_REDUCER
+}
+
+export type TScrollAction = IGetCurrentTab | IClearState

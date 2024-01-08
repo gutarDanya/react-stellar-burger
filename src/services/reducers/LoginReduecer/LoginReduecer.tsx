@@ -1,9 +1,9 @@
 import React from "react";
-import { AuthActions } from "../../actions/AuthAction";
+import { AuthActions, CLEAR_STATE_LOGIN_REDUCER } from "../../actions/AuthAction";
 
 import { LOGIN_ACTION, LOGOUT_ACTION } from "../../actions/AuthAction";
 
-const initialState: IInitialState = {
+export const initialState: IInitialState = {
     login: true,
     logout: false
 }
@@ -13,17 +13,22 @@ export const loginReducer = (state = initialState, action: AuthActions) => {
         case LOGIN_ACTION : {
             return {
                 ...state,
-                login: action.payload,
-                logout: !action.payload
+                login: true,
+                logout: false
             }
         }
         case LOGOUT_ACTION : {
             return {
                 ...state,
-                login: !action.payload,
-                logout: action.payload
+                login: false,
+                logout: true
             }
         }
+
+        case CLEAR_STATE_LOGIN_REDUCER : {
+            return initialState
+        }
+
         default: return state
     }
 }

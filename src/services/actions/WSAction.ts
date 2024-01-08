@@ -6,6 +6,7 @@ export const WS_CLOSE: 'WS_CLOSE' = 'WS_CLOSE';
 export const WS_MESSAGE: 'WS_MESSAGE' = 'WS_MESSAGE';
 export const WS_ERROR: 'WS_ERROR' = 'WS_ERROR';
 export const GET_CURRENT_ORDER: 'GET_CURRENT_ORDER' = 'GET_CURRENT_ORDER'
+export const CLEAR_STATE_WSREDUCER: 'CLEAR_STATE_WSREDUCER' = 'CLEAR_STATE_WSREDUCER';
 
 export const WSActions = {
     WS_CONNECT,
@@ -16,6 +17,10 @@ export const WSActions = {
     WS_MESSAGE,
     WS_ERROR,
     GET_CURRENT_ORDER
+}
+
+interface IClearState {
+    readonly type: typeof CLEAR_STATE_WSREDUCER;
 }
 
 interface IConnecting {
@@ -61,4 +66,5 @@ IMessage |
 IError |
 IClose |
 IDissconnect |
-IGetCurrentOrder
+IGetCurrentOrder |
+IClearState

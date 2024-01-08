@@ -1,8 +1,8 @@
 import { current } from "@reduxjs/toolkit"
-import { GET_CURRENT_TAB } from "../../actions/scrollIngredientsAction";
+import { CLEAR_STATE_SCROLL_REDUCER, GET_CURRENT_TAB } from "../../actions/scrollIngredientsAction";
 import { TScrollAction } from "../../actions/scrollIngredientsAction";
 
-const initialState: {currentTab: string} = {
+export const initialState: {currentTab: string} = {
     currentTab: 'one'
 }
 
@@ -12,6 +12,9 @@ export const scrollReducer = (state = initialState, action: TScrollAction) => {
             return {
                 currentTab: action.payload
             }
+        }
+        case CLEAR_STATE_SCROLL_REDUCER: {
+            return initialState
         }
         default: return state
     }

@@ -1,6 +1,6 @@
-import { TWSHistoryActions, WS_CLOSE, WS_CONNECT, WS_CONNECTING, WS_DISCONNECT, WS_ERROR, WS_MESSAGE, WS_OPEN } from "../../actions/WSHistoryAction"
+import { CLEAR_STATE_WSHISTORY_REDUCER, TWSHistoryActions, WS_CLOSE, WS_CONNECT, WS_CONNECTING, WS_DISCONNECT, WS_ERROR, WS_MESSAGE, WS_OPEN } from "../../actions/WSHistoryAction"
 
-const initialState: TInitialState = {
+export const initialState: TInitialState = {
     status: 'offline',
     connectingError: '',
     orders: [] ,
@@ -64,6 +64,9 @@ switch (action.type) {
             ...state,
             status: 'online'
         }
+    }
+    case CLEAR_STATE_WSHISTORY_REDUCER: {
+        return initialState
     }
     default: return state
 }

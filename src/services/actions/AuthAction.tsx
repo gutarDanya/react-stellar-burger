@@ -1,7 +1,9 @@
 import { baseUrl, checkResponse } from "../../utils/constants";
 import { getCookie, setCookie, deleteCookie } from "../../utils/auth";
 export const REGISTARTION_ACTION = 'REGISTARTION_ACTION';
+export const CLEAR_STATE_REGISTRATION_REDUCER: 'CLEAR_STATE_REGISTRATION_REDUCER' = 'CLEAR_STATE_REGISTRATION_REDUCER';
 export const LOGIN_ACTION = 'LOGIN_ACTION';
+export const CLEAR_STATE_LOGIN_REDUCER: 'CLEAR_STATE_LOGIN_REDUCER' = 'CLEAR_STATE_LOGIN_REDUCER'
 export const LOGOUT_ACTION = 'LOGOUT_ACTION';
 export const GET_USER_INFO = 'GET_USER_UNFO';
 
@@ -67,7 +69,6 @@ export const userLogin = ({ email, password }: ILoginArg) => {
                 if (res.success) {
                     dispatch({
                         type: LOGIN_ACTION,
-                        payload: res.success
                     })
                     // console.log(success)
                     // console.log(accessToken.split('Bearer ')[1])
@@ -233,14 +234,20 @@ interface IRegistartion {
     payload: {success: boolean};
 }
 
+interface IClearRegistationState {
+    readonly type: typeof CLEAR_STATE_REGISTRATION_REDUCER
+}
+
 interface ILogin {
     readonly type: typeof LOGIN_ACTION;
-    payload: ILoginArg
+}
+
+interface IClearLoginState {
+    readonly type: typeof CLEAR_STATE_LOGIN_REDUCER
 }
 
 interface ILogout {
     readonly type: typeof LOGOUT_ACTION;
-    payload: ILoginArg
 }
 
 interface IGetUserInfo {
@@ -253,6 +260,8 @@ interface IGetUserInfo {
 }
 
 export type AuthActions = IRegistartion |
+IClearRegistationState |
 ILogin |
+IClearLoginState |
 ILogout |
 IGetUserInfo;

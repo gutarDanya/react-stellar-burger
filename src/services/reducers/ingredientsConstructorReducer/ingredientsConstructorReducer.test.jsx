@@ -1,4 +1,4 @@
-import { CLEAR_STATE_CONSTRUCTOR_REDUCER, REMOVE_INGREDIENT_FROM_CONSTRUCTOR, addBun, addMainIngredient } from "../../actions/ingredientsConstructorAction";
+import { CLEAR_STATE_CONSTRUCTOR_REDUCER, REMOVE_INGREDIENT_FROM_CONSTRUCTOR, SORTING_INGREDIENTS, addBun, addMainIngredient, sortingIngredientsGenerator } from "../../actions/ingredientsConstructorAction";
 import { initialState } from "./ingredientsConstructorReducer";
 import { data } from "../../../utils/data";
 import { constructorReducer } from "./ingredientsConstructorReducer";
@@ -36,6 +36,13 @@ describe('тестирование самого сложного редьюсе�
             ...initialState, 
             bun: {...data[0], superId: '1231234'},
             main: [{...data[3], superId: '1234'}]
+        })
+    })
+
+    it('тестирование перемещения ингредиента в конструкторе', () => {
+        expect(constructorReducer({...initialState, main:[data[1], data[2], data[3]]}, sortingIngredientsGenerator(1, 2))).toEqual({
+            ...initialState,
+            main: [data[1], data[3], data[2]]
         })
     })
 

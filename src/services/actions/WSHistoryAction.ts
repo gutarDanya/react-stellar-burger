@@ -5,6 +5,7 @@ export const WS_OPEN: 'WS_OPEN' = 'WS_OPEN';
 export const WS_CLOSE: 'WS_CLOSE' = 'WS_CLOSE';
 export const WS_MESSAGE: 'WS_MESSAGE' = 'WS_MESSAGE';
 export const WS_ERROR: 'WS_ERROR' = 'WS_ERROR';
+export const CLEAR_STATE_WSHISTORY_REDUCER: 'CLEAR_STATE_WSHISTORY_REDUCER' = 'CLEAR_STATE_WSHISTORY_REDUCER';
 
 export const WSHistoryActions = {
     WS_CONNECT,
@@ -47,10 +48,15 @@ interface IConnect {
     readonly type: typeof WS_CONNECT;
 }
 
+interface IClearState {
+    readonly type: typeof CLEAR_STATE_WSHISTORY_REDUCER
+};
+
 export type TWSHistoryActions = IConnecting |
 IConnect |
 IOpen |
 IMessage |
 IError |
 IClose |
-IDissconnect
+IDissconnect | 
+IClearState
