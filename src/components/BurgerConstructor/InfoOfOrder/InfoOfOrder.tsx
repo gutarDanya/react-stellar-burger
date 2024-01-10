@@ -16,15 +16,12 @@ export default function InfoOfOrder() {
 
     const bun = useAppSelector(state => state.constructorReducer.bun)
     const main = useAppSelector(state => state.constructorReducer.main)
-    const userLogined = sessionStorage.getItem('logined')
 
 
     const openPopup = () => {
-       if (userLogined && bun) {
+       if (bun) {
         dispatch(sendOrder([bun, ...main]));
         navigate('/finalorder', {state: { backgroundLocation: location}})
-       } else {
-        navigate('/login')
        }
     }
 

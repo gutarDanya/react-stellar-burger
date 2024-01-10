@@ -94,17 +94,17 @@ function App() {
         {backgroundLocation && <Routes>
           <Route path='/ingredients/:id'
             element={
-            <Modal title={'Детали ингредиента'}>
-              <IngredientDetails />
-            </Modal>} />
+              <Modal title={'Детали ингредиента'}>
+                <IngredientDetails />
+              </Modal>} />
 
           <Route path='/feed/:id'
             element={
-            <Modal title=''>
-              <HistoryOrderDetails />
-            </Modal>} />
+              <Modal title=''>
+                <HistoryOrderDetails />
+              </Modal>} />
 
-            <Route path='/profile/:order-history/:id'
+          <Route path='/profile/:order-history/:id'
             element={
               <Modal title="">
                 <HistoryOrderDetails />
@@ -113,9 +113,11 @@ function App() {
 
           <Route path='/finalorder'
             element={
-            <Modal title=''>
-              <OrderDetails />
-            </Modal>} />
+              <ProtectedRoute>
+                <Modal title=''>
+                  <OrderDetails />
+                </Modal>
+              </ProtectedRoute>} />
         </Routes>}
       </pre>
     </div>

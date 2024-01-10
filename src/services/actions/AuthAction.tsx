@@ -67,6 +67,7 @@ export const userLogin = ({ email, password }: ILoginArg) => {
             .then((res) => {
                 //Здесь ты проверяешь если запрос прошёл удачно, то в редакс обновляешь состояние, что ты теперь авторизован
                 if (res.success) {
+                    sessionStorage.setItem('logined', 'true')
                     dispatch({
                         type: LOGIN_ACTION,
                     })
@@ -75,7 +76,6 @@ export const userLogin = ({ email, password }: ILoginArg) => {
                     //Здесь ты сетишь в куки, свой токен, по которому в дальнейшем будешь проходить аутентификацию
                     setCookie('accessToken', res.accessToken.split('Bearer ')[1])
                     setCookie('refreshToken', res.refreshToken)
-                    sessionStorage.setItem('logined', 'true')
                 }
             })
             .catch((err) => {

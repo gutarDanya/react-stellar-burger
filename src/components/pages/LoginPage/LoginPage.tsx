@@ -61,8 +61,8 @@ export const LoginPage = () => {
             onClick={userLoginToProfile}>
                 Войти
             </Button>
-            <p className={styles.text}>Вы - новый пользователь? <Link to='/registration'>Зарегестрироваться</Link></p>
-            <p className={styles.text}>Забыли пароль? <Link to='/forgot-password'>Восстановить пароль</Link></p>
+            <p className={styles.text}>Вы - новый пользователь? <Link data-testid='someLink' className="text text_type_main-default" to='/registration'>Зарегестрироваться</Link></p>
+            <p className={styles.text}>Забыли пароль? <Link className="text text_type_main-default" to='/forgot-password'>Восстановить пароль</Link></p>
             </div>
         </form>
     )

@@ -39,6 +39,7 @@ function BurgerConstructor() {
     return (
         <nav className={styles.container}>
             <div className={styles.ingredients}
+            data-testid='constructor'
                 ref={ref}>
                     <IngredientsConstructor bun={bun} main={main}/>
             </div>

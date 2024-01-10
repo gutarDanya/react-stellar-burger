@@ -9,12 +9,12 @@ import { useLocation, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../../../services/hooks/reduxHooks";
 
-export const Ingredient:React.FC<IProps> = ({ingredient}) => {
+export const Ingredient: React.FC<IProps> = ({ ingredient }) => {
 
     const dispatch = useAppDispatch();
 
     const openPopup = (ingredient: TIngredient) => {
-        dispatch({type: OPEN_INFO_MODAL_WINDOW, payload: ingredient})
+        dispatch({ type: OPEN_INFO_MODAL_WINDOW, payload: ingredient })
     }
 
     const [, ref] = useDrag({
@@ -26,22 +26,26 @@ export const Ingredient:React.FC<IProps> = ({ingredient}) => {
 
     const location = useLocation();
 
-    return(
-        <Link
-            to={`/ingredients/:${ingredient._id}`}
-            state={{backgroundLocation: location,
-                    modal: 'ingredient'}}
-            className={styles.ingredient}
-            onClick={() => openPopup(ingredient)}
-            ref={ref}
-            key={ingredient._id}>
+    return (
+        <div data-testid='ingredient'>
+            <Link
+                to={`/ingredients/:${ingredient._id}`}
+                state={{
+                    backgroundLocation: location,
+                    modal: 'ingredient'
+                }}
+                className={styles.ingredient}
+                onClick={() => openPopup(ingredient)}
+                ref={ref}
+                key={ingredient._id}>
                 {ingredient.__v !== 0
-                ? <Counter count={ingredient.__v} size='default' extraClass='m-1'/>
-                : null}
-            <img src={ingredient.image} alt={ingredient.name} />
-            <h4 className={styles.price}>{ingredient.price} <CurrencyIcon type='primary'/></h4>
-            <p className={styles.name}>{ingredient.name}</p>
-        </Link>
+                    ? <Counter count={ingredient.__v} size='default' extraClass='m-1' />
+                    : null}
+                <img src={ingredient.image} alt={ingredient.name} />
+                <h4 className={styles.price}>{ingredient.price} <CurrencyIcon type='primary' /></h4>
+                <p className={styles.name}>{ingredient.name}</p>
+            </Link>
+        </div>
     )
 }
 
