@@ -1,3 +1,4 @@
+import { wait } from "@testing-library/react";
 import React from "react";
 <reference types="cypress" />
 
@@ -23,10 +24,12 @@ describe('проверка работы сервера', () => {
         cy.get('@confirmButton').click()
 
         cy.get('input[name=emailInput]').type('supertest@gyandex.ru');
-        cy.get('input[name=password]').type(123412341234)
+        cy.get('input[name=password]').type(123412341234);
 
         cy.get('button').contains('Войти').click();
-        cy.get('@confirmButton').click();
+        cy.get('button').contains('Оформить заказ').click();
+
+        cy.wait(2000).get('div[data-testid="closeModal"]').click()
     })
 
 

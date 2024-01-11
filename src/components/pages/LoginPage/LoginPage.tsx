@@ -18,9 +18,9 @@ export const LoginPage = () => {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
-    const userLoginToProfile = (evt: any) => {
+    const userLoginToProfile = async (evt: any) => {
         evt.preventDefault()
-        dispatch(userLogin({
+        await dispatch(userLogin({
             email: emailValue,
              password: passwordValue
             })

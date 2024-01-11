@@ -9,7 +9,7 @@ export const ProtectedRoute: React.FC<{children: any}> = ({children}) => {
     const userLogined = sessionStorage.getItem('logined');
     
     return (
-        userLogined
+        userLogined === 'true'
         ? children
         : <Navigate to='/login' />
     )

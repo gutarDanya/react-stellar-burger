@@ -10,7 +10,8 @@ export const ModalOverlay: React.FC<IProps> = ({children, closePopup}) => {
 
 
     return(
-        <div className={styles.overlay}
+        <div
+         className={styles.overlay}
         onClick={closePopup}>
             {children}
         </div>

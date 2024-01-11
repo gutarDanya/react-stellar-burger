@@ -10,13 +10,13 @@ import { useAppDispatch } from '../../services/hooks/reduxHooks';
 
 const modalRoot: any = document.getElementById("modalRoot");
 
-export const Modal:React.FC<IProps> = ({ children, title }) => {
+export const Modal: React.FC<IProps> = ({ children, title }) => {
 
     const navigate = useNavigate();
 
     const location = useLocation();
 
-    const closePopup = () : void => {
+    const closePopup = (): void => {
         navigate(-1)
     }
 
@@ -35,21 +35,25 @@ export const Modal:React.FC<IProps> = ({ children, title }) => {
     }, [])
 
 
-        return ReactDOM.createPortal(
-            <ModalOverlay closePopup={closePopup}>
-                <div className={styles.popup}
+    return ReactDOM.createPortal(
+        <ModalOverlay
+            closePopup={closePopup}>
+            <div className={styles.popup}
                 onClick={e => e.stopPropagation()}>
-                    <div className={styles.container}>
-                        <h2 className={styles.text}>{title}</h2>
+                <div className={styles.container}>
+                    <h2 className={styles.text}>{title}</h2>
+                    <div data-testid='closeModal'>
                         <CloseIcon
+                            data-testid='closeModal'
                             onClick={closePopup}
                             type='primary' />
                     </div>
-                    {children}
                 </div>
-            </ModalOverlay>,
-            modalRoot as HTMLDivElement
-        )
+                {children}
+            </div>
+        </ModalOverlay>,
+        modalRoot as HTMLDivElement
+    )
 
 }
 
