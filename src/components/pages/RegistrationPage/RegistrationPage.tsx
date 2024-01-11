@@ -71,7 +71,6 @@ export const RegistrationPage = () => {
             />
             <Button
             htmlType='submit'
-            onClick={register}
             size='small'>
                 Зарегестрироваться
             </Button>

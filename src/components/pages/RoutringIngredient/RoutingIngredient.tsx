@@ -14,12 +14,18 @@ const RoutingIngredient = () => {
     const { id } = useParams();
 
     const currentIngredient = useAppSelector(state => state.apiReducer.currentIngredient);
-    
+    const allIngredients = useAppSelector(state => state.apiReducer.ingredientData)
+
+    useEffect(() => {
+     getData()
+    }, [])
+
     useEffect(() => {
         id
         ? dispatch(getCurrentIngredientToRouting(id.split(':')[1]))
         : console.log(id)
-    }, [currentIngredient]) 
+    }, [allIngredients]) 
+
 
     
         return(

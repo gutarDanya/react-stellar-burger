@@ -45,8 +45,7 @@ export const ResetPasswordPage = () => {
              />
              <Button
              htmlType='submit'
-             size='small'
-             onClick={handleSubmit}>
+             size='small'>
                 Сохранить
              </Button>
              <p className={styles.text}>Вспомнили пароль?</p>

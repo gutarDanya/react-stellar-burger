@@ -21,10 +21,10 @@ export const ProfilePage = () => {
         <main className={styles.container}>
             <div className={styles.window}>
                 <div className={styles.navigation}>
-                    <NavLink className={({isActive}) => isActive ? styles.link : styles.inactiveLink} to={'/profile/:user-profile'}>
+                    <NavLink className={({isActive}) => isActive ? styles.link : styles.inactiveLink} to={'/profile/user-profile'}>
                         <p >Профиль</p>
                     </NavLink>
-                    <NavLink className={({isActive}) => isActive ? styles.link : styles.inactiveLink} to={'/profile/:order-history'} onClick={fuckingTest}>
+                    <NavLink className={({isActive}) => isActive ? styles.link : styles.inactiveLink} to={'/profile/order-history'} onClick={fuckingTest}>
                         <p>История заказов</p>
                     </NavLink>
                     <NavLink className={({isActive}) => isActive ? styles.link : styles.inactiveLink} to={'/'} onClick={exitProfile}>

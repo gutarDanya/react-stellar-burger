@@ -41,8 +41,7 @@ export const ForgotPasswordPage = () => {
              />
              <Button
              htmlType="submit"
-             size='small'
-             onClick={sendEmail}>
+             size='small'>
                 Восстановить
              </Button >
              <p className={`${styles.text} text text_dark-grey-secondary-text`}>Вспомнили пароль?<Link className={styles.text} to='/login'>Войдите</Link></p>

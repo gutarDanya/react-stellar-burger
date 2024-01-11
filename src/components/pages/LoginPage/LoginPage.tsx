@@ -57,8 +57,7 @@ export const LoginPage = () => {
             />
             <Button 
             htmlType="submit"
-            size='small'
-            onClick={userLoginToProfile}>
+            size='small'>
                 Войти
             </Button>
             <p className={styles.text}>Вы - новый пользователь? <Link data-testid='someLink' className="text text_type_main-default" to='/registration'>Зарегестрироваться</Link></p>

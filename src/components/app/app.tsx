@@ -4,7 +4,8 @@ import { ForgotPasswordPage } from "../pages/ForgotPassword/ForgotPassword";
 import {
   Routes,
   Route,
-  useLocation
+  useLocation,
+  useNavigate
 } from 'react-router-dom'
 
 import AppHeader from './AppHeader/AppHeader'
@@ -33,12 +34,15 @@ import { apiReducer, initialState } from "../../services/reducers/apiReducer/api
 
 
 function App() {
+  const navigate = useNavigate()
   const orderModal = useAppSelector((state: IReducer) => state.orderedIngredientsReducer.modalOpened);
 
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
 
-
+  const closePopup = () => {
+    navigate(-1)
+  }
 
   const dispatch = useAppDispatch();
 
@@ -79,11 +83,11 @@ function App() {
                 <ProfilePage />
               </ProtectedRoute>
             } >
-            <Route path=':user-profile' element={<Profile />} />
-            <Route path=':order-history' element={<HistoryOfOrders />} />
+            <Route path='user-profile' element={<Profile />} />
+            <Route path='order-history' element={<HistoryOfOrders />} />
             <Route path=':exit' element={<p>здесь будет выход</p>} />
           </Route>
-          <Route path='/profile/:order-history/:id' element={<RoutingOrder />} />
+          <Route path='/profile/order-history/:id' element={<RoutingOrder />} />
 
           <Route path='/feed' element={<Feed />} />
           <Route path='/feed/:id' element={<RoutingOrder />} />
@@ -94,19 +98,19 @@ function App() {
         {backgroundLocation && <Routes>
           <Route path='/ingredients/:id'
             element={
-              <Modal title={'Детали ингредиента'}>
+              <Modal title={'Детали ингредиента'} handleClose={closePopup}>
                 <IngredientDetails />
               </Modal>} />
 
           <Route path='/feed/:id'
             element={
-              <Modal title=''>
+              <Modal title='' handleClose={closePopup}>
                 <HistoryOrderDetails />
               </Modal>} />
 
-          <Route path='/profile/:order-history/:id'
+          <Route path='/profile/order-history/:id'
             element={
-              <Modal title="">
+              <Modal title="" handleClose={closePopup}>
                 <HistoryOrderDetails />
               </Modal>
             } />
@@ -114,7 +118,7 @@ function App() {
           <Route path='/finalorder'
             element={
               <ProtectedRoute>
-                <Modal title=''>
+                <Modal title='' handleClose={closePopup}>
                   <OrderDetails />
                 </Modal>
               </ProtectedRoute>} />

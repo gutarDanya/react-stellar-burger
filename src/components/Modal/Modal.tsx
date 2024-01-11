@@ -10,19 +10,17 @@ import { useAppDispatch } from '../../services/hooks/reduxHooks';
 
 const modalRoot: any = document.getElementById("modalRoot");
 
-export const Modal: React.FC<IProps> = ({ children, title }) => {
+export const Modal: React.FC<IProps> = ({ children, title, handleClose }) => {
 
     const navigate = useNavigate();
 
     const location = useLocation();
 
-    const closePopup = (): void => {
-        navigate(-1)
-    }
+
 
     function closePopupByKey(evt: any) {
         if (evt.key === 'Escape') {
-            closePopup()
+            handleClose()
         }
     }
 
@@ -37,7 +35,7 @@ export const Modal: React.FC<IProps> = ({ children, title }) => {
 
     return ReactDOM.createPortal(
         <ModalOverlay
-            closePopup={closePopup}>
+            closePopup={handleClose}>
             <div className={styles.popup}
                 onClick={e => e.stopPropagation()}>
                 <div className={styles.container}>
@@ -45,7 +43,7 @@ export const Modal: React.FC<IProps> = ({ children, title }) => {
                     <div data-testid='closeModal'>
                         <CloseIcon
                             data-testid='closeModal'
-                            onClick={closePopup}
+                            onClick={handleClose}
                             type='primary' />
                     </div>
                 </div>
@@ -59,4 +57,5 @@ export const Modal: React.FC<IProps> = ({ children, title }) => {
 
 interface IProps {
     title?: string;
+    handleClose: any
 }
