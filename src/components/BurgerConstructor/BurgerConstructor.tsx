@@ -3,20 +3,19 @@ import React, { useEffect } from 'react';
 import InfoOfOrder from './InfoOfOrder/InfoOfOrder';
 
 import styles from './BurgerConstructor.module.css';
-import { useSelector} from 'react-redux';
 import { useDrag, useDrop } from 'react-dnd';
 import { addBun, addMainIngredient } from '../../services/actions/ingredientsConstructorAction';
 import { IngredientsConstructor } from './IngredientsConstructor/IngredientsConstructor';
 import { addCount } from '../../services/actions/apiAction';
-import { useAppDispatch } from '../../services/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../services/hooks/reduxHooks';
 import { v4 as uuid4 } from 'uuid';
 
 function BurgerConstructor() {
 
     const dispatch = useAppDispatch();
 
-    const bun = useSelector((state: TSelector) => state.constructorReducer.bun);
-    const main = useSelector((state: TSelector) => state.constructorReducer.main);
+    const bun = useAppSelector(state => state.constructorReducer.bun);
+    const main = useAppSelector(state => state.constructorReducer.main);
 
 
 
@@ -61,10 +60,6 @@ interface IReducer {
     main: Array<IMain>
 };
 
-type TSelector = {
-    constructorReducer: IReducer
-};
-
 interface IIngredient {
     _id: string;
     name: string;
@@ -79,9 +74,5 @@ interface IIngredient {
     __v: number;
     superId: string;
 };
-
-interface IDropIngredient {
-    ingredient: IIngredient;
-}
 
 export default BurgerConstructor;

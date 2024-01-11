@@ -20,9 +20,9 @@ function OrderDetails() {
             <h2 className='text text_type_digits-large'>{
                 order.success === true
                     ? order.order.number
-                    : 1488
+                    : ""
             }</h2>
-            <p className={styles.title}>инетификатор заказа</p>
+            <p className={styles.title}>идентификатор заказа</p>
             <img src={done} alt='картинка'
                 className={styles.picture} />
             <p className={styles.wait}>Ваш заказ начали готовить</p>

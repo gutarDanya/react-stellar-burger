@@ -11,13 +11,7 @@ const someArray = [someBun, someMain, someMainOther]
 describe('тестирование редьюсеров вебсокета для профиля', () => {
 
     it('тестирование изначального состояния', () => {
-        expect(reducer(undefined, {})).toEqual({
-            status: 'offline',
-            connectingError: '',
-            orders: [],
-            total: 1488,
-            totalToday: 322
-        })
+        expect(reducer(undefined, {})).toBe(initialState)
     })
 
     it('тестирование запуска подлючения к вебсокету', () => {

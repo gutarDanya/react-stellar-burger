@@ -1,14 +1,9 @@
 import { CLEAR_STATE_INPUT_REDUCER, setEmailValue, setNameValue, setPasswordValue, setResetMessage } from "../../actions/inputAction";
-import {initialState, inputReducer } from "./inputReduecer";
+import { initialState, inputReducer } from "./inputReduecer";
 
 describe('тестирование inputReducer', () => {
     it('Тестирование изначального состояния', () => {
-        expect(inputReducer(undefined, {})).toEqual({
-            emailValue: '',
-            nameValue: '',
-            passwordValue: '',
-            resetMessage: ''
-        })
+        expect(inputReducer(undefined, {})).toEqual(initialState)
     })
 
     it('тестирование изменения инпута email', () => {

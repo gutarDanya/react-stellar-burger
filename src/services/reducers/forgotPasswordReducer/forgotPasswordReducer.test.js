@@ -1,15 +1,11 @@
 import { data } from "../../../utils/data";
 import { CHANGE_VALUE_OF_FORGOT, CLEAR_STATE_FORGOT_PASSWORD_REDUCER, GET_REQUEST_OF_FORGOT_PASSWORD } from "../../actions/forgotPasswordAction";
-import { initialState } from "./forgotPasswordReducer";
-import { forgotPasswordReducer } from "./forgotPasswordReducer";
+import { initialState, forgotPasswordReducer } from "./forgotPasswordReducer";
 
 describe('тестирование forgotPasswordReducer', () => {
 
     it('тестирование исходного состояния', () => {
-        expect(forgotPasswordReducer(undefined, {})).toEqual({
-            success: false,
-            currentValue: 'somethink'
-        })
+        expect(forgotPasswordReducer(undefined, {})).toBe(initialState)
     })
 
     it('тестирование получения успешного статуса отправления запроса', () => {

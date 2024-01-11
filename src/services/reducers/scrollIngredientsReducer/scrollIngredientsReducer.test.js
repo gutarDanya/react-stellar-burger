@@ -5,9 +5,7 @@ import { scrollReducer, initialState } from "./scrollIngredientsReducer";
 describe('тестирование scrollReducer', () => {
 
     it('тестирование изначального состояния редьюсера', () => {
-        expect(scrollReducer(undefined, {})).toEqual({
-            currentTab: 'one'
-        })
+        expect(scrollReducer(undefined, {})).toBe(initialState)
     })
 
     it('тестирование получения другой вкладки', () => {

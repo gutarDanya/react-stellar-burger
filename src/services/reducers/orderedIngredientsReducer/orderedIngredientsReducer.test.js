@@ -5,9 +5,7 @@ import { initialState, orderedIngredientsReducer } from "./orderedIngredientsRed
 describe('тетстирование orderedIngredientsReducer', () => {
 
     it('тестирование изначального состояния редбюсера', () => {
-        expect(orderedIngredientsReducer(undefined, {})).toEqual({
-            order: {}
-        })
+        expect(orderedIngredientsReducer(undefined, {})).toBe(initialState)
     })
 
     it('тестирование отправления заказа', () => {

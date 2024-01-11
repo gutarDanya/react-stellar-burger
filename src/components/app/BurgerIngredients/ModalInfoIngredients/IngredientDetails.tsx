@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 
 import styles from './IngredientDetails.module.css';
-import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import InfoOfIngridient from './InfoOfIngredient/InfoOfIngredinet';
-import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getCurrentIngredientToRouting } from '../../../../services/actions/apiAction';
-import { useAppDispatch } from '../../../../services/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../../../services/hooks/reduxHooks';
 
 export const IngredientDetails = () => {
 
@@ -14,9 +12,9 @@ export const IngredientDetails = () => {
 
     const { id } = useParams();
 
-    const ingredients = useSelector((state: TReducers) => state.apiReducer.ingredientData)
+    const ingredients = useAppSelector(state => state.apiReducer.ingredientData)
 
-    const currentIngredient = useSelector((state: TReducers) => state.apiReducer.currentIngredient)
+    const currentIngredient = useAppSelector(state => state.apiReducer.currentIngredient)
 
     useEffect(() => {
         if (id) {
@@ -34,8 +32,4 @@ export const IngredientDetails = () => {
         )
         : null
     )
-}
-
-type TReducers = {
-    apiReducer: any;
 }

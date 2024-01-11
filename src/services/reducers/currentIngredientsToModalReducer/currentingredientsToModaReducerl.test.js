@@ -10,11 +10,7 @@ describe('тесты currentIngredientReducer', () => {
     })
 
     it('тестирование изначального состояния редьюсера', () => {
-        expect(currentIngredientReducer(undefined, {})).toEqual({
-            currentIngredient: {},
-            modalWindowOpened: false,
-            opened: false
-        })
+        expect(currentIngredientReducer(undefined, {})).toBe(initialState)
     })
 
     it('тестирование изменения статуса открытия модального окна', () => {

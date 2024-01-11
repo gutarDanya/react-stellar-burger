@@ -4,10 +4,7 @@ import { initialState, loginReducer } from "./LoginReduecer";
 describe('тестирование loginReducer', () => {
 
     it('тестирование изначального состояния редьюсера', () => {
-        expect(loginReducer(undefined, {})).toEqual({
-            login: true,
-            logout: false
-        })
+        expect(loginReducer(undefined, {})).toBe(initialState)
     })
 
     it('тестирование login', () => {

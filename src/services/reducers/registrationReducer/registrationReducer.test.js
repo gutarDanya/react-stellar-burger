@@ -4,9 +4,7 @@ import { registrationReducer, initialState } from "./registrationReducer";
 describe('тестирование registrationReducer', () => {
 
     it('тестирование изначального состояния registrationReducer', () => {
-        expect(registrationReducer(undefined, {})).toEqual({
-            success: false
-        })
+        expect(registrationReducer(undefined, {})).toBe(initialState)
     })
 
     it('тестирование получения ответа от сервера при регистарции', () => {

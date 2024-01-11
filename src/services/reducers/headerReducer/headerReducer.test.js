@@ -1,16 +1,11 @@
 import { ACTIVE_LINK_IS_CONSTRUCTOR, ACTIVE_LINK_IS_ORDERS, ACTIVE_LINK_IS_PROFILE, CLEAR_STATE_HEADER_REDUCER } from "../../actions/headerAction";
-import { headerReducer } from "./headerReducer";
-import { initialState } from "./headerReducer";
+import { headerReducer, initialState } from "./headerReducer";
 
 
 describe('тестирование headerReducer', () => {
 
     it('тестирование изначального состояния', () => {
-        expect(headerReducer(undefined, {})).toEqual({
-            constructor: true,
-            orders: false,
-            profile: false
-        })
+        expect(headerReducer(undefined, {})).toBe(initialState)
     })
 
     it('тестирование активации роута конструктора', () => {

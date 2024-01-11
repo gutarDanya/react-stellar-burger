@@ -1,16 +1,11 @@
 import { CLEAR_STATE_CONSTRUCTOR_REDUCER, REMOVE_INGREDIENT_FROM_CONSTRUCTOR, SORTING_INGREDIENTS, addBun, addMainIngredient, sortingIngredientsGenerator } from "../../actions/ingredientsConstructorAction";
-import { initialState } from "./ingredientsConstructorReducer";
+import { initialState, constructorReducer } from "./ingredientsConstructorReducer";
 import { data } from "../../../utils/data";
-import { constructorReducer } from "./ingredientsConstructorReducer";
 
 describe('тестирование самого сложного редьюсера', () => {
 
     it('тестирование изначального состояния', () => {
-        expect(constructorReducer(undefined, {})).toEqual({
-            allIngredients: [],
-            bun: {},
-            main: []
-        })
+        expect(constructorReducer(undefined, {})).toBe(initialState)
     })
 
     it('тестирование добавления булочки в конструктор', () => {
