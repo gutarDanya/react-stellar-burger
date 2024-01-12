@@ -42,7 +42,3 @@ const RoutingIngredient = () => {
 }
 
 export default RoutingIngredient;
-
-interface IReducer {
-    apiReducer: any;
-}

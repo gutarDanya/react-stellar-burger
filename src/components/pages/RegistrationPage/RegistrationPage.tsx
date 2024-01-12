@@ -3,18 +3,17 @@ import styles from './RegistrationPage.module.css';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { userRegister } from '../../../services/actions/AuthAction';
-import { useDispatch, useSelector } from 'react-redux';
 import { setNameValue, setEmailValue, setPasswordValue } from '../../../services/actions/inputAction';
-import { useAppDispatch } from '../../../services/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../../services/hooks/reduxHooks';
 
 export const RegistrationPage = () => {
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const nameValue = useSelector((state: IReducer) => state.inputReducer.nameValue);
-    const emailValue = useSelector((state: IReducer) => state.inputReducer.emailValue);
-    const passwordValue = useSelector((state: IReducer) => state.inputReducer.passwordValue);
+    const nameValue = useAppSelector(state => state.inputReducer.nameValue);
+    const emailValue = useAppSelector(state => state.inputReducer.emailValue);
+    const passwordValue = useAppSelector(state => state.inputReducer.passwordValue);
 
     const emailRef = useRef(null);
     const nameRef = useRef(null);
@@ -78,8 +77,4 @@ export const RegistrationPage = () => {
             </div>
         </form>
     )
-}
-
-interface IReducer {
-    inputReducer: any;
 }

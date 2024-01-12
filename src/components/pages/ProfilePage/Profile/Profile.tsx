@@ -1,16 +1,15 @@
 import React, { useRef } from "react";
 import styles from './Profile.module.css';
 import { Input } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setEmailValue, setNameValue, setPasswordValue } from "../../../../services/actions/inputAction";
-import { useAppDispatch } from "../../../../services/hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../../../services/hooks/reduxHooks";
 
 export const Profile = () => {
 
-    const nameValue = useSelector((state: IReducer) => state.inputReducer.nameValue)
-    const emailValue = useSelector((state: IReducer) => state.inputReducer.emailValue);
-    const passwordValue = useSelector((state: IReducer) => state.inputReducer.passwordValue);
+    const nameValue = useAppSelector(state => state.inputReducer.nameValue)
+    const emailValue = useAppSelector(state => state.inputReducer.emailValue);
+    const passwordValue = useAppSelector(state => state.inputReducer.passwordValue);
 
     const nameRef = useRef(null);
     const emailRef = useRef(null);
@@ -58,8 +57,4 @@ export const Profile = () => {
              />
             </form>
     )
-}
-
-interface IReducer {
-inputReducer: any;
 }

@@ -1,17 +1,16 @@
 import React from 'react';
 import styles from './ResetPassword.module.css';
 import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useDispatch, useSelector } from 'react-redux';
 import { setPasswordValue, setResetMessage } from '../../../services/actions/inputAction';
 import { ResetPassword } from '../../../services/actions/AuthAction';
-import { useAppDispatch } from '../../../services/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../../services/hooks/reduxHooks';
 
 export const ResetPasswordPage = () => {
 
     const dispatch = useAppDispatch();
 
-    const passwordValue = useSelector((state: IReducer) => state.inputReducer.passwordValue);
-    const resetMessage = useSelector((state: IReducer) => state.inputReducer.resetMessage);
+    const passwordValue = useAppSelector(state => state.inputReducer.passwordValue);
+    const resetMessage = useAppSelector(state => state.inputReducer.resetMessage);
 
     const handleSubmit = () => {
         dispatch(ResetPassword({password: passwordValue, token: resetMessage}))
@@ -52,8 +51,4 @@ export const ResetPasswordPage = () => {
              </div>
         </form>
     )
-}
-
-interface IReducer {
-    inputReducer: any;
 }

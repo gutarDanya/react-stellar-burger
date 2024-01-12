@@ -2,6 +2,7 @@ import { baseUrl } from "../../utils/constants";
 import { checkResponse } from "../../utils/constants";
 import { TIngredientObject } from "../../utils/constantsOfTS";
 import { getCookie } from "../../utils/auth";
+import { refreshToken } from "./AuthAction";
 
 export const SEND_ORDER = 'SEND_ORDER';
 export const CLEAR_STATE_ORDERED_INGREDIENTS: 'CLEAR_STATE_ORDERED_INGREDIENTS' ='CLEAR_STATE_ORDERED_INGREDIENTS';

@@ -1,4 +1,6 @@
-export const data = [
+import { TIngredientObject, TTestingIngredients } from "./constantsOfTS";
+
+export const data: TTestingIngredients[] = [
   {
      "_id":"60666c42cc7b410027a1a9b1",
      "name":"Краторная булка N-200i",

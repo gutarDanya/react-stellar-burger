@@ -8,12 +8,13 @@ import PropTypes from "prop-types";
 import { useLocation, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../../../services/hooks/reduxHooks";
+import { TIngredientObject } from "../../../../../utils/constantsOfTS";
 
 export const Ingredient: React.FC<IProps> = ({ ingredient }) => {
 
     const dispatch = useAppDispatch();
 
-    const openPopup = (ingredient: TIngredient) => {
+    const openPopup = (ingredient: TIngredientObject) => {
         dispatch({ type: OPEN_INFO_MODAL_WINDOW, payload: ingredient })
     }
 
@@ -49,21 +50,6 @@ export const Ingredient: React.FC<IProps> = ({ ingredient }) => {
     )
 }
 
-type TIngredient = {
-    _id: string;
-    name: string;
-    type: string;
-    proteins: number;
-    fat: number;
-    carbohydrates: number;
-    calories: number;
-    price: number;
-    image: string;
-    image_mobile?: string;
-    image_large?: string;
-    __v: number;
-}
-
 interface IProps {
-    ingredient: TIngredient;
+    ingredient: TIngredientObject;
 }

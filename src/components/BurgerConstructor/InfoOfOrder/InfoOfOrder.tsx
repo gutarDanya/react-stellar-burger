@@ -6,6 +6,7 @@ import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { sendOrder } from '../../../services/actions/orderedIngredientsAction';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../services/hooks/reduxHooks';
+import { refreshToken } from '../../../services/actions/AuthAction';
 
 export default function InfoOfOrder() {
 
@@ -18,8 +19,9 @@ export default function InfoOfOrder() {
     const main = useAppSelector(state => state.constructorReducer.main)
 
 
-    const openPopup = () => {
+    const openPopup = async () => {
        if (bun) {
+        await refreshToken()
         dispatch(sendOrder([bun, ...main]));
         navigate('/finalorder', {state: { backgroundLocation: location}})
        }

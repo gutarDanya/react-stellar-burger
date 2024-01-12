@@ -3,14 +3,14 @@ import styles from './LoginPage.module.css'
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
 import { Link, useNavigate } from 'react-router-dom';
 import { userLogin } from "../../../services/actions/AuthAction";
-import { useDispatch, useSelector } from "react-redux";
 import { setEmailValue, setPasswordValue } from "../../../services/actions/inputAction";
-import { useAppDispatch } from "../../../services/hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../../services/hooks/reduxHooks";
+
 
 export const LoginPage = () => {
 
-    const emailValue = useSelector((state: IReducer) => state.inputReducer.emailValue);
-    const passwordValue = useSelector((state: IReducer) => state.inputReducer.passwordValue)
+    const emailValue = useAppSelector(state => state.inputReducer.emailValue);
+    const passwordValue = useAppSelector(state => state.inputReducer.passwordValue)
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
@@ -65,8 +65,4 @@ export const LoginPage = () => {
             </div>
         </form>
     )
-}
-
-interface IReducer {
-    inputReducer: any;
 }

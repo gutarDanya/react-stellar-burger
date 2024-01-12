@@ -32,7 +32,6 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id,
             <div className={`${styles.details}`}>
                 <div className={`${styles.ingredients}`}>
                     {ingredientsInOrder && ingredientsInOrder.length > 0 && ingredientsInOrder.map((ingredient: any, i: number) => {
-                        console.log(i)
                         return (
                             <img src={ingredient.image} alt={ingredient.name} style={{ zIndex: i }} className={`${styles.image}`} key={uuid4()}/>
                         )
@@ -53,6 +52,6 @@ interface IProps {
     ingredients: string[];
     date: string;
     numbers: number | string;
-    id: any;
+    id: string;
     from: string;
 }

@@ -2,8 +2,9 @@ import React from 'react';
 
 import styles from './InfoOfIngredient.module.css';
 import PropTypes from "prop-types";
+import { TIngredientObject } from '../../../../../utils/constantsOfTS';
 
-const InfoOfIngridient:React.FC<IIngredient> = ({ingredient}) => {
+const InfoOfIngridient:React.FC<IProps> = ({ingredient}) => {
 
 
     return (
@@ -34,6 +35,6 @@ const InfoOfIngridient:React.FC<IIngredient> = ({ingredient}) => {
 
 export default InfoOfIngridient;
 
-interface IIngredient {
-    ingredient: any;
+interface IProps {
+    ingredient: TIngredientObject;
 };

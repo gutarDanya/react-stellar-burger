@@ -28,14 +28,13 @@ import RoutingIngredient from "../pages/RoutringIngredient/RoutingIngredient";
 import { Feed } from "../Feed/Feed";
 import HistoryOfOrders from "../pages/HistoryOfOrders/HistroryOfOrders";
 import RoutingOrder from "../pages/RoutingOrder/RoutingOrder";
-import { useAppDispatch, useAppSelector } from "../../services/hooks/reduxHooks";
+import { useAppDispatch } from "../../services/hooks/reduxHooks";
 import { HistoryOrderDetails } from "../HistoryOrderDetails/HistoryOrderDetails";
 import { apiReducer, initialState } from "../../services/reducers/apiReducer/apiReducer";
 
 
 function App() {
   const navigate = useNavigate()
-  const orderModal = useAppSelector((state: IReducer) => state.orderedIngredientsReducer.modalOpened);
 
   const location = useLocation();
   const backgroundLocation = location.state?.backgroundLocation;
@@ -128,9 +127,5 @@ function App() {
   );
 }
 
-interface IReducer {
-  orderedIngredientsReducer?: any;
-  currentIngredientReducer?: any;
-}
 
 export default App;

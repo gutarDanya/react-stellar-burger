@@ -1,14 +1,14 @@
 import React from 'react';
 
 import styles from './Navigation.module.css'
-import { useSelector } from 'react-redux';
 
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import { getCurrentTab } from '../../../../services/actions/scrollIngredientsAction';
+import { useAppSelector } from '../../../../services/hooks/reduxHooks';
 
 function Navigation () {
 
-  const current = useSelector((state: TReducers) => state.scrollReducer.currentTab)
+  const current = useAppSelector(state => state.scrollReducer.currentTab)
 
     return (
         <div className={styles.panel}>
@@ -26,7 +26,3 @@ function Navigation () {
 }
 
 export default Navigation
-
-type TReducers = {
-  scrollReducer: any;
-}

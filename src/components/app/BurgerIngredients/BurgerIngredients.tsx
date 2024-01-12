@@ -48,9 +48,5 @@ function BurgerIngredients () {
     )
 }
 
-type TReducers = {
-    scrollReducer: any;
-}
-
 
 export default BurgerIngredients;

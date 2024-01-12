@@ -12,8 +12,8 @@ export const ForgotPasswordPage = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const emailValue = useAppSelector((state: IReducers) => state.inputReducer.emailValue);
-    const request = useAppSelector((state: IReducers) => state.forgotPasswordReducer.success);
+    const emailValue = useAppSelector(state => state.inputReducer.emailValue);
+    const request = useAppSelector(state => state.forgotPasswordReducer.success);
 
 
     //const inputRef = React.useRef<HTMLDivElement | null>(null);
@@ -48,9 +48,4 @@ export const ForgotPasswordPage = () => {
              </div>
         </form>
     )
-}
-
-interface IReducers {
-    inputReducer?: any;
-    forgotPasswordReducer?: any;
 }
