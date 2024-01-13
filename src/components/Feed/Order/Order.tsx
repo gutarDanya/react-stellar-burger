@@ -4,6 +4,7 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import { Link, useLocation } from "react-router-dom";
 import { useAppSelector } from "../../../services/hooks/reduxHooks";
 import { v4 as uuid4 } from "uuid";
+import { refreshToken } from "../../../services/actions/AuthAction";
 
 export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id, from }) => {
 
@@ -23,7 +24,7 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id,
 
 
     return (
-        <Link to={`${id}`} state={{from: from, backgroundLocation: location}} className={`${styles.container}`} >
+        <Link to={`${id}`} state={{from: from, backgroundLocation: location}} className={`${styles.container}`} onClick={refreshToken()}>
             <div className={`${styles.order}`}>
                 <p className={`${styles.numberOrder} text text_type_digits-default`}>{numbers}</p>
                 <p className={`${styles.timer} text text_type_main-default text_color_inactive`}>{date}</p>
