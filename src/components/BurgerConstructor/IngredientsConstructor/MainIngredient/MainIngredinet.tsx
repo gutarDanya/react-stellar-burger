@@ -27,6 +27,7 @@ export const MainIngredient: React.FC<IProps> = ({ ingredient, deleteIngredient,
         return
       }
 
+
       const dragIndex = item.index
       const hoverIndex = index
 
@@ -82,5 +83,5 @@ export const MainIngredient: React.FC<IProps> = ({ ingredient, deleteIngredient,
 interface IProps {
   index: number;
   ingredient: TIngredientObject;
-  deleteIngredient: any;
+  deleteIngredient: (ingredient: TIngredientObject) => void;
 }

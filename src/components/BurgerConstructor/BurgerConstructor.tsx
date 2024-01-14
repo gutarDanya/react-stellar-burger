@@ -22,14 +22,14 @@ function BurgerConstructor() {
 
     const [, ref] = useDrop({
         accept: 'ingredient',
-        drop(item: any ) {
-            if (item.ingredient.type === 'bun') {
-                dispatch(addBun(item.ingredient, uuid4()))
-                dispatch(addCount(item.ingredient))
+        drop(item: TIngredientObject ) {
+            if (item.type === 'bun') {
+                dispatch(addBun(item, uuid4()))
+                dispatch(addCount(item))
                 console.log(item)
             } else {
-                dispatch(addMainIngredient(item.ingredient, uuid4()))
-                dispatch(addCount(item.ingredient))
+                dispatch(addMainIngredient(item, uuid4()))
+                dispatch(addCount(item))
                 console.log(item)
             }
         }

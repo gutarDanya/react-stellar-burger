@@ -20,9 +20,7 @@ export const Ingredient: React.FC<IProps> = ({ ingredient }) => {
 
     const [, ref] = useDrag({
         type: 'ingredient',
-        item: {
-            ingredient
-        }
+        item: ingredient
     })
 
     const location = useLocation();
