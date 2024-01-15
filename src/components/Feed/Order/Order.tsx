@@ -24,13 +24,13 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id,
 
 
     return (
-        <Link to={`${id}`} state={{from: from, backgroundLocation: location}} className={`${styles.container}`} onClick={refreshToken()}>
+        <Link to={`${id}`} state={{from: from, backgroundLocation: location}} className={`${styles.container}`} onClick={refreshToken}>
             <div className={`${styles.order}`}>
                 <p className={`${styles.numberOrder} text text_type_digits-default`}>{numbers}</p>
                 <p className={`${styles.timer} text text_type_main-default text_color_inactive`}>{date}</p>
             </div>
             <h2 className={`${styles.title} text text_type_main-medium`}>{title}</h2>
-            <div className={`${styles.details}`}>
+            <div className={`${styles.details}`}> 
                 <div className={`${styles.ingredients}`}>
                     {ingredientsInOrder && ingredientsInOrder.length > 0 && ingredientsInOrder.map((ingredient: any, i: number) => {
                         return (

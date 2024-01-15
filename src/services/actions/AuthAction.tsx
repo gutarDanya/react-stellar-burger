@@ -1,5 +1,6 @@
 import { baseUrl, checkResponse } from "../../utils/constants";
 import { getCookie, setCookie, deleteCookie } from "../../utils/auth";
+import { AppDispatch } from "../reducers/indexReducer";
 export const REGISTARTION_ACTION = 'REGISTARTION_ACTION';
 export const CLEAR_STATE_REGISTRATION_REDUCER: 'CLEAR_STATE_REGISTRATION_REDUCER' = 'CLEAR_STATE_REGISTRATION_REDUCER';
 export const LOGIN_ACTION = 'LOGIN_ACTION';
@@ -16,7 +17,7 @@ interface IregisterArg {
 }
 
 export const userRegister = ({ email, password, name } : IregisterArg) => {
-    return async function (dispatch:any) {
+    return async function (dispatch: AppDispatch) {
          await fetch(`${baseUrl}/auth/register`, {
             method: 'POST',
             headers: {
@@ -52,7 +53,7 @@ interface ILoginArg {
 }
 
 export const userLogin = ({ email, password }: ILoginArg) => {
-    return async function (dispatch:any) {
+    return async function (dispatch: AppDispatch) {
         await fetch(`${baseUrl}/auth/login`, {
             method: 'POST',
             headers: {
@@ -87,7 +88,7 @@ export const userLogin = ({ email, password }: ILoginArg) => {
 //Функция выхода из учётки
 
 export const userLogout = () => {
-    return async function(dispatch: any) {
+    return async function(dispatch: AppDispatch) {
          await fetch(`${baseUrl}/auth/logout`, {
             method: 'POST',
             headers: {
@@ -120,7 +121,7 @@ export const userLogout = () => {
 //Функция Обновления токена
 
 export const refreshToken = () => {
-    return async function (dispatch: any) {
+    return async function (dispatch: AppDispatch) {
         await fetch(`${baseUrl}/auth/token`, {
             method: 'POST',
             headers: {
@@ -142,7 +143,7 @@ export const refreshToken = () => {
 //Функция аутентификии
 
 export const authUser = () => {
-    return async function(dispatch: any) {
+    return async function(dispatch: AppDispatch) {
         await fetch(`${baseUrl}/auth/user`, {
             method: 'GET',
             headers: {
@@ -178,7 +179,7 @@ interface IPatchDataArg {
 }
 
 export const patchDataUser = ({email, name, password}: IPatchDataArg ) => {
-    return async function(dispatch: any) {
+    return async function(dispatch: AppDispatch) {
         await fetch(`${baseUrl}/auth/user`, {
             method: 'PATCH',
             headers: {
@@ -209,7 +210,7 @@ interface IResetPasswordArg {
 }
 
 export const ResetPassword = ({password, token}: IResetPasswordArg) => {
-    return async function(dispatch: any) {
+    return async function(dispatch: AppDispatch) {
         await fetch(`${baseUrl}/password-reset/reset`, {
            method: 'POST',
            headers: {
