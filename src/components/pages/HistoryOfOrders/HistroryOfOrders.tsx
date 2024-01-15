@@ -23,7 +23,7 @@ const HistoryOfOrders = () => {
         <div className={`${styles.container} custom-scroll`}>
             {orders && orders.length > 0 && orders.map((order: any) => {
                 return (
-                    <Order id={order._id} title={order.name} ingredients={order.ingredients} date={order.updatedAt} numbers={order.number} from='user-history'/>
+                    <Order id={order._id} title={order.name} ingredients={order.ingredients} date={order.updatedAt} key={order._id} numbers={order.number} from='user-history'/>
                 )
             } )}
         </div>

@@ -136,7 +136,11 @@ export const refreshToken = () => {
             if (res.success) {
                 setCookie('accessToken', res.accessToken.split('Bearer ')[1])
             }
+            if (res.success && res.refreshToken) {
+                setCookie('refreshToken', res.refreshToken)
+            }
         })
+        .catch(err => console.log(err))
     }
 }
 

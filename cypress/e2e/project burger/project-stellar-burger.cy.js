@@ -1,4 +1,3 @@
-import { wait } from "@testing-library/react";
 import React from "react";
 <reference types="cypress" />
 

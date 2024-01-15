@@ -19,7 +19,6 @@ type TInitialState = {
 export const WSHistroyReducer = (state = initialState, action: TWSHistoryActions) => {
 switch (action.type) {
     case WS_CONNECTING: 
-    console.log(action.payload)
     return {
         ...state,
         status: 'connecting'
@@ -32,7 +31,6 @@ switch (action.type) {
     }
     case WS_MESSAGE: {
         const {orders, total, totalToday} = action.payload
-        console.log(action.payload)
         return {
             ...state,
             orders: orders,
@@ -41,7 +39,6 @@ switch (action.type) {
         }
     }
     case WS_ERROR: {
-        console.log(action.payload)
         return {
             ...state,
             connectingError: action.payload

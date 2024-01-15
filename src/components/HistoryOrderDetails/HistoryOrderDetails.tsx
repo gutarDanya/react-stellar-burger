@@ -84,9 +84,9 @@ export const HistoryOrderDetails = () => {
             <p className={`${status === 'готов' ? styles.statusGreen : styles.status} text text_type_main-default`}>{status}</p>
             <p className={`${styles.text} text text_type_main-medium`}>Состав:</p>
             <div className={`${styles.ingredients} custom-scroll`}>
-                {ingredientsInOrder && ingredientsInOrder.length > 0 && ingredientsInOrder.map((ingredient: any, key: number) => {
+                {ingredientsInOrder && ingredientsInOrder.length > 0 && ingredientsInOrder.map((ingredient: any, i: number) => {
                     return (
-                        <div className={styles.ingredient} key={uuid4()}>
+                        <div className={styles.ingredient} key={ingredient._id}>
                             <img src={ingredient.image} className={styles.image} />
                             <p className={`${styles.name} text text_type_main-default`}>{ingredient.name}</p>
                             <div className={styles.ingredientPrice}>

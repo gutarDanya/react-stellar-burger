@@ -21,7 +21,6 @@ type TInitialState = {
 export const WSReducer = (state = initialState, action: TWSActions) => {
     switch (action.type) {
         case WS_CONNECTING:
-            console.log(action.payload)
             return {
                 ...state,
                 status: 'connecting'
@@ -34,7 +33,6 @@ export const WSReducer = (state = initialState, action: TWSActions) => {
         }
         case WS_MESSAGE: {
             const { orders, total, totalToday } = action.payload
-            console.log(action.payload)
             return {
                 ...state,
                 orders: orders,

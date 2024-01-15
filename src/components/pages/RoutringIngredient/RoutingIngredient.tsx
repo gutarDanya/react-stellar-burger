@@ -33,7 +33,7 @@ const RoutingIngredient = () => {
             ? (
                 <div className={styles.container}>
             <h1 className={styles.title}>Детали ингредиентов</h1>
-            <img src={currentIngredient.image_large}/>
+            <img src={currentIngredient.image_large} className={styles.image}/>
             <InfoOfIngridient ingredient={currentIngredient} />
         </div>
             )

@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../../../services/hooks/redux
 
 export const Profile = () => {
 
-    const nameValue = useAppSelector(state => state.inputReducer.nameValue)
+    const nameValue = useAppSelector(state => state.inputReducer.nameValue);
     const emailValue = useAppSelector(state => state.inputReducer.emailValue);
     const passwordValue = useAppSelector(state => state.inputReducer.passwordValue);
 

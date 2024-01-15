@@ -31,13 +31,18 @@
 
 .ingredients {
     display: flex;
-    width: calc(100% - 300px);
+    width: calc(100% - 150px);
+    overflow-x: hidden;
 }
 
 .image {
-    width: 112px;
-    height: 56px;
-    margin-left: -70px
+    width: 100px;
+    height: 50px;
+    background-color: rgba(19, 19, 22) ;
+    margin-left: -35px;
+    border: 2px solid #801AB2;
+    border-image-slice: 5;
+    border-radius: 50%;
 }
 
 .image:first-of-type {

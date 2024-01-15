@@ -17,7 +17,7 @@ function PersonAcc() {
     }
     return (
         <button className={styles.container} >
-            <Link to='/profile/:user-profile' onClick={clickToChange} className={styles.container}>
+            <Link to='/profile/user-profile' onClick={clickToChange} className={styles.container}>
                 <ProfileIcon type={status ? 'primary' : 'secondary'} />
                 <p className={`text text_type_main-default ${status ? styles.active : styles.inactive}`}>Личный кабинет</p>
             </Link>

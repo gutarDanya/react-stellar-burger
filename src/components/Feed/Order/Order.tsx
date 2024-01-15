@@ -12,13 +12,16 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id,
 
     const allIngredients = useAppSelector(state => state.apiReducer.ingredientData);
 
-    const ingredientsInOrder = ingredients && ingredients.map((ingredient: string, i: number) => {
+    const allIngredientsInOrder = ingredients && ingredients.map((ingredient: string, i: number) => {
         return allIngredients.some((ing) => { return ing._id === ingredient })
             ? allIngredients.find((ing) => ing._id === ingredient)
             : null
     });
 
-    const totalPrice = ingredientsInOrder && ingredientsInOrder.reduce((acc: any, item: any) => {
+    const ingredientsInOrder = Array.from(new Set(allIngredientsInOrder))
+    ingredientsInOrder.length = 4;
+
+    const totalPrice = allIngredientsInOrder && allIngredientsInOrder.reduce((acc: any, item: any) => {
         return acc + item.price
     }, 0);
 
@@ -34,7 +37,7 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id,
                 <div className={`${styles.ingredients}`}>
                     {ingredientsInOrder && ingredientsInOrder.length > 0 && ingredientsInOrder.map((ingredient: any, i: number) => {
                         return (
-                            <img src={ingredient.image} alt={ingredient.name} style={{ zIndex: i }} className={`${styles.image}`} key={uuid4()}/>
+                            <img src={ingredient.image} alt={ingredient.name} style={{ zIndex: ingredientsInOrder.length - i }} className={`${styles.image}`} key={ingredient._id}/>
                         )
                     }
                     )}
