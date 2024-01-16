@@ -85,7 +85,10 @@ function App() {
             <Route path='order-history' element={<HistoryOfOrders />} />
             <Route path=':exit' element={<p>здесь будет выход</p>} />
           </Route>
-          <Route path='/profile/order-history/:id' element={<RoutingOrder />} />
+          <Route path='/profile/order-history/:id' element={
+            <ProtectedRoute>
+              <RoutingOrder />
+            </ProtectedRoute>} />
 
           <Route path='/feed' element={<Feed />} />
           <Route path='/feed/:id' element={<RoutingOrder />} />

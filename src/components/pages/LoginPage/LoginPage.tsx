@@ -1,7 +1,7 @@
 import React, {  useRef, useState } from "react";
 import styles from './LoginPage.module.css'
 import { Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { userLogin } from "../../../services/actions/AuthAction";
 import { setEmailValue, setPasswordValue } from "../../../services/actions/inputAction";
 import { useAppDispatch, useAppSelector } from "../../../services/hooks/reduxHooks";
@@ -10,9 +10,11 @@ import { useAppDispatch, useAppSelector } from "../../../services/hooks/reduxHoo
 export const LoginPage = () => {
 
     const emailValue = useAppSelector(state => state.inputReducer.emailValue);
-    const passwordValue = useAppSelector(state => state.inputReducer.passwordValue)
+    const passwordValue = useAppSelector(state => state.inputReducer.passwordValue);
+    const location = useLocation()
 
     const navigate = useNavigate();
+
     const dispatch = useAppDispatch();
 
     const emailRef = useRef(null);
@@ -25,7 +27,7 @@ export const LoginPage = () => {
              password: passwordValue
             })
         )
-        navigate('/', {replace: true})
+        navigate( location.state.url, {replace: true})
     }
     
     
