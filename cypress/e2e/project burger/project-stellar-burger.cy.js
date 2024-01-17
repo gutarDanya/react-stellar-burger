@@ -30,6 +30,7 @@ describe('проверка работы сервера', () => {
         cy.get('input[name=password]').type(123412341234);
 
         cy.get('button').contains('Войти').click();
+        cy.get('@confirmButton').click();
 
         cy.wait(20000).get('div[data-testid="closeModal"]').click()
     })
