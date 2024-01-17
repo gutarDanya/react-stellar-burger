@@ -1,6 +1,7 @@
 import { baseUrl } from "../../utils/constants";
 import { checkResponse } from "../../utils/constants";
 import { TIngredientObject } from "../../utils/constantsOfTS";
+import { AppDispatch } from "../reducers/indexReducer";
 
 export const LOAD_START_INGREDIENTS_DATA: 'LOAD_START_INGREDIENTS_DATA' ='LOAD_START_INGREDIENTS_DATA';
 export const LOAD_START_INGREDIENTS_DATA_REQUEST: 'LOAD_START_INGREDIENTS_DATA_REQUEST' = 'LOAD_START_INGREDIENTS_DATA_REQUEST';
@@ -24,7 +25,7 @@ export const getCurrentIngredientToRouting = (id: string | number) => {
 }
 
 export const getData = () => {
-    return async function(dispatch: any) {
+    return async function(dispatch: AppDispatch) {
         dispatch({
             type: LOAD_START_INGREDIENTS_DATA_REQUEST
         })

@@ -23,7 +23,7 @@ export default function InfoOfOrder() {
        if (bun) {
         await refreshToken()
         dispatch(sendOrder([bun, ...main]));
-        navigate('/finalorder', {state: { backgroundLocation: location}})
+        navigate('/finalorder', {state: {backgroundLocation: location}})
        }
     }
 

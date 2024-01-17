@@ -17,6 +17,8 @@ export const LoginPage = () => {
 
     const dispatch = useAppDispatch();
 
+    console.log(location)
+
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
@@ -27,7 +29,7 @@ export const LoginPage = () => {
              password: passwordValue
             })
         )
-        navigate( location.state.url, {replace: true})
+        navigate(-1)
     }
     
     

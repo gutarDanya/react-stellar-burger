@@ -12,6 +12,6 @@ export const ProtectedRoute: React.FC<{children: any}> = ({children}) => {
     return (
         userLogined === 'true'
         ? children
-        : <Navigate to='/login' replace={true} state={{url: location.pathname}}/>
+        : <Navigate to='/login'/>
     )
 }

@@ -30,7 +30,6 @@ describe('проверка работы сервера', () => {
         cy.get('input[name=password]').type(123412341234);
 
         cy.get('button').contains('Войти').click();
-        cy.get('button').contains('Оформить заказ').click();
 
         cy.wait(20000).get('div[data-testid="closeModal"]').click()
     })
@@ -44,6 +43,8 @@ describe('проверка работы сервера', () => {
         cy.get('input[name=password]').type(123412341234);
 
         cy.get('button').contains('Войти').click();
+
+        cy.get('button[data-testid="constructor-button"]').click();
 
         cy.get('div[data-testid="ingredient"]').as('ingredient')
         cy.get('div[data-testid="constructor"]').as('constructor')
