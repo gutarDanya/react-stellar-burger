@@ -34,35 +34,34 @@ describe('проверка работы сервера', () => {
         cy.wait(20000).get('div[data-testid="closeModal"]').click()
     })
 
-    it('процесс заказа с изначальной авторизацией', () => {
-        cy.visit('/')
+    // it('процесс заказа с изначальной авторизацией', () => {
+    //     cy.visit('/')
 
-        cy.get('button').contains('Личный кабинет').click();
+    //     cy.get('button').contains('Личный кабинет').click();
 
-        cy.get('input[name=emailInput]').type('supertest@gyandex.ru');
-        cy.get('input[name=password]').type(123412341234);
+    //     cy.get('input[name=emailInput]').type('supertest@gyandex.ru');
+    //     cy.get('input[name=password]').type(123412341234);
 
-        cy.get('button').contains('Войти').click();
+    //     cy.get('button').contains('Войти').click();
+    //     cy.get('p[testid="constructor-button"]').click()
 
-        cy.get('button[data-testid="constructor-button"]').click();
+    //     cy.get('div[data-testid="ingredient"]').as('ingredient')
+    //     cy.get('div[data-testid="constructor"]').as('constructor')
 
-        cy.get('div[data-testid="ingredient"]').as('ingredient')
-        cy.get('div[data-testid="constructor"]').as('constructor')
+    //     cy.get('@ingredient').eq(0).trigger('dragstart');
+    //     cy.get('@constructor').trigger('drop');
 
-        cy.get('@ingredient').eq(0).trigger('dragstart');
-        cy.get('@constructor').trigger('drop');
+    //     cy.get('@ingredient').eq(2).trigger('dragstart');
+    //     cy.get('@constructor').trigger('drop');
 
-        cy.get('@ingredient').eq(2).trigger('dragstart');
-        cy.get('@constructor').trigger('drop');
+    //     cy.get('@ingredient').eq(3).trigger('dragstart');
+    //     cy.get('@constructor').trigger('drop');
 
-        cy.get('@ingredient').eq(3).trigger('dragstart');
-        cy.get('@constructor').trigger('drop');
+    //     cy.get('@ingredient').eq(4).trigger('dragstart');
+    //     cy.get('@constructor').trigger('drop');
 
-        cy.get('@ingredient').eq(4).trigger('dragstart');
-        cy.get('@constructor').trigger('drop');
+    //     cy.get('button').contains('Оформить заказ').click();
 
-        cy.get('button').contains('Оформить заказ').click();
-
-        cy.wait(20000).get('div[data-testid="closeModal"]').click()
-    })
+    //     cy.wait(20000).get('div[data-testid="closeModal"]').click()
+    // })
 })

@@ -22,7 +22,7 @@ export default function InfoOfOrder() {
     const openPopup = async () => {
        if (bun) {
         await refreshToken()
-        dispatch(sendOrder([bun, ...main]));
+        await dispatch(sendOrder([bun, ...main]));
         navigate('/finalorder', {state: {backgroundLocation: location}})
        }
     }

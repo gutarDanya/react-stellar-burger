@@ -16,11 +16,9 @@ function Constructor () {
     const status = useAppSelector(state => state.headerReducer.constructor)
 
     return (
-        <button className={styles.button} data-testid='constructor-button'>
         <Link onClick={clickToChange} to='/' className={`${styles.constructor} ` }>
-            <BurgerIcon type={status? 'primary' : 'secondary'}/> <p className={status? styles.active : styles.inactive}>Конструктор</p>
+            <BurgerIcon type={status? 'primary' : 'secondary'}/> <p  className={status? styles.active : styles.inactive}>Конструктор</p>
         </Link>
-        </button>
     )
 }
 

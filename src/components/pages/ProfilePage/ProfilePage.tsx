@@ -13,7 +13,7 @@ export const ProfilePage = () => {
         dispatch(userLogout())
     }
 
-    const fuckingTest = () => {
+    const updateToken = () => {
         dispatch(refreshToken())
     }
 
@@ -24,7 +24,7 @@ export const ProfilePage = () => {
                     <NavLink className={({isActive}) => isActive ? styles.link : styles.inactiveLink} to={'/profile/user-profile'}>
                         <p >Профиль</p>
                     </NavLink>
-                    <NavLink className={({isActive}) => isActive ? styles.link : styles.inactiveLink} to={'/profile/order-history'} onClick={fuckingTest}>
+                    <NavLink className={({isActive}) => isActive ? styles.link : styles.inactiveLink} to={'/profile/order-history'} onClick={updateToken}>
                         <p>История заказов</p>
                     </NavLink>
                     <NavLink className={({isActive}) => isActive ? styles.link : styles.inactiveLink} to={'/'} onClick={exitProfile}>

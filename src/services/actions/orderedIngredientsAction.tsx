@@ -9,7 +9,7 @@ export const SEND_ORDER = 'SEND_ORDER';
 export const CLEAR_STATE_ORDERED_INGREDIENTS: 'CLEAR_STATE_ORDERED_INGREDIENTS' ='CLEAR_STATE_ORDERED_INGREDIENTS';
 
 export const sendOrder = (ingredients: TIngredientObject[]) => {
-    return function(dispatch: AppDispatch) {
+    return function (dispatch: AppDispatch) {
         fetch(`${baseUrl}/orders`, {
             method: 'POST',
             headers: {
