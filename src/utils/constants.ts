@@ -1,7 +1,7 @@
 export const baseUrl = 'https://norma.nomoreparties.space/api';
 export const wsUrl = 'wss://norma.nomoreparties.space'
 
-export function checkResponse(res: any) {
+export function checkResponse(res: Response) {
     if (res.ok) {
         return res.json()
     } else {

@@ -116,14 +116,6 @@ function App() {
                 <HistoryOrderDetails />
               </Modal>
             } />
-
-<Route path='/finalorder'
-            element={
-              <ProtectedRoute>
-                <Modal title='' handleClose={closePopup}>
-                  <OrderDetails />
-                </Modal>
-              </ProtectedRoute>} />
         </Routes>}
       </pre>
     </div>

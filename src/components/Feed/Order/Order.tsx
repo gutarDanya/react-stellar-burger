@@ -22,7 +22,7 @@ export const Order: React.FC<IProps> = ({ title, ingredients, date, numbers, id,
     ingredientsInOrder.length = 4;
 
     const totalPrice = allIngredientsInOrder && allIngredientsInOrder.reduce((acc: any, item: any) => {
-        return acc + item.price
+            return acc + item.price
     }, 0);
 
 

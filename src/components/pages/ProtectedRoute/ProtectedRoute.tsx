@@ -6,7 +6,7 @@ import { authUser, refreshToken } from "../../../services/actions/AuthAction";
 
 export const ProtectedRoute: React.FC<{ children: any, anonymous?: boolean }> = ({ children, anonymous = false }) => {
 
-    const userLogined = sessionStorage.getItem('logined');
+    const userLogined = getCookie('accessToken')
     const location = useLocation();
     const from = location.state?.from || '/'
 

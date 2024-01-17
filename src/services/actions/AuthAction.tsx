@@ -36,7 +36,7 @@ export const userRegister = ({ email, password, name } : IregisterArg) => {
                     type: REGISTARTION_ACTION,
                     payload: res
                 })
-                setCookie('accessToken', res.accessToken.split('Bearer ')[1])
+                setCookie('accessToken', res.accessToken.split('Bearer ')[1], {expires: 900})
                 setCookie('refreshToken', res.refreshToken)
             })
             .catch((err) => {
@@ -71,7 +71,7 @@ export const userLogin = ({ email, password }: ILoginArg) => {
                     await sessionStorage.setItem('logined', 'true')
 
                     //Здесь ты сетишь в куки, свой токен, по которому в дальнейшем будешь проходить аутентификацию
-                    setCookie('accessToken', res.accessToken.split('Bearer ')[1])
+                    setCookie('accessToken', res.accessToken.split('Bearer ')[1], {expires: 900})
                     setCookie('refreshToken', res.refreshToken)
 
                     dispatch({
@@ -134,7 +134,7 @@ export const refreshToken = () => {
         .then(checkResponse)
         .then((res) => {
             if (res.success) {
-                setCookie('accessToken', res.accessToken.split('Bearer ')[1])
+                setCookie('accessToken', res.accessToken.split('Bearer ')[1], {expires: 900})
             }
             if (res.success && res.refreshToken) {
                 setCookie('refreshToken', res.refreshToken)

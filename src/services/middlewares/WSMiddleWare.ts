@@ -4,7 +4,7 @@ import { WSHistoryActions } from "../actions/WSHistoryAction";
 import { AppDispatch, RootState } from "../reducers/indexReducer";
 // socketMiddleware.ts
 
-export const socketMiddleware = (wsActions: any): Middleware => {
+export const socketMiddleware = (wsActions: {[key: string]: any}): Middleware => {
   return ((store: MiddlewareAPI<AppDispatch, RootState>) => {
     let socket: WebSocket | null = null;
 

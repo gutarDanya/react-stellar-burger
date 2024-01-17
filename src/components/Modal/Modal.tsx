@@ -1,24 +1,14 @@
-import React, { useEffect, KeyboardEvent, SyntheticEvent, ChangeEvent } from 'react';
+import React, { useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Modal.module.css'
 import { ModalOverlay } from '../ModalOverlay/ModalOverlay';
-import { useDispatch } from 'react-redux';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import PropTypes from "prop-types";
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../services/hooks/reduxHooks';
 
-const modalRoot: any = document.getElementById("modalRoot");
+const modalRoot = document.getElementById("modalRoot")!;
 
 export const Modal: React.FC<IProps> = ({ children, title, handleClose }) => {
 
-    const navigate = useNavigate();
-
-    const location = useLocation();
-
-
-
-    function closePopupByKey(evt: any) {
+    function closePopupByKey(evt: KeyboardEvent) {
         if (evt.key === 'Escape') {
             handleClose()
         }
