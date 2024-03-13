@@ -46,3 +46,7 @@ npm i react-dom
 npm i uuid
 npm i react-dnd
 ```
+* ввсести команду 
+```
+npm run start
+```
