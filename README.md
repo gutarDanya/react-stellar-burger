@@ -34,6 +34,8 @@
 Все взаимодействия в проекте взаимодействуют с реальными api, В том числе и регулярное обновление истории заказов, построенном на технологии [WebSocket](https://ru.hexlet.io/blog/posts/chto-takoe-websocket-i-kak-oni-voobsche-rabotayut) позволяющая сразу же обновлять данные при ищменении на сервере
 
 # Для запуска проекта необходимо:
+* Клонировать репозиторий командой
+``` git clone https://github.com/gutarDanya/react-stellar-burger.git ```
 * Установить необходимые зависимости
 ```
 npm i react-router-dom
