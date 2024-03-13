@@ -32,3 +32,17 @@
 # API
 
 Все взаимодействия в проекте взаимодействуют с реальными api, В том числе и регулярное обновление истории заказов, построенном на технологии [WebSocket](https://ru.hexlet.io/blog/posts/chto-takoe-websocket-i-kak-oni-voobsche-rabotayut) позволяющая сразу же обновлять данные при ищменении на сервере
+
+# Для запуска проекта необходимо:
+* Установить необходимые зависимости
+```
+npm i react-router-dom
+npm i react
+npm i uuid4
+npm i immutability-helper
+npm i redux
+npm i redux-thunk
+npm i react-dom
+npm i uuid
+npm i react-dnd
+```
